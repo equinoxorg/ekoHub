@@ -29,6 +29,9 @@
   <link rel="stylesheet" href="/static/css/960.css">
   <link rel="stylesheet" href="/static/css/default.css">
   
+  
+  <link rel="stylesheet" href="/static/css/coin-slider-styles.css" type="text/css" />
+  
 <link rel="stylesheet" href="/static/css/demo_table.css">
 <link rel="stylesheet" href="/static/css/demo_table_jui.css">
 <link rel="stylesheet" href="/static/jquery-themes/jquery-ui-1.8.4.custom.css">
@@ -119,6 +122,30 @@
             	<h2 style="padding-bottom: 10px;">Welcome to ekoHub</h2>
             	<p>This web service collates data from the Energy Kiosk Observer. Login to your account in order to download data.</p>
             </div>
+            <div class="row_box">
+                <div id="coin-slider">
+                
+                <img src='/static/img/slide-1.jpg' >
+                <span>
+                    Modular Architecture : Separation between measurement and programmable ADC/Network circuitry.
+                </span>
+               
+                <img src='/static/img/slide-2.jpg' >
+                <span>
+                    Scalable Sensor Designs : Ability to easily tailor circuit components for different voltages/currents.
+                </span>
+               
+                
+                <img src='/static/img/slide-3.jpg' >
+                <span>
+                    Test Instruments and Tools : A full suite of test apparatus to build, test and callibrate sensors.
+                </span>
+               
+                <img src='/static/img/slide-4.jpg' >
+                
+                
+                </div>
+            </div>
             </div>
             {% endblock %}
       
@@ -140,6 +167,8 @@
 
   <!-- scripts concatenated and minified via ant build script-->
   <script src="/static/js/plugins.js"></script>
+  <script type="text/javascript" src="static/js/jquery-1.4.2.js"></script>
+  <script type="text/javascript" src="static/js/coin-slider.min.js"></script>
   <script src="/static/js/script.js"></script>
 
   <script type="text/javascript" src="https://www.google.com/jsapi"></script>
@@ -157,7 +186,11 @@
 
 <script type="text/javascript" language="javascript" src="/static/js/jquery.dataTables.min.js"></script>
         {% block js_region %}
-        <!-- JS -->
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('#coin-slider').coinslider({width: 935, height: 360, links: false});
+            });
+        </script>
         {% endblock %}
   <!-- end scripts-->
 
