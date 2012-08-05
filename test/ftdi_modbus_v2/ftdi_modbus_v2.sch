@@ -14890,6 +14890,17 @@ Mfr Part: &lt;b&gt;PTSM 0,5/ 4-HH-2,5-THR&lt;/b&gt;</description>
 <part name="R3" library="resistor" deviceset="R-EU_" device="0207/10"/>
 <part name="SUPPLY40" library="supply2" deviceset="+5V/2" device=""/>
 <part name="SUPPLY41" library="supply2" deviceset="GND2" device=""/>
+<part name="LED3" library="led" deviceset="LED" device="CHIPLED_0805" value="AMBER"/>
+<part name="R9" library="resistor" deviceset="R-EU_" device="M0805" value="270"/>
+<part name="SUPPLY42" library="supply2" deviceset="+5V/2" device=""/>
+<part name="SUPPLY43" library="supply2" deviceset="GND2" device=""/>
+<part name="LED4" library="led" deviceset="LED" device="CHIPLED_0805" value="AMBER"/>
+<part name="R10" library="resistor" deviceset="R-EU_" device="M0805" value="270"/>
+<part name="SUPPLY44" library="supply2" deviceset="GND1" device=""/>
+<part name="SUPPLY45" library="supply2" deviceset="+5V/1" device=""/>
+<part name="R11" library="resistor" deviceset="R-EU_" device="M0805" value="270"/>
+<part name="LED5" library="led" deviceset="LED" device="CHIPLED_0805" value="AMBER"/>
+<part name="SUPPLY46" library="supply2" deviceset="GND1" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -14975,6 +14986,17 @@ Mfr Part: &lt;b&gt;PTSM 0,5/ 4-HH-2,5-THR&lt;/b&gt;</description>
 <instance part="R3" gate="G$1" x="154.94" y="152.4" rot="R90"/>
 <instance part="SUPPLY40" gate="G$1" x="144.78" y="165.1"/>
 <instance part="SUPPLY41" gate="G$1" x="149.86" y="139.7"/>
+<instance part="LED3" gate="G$1" x="152.4" y="60.96"/>
+<instance part="R9" gate="G$1" x="152.4" y="45.72" rot="R90"/>
+<instance part="SUPPLY42" gate="G$1" x="152.4" y="71.12"/>
+<instance part="SUPPLY43" gate="G$1" x="152.4" y="35.56"/>
+<instance part="LED4" gate="G$1" x="162.56" y="60.96"/>
+<instance part="R10" gate="G$1" x="162.56" y="45.72" rot="R90"/>
+<instance part="SUPPLY44" gate="G$1" x="162.56" y="35.56"/>
+<instance part="SUPPLY45" gate="G$1" x="162.56" y="71.12"/>
+<instance part="R11" gate="G$1" x="116.84" y="43.18" rot="R90"/>
+<instance part="LED5" gate="G$1" x="116.84" y="60.96"/>
+<instance part="SUPPLY46" gate="G$1" x="106.68" y="30.48"/>
 </instances>
 <busses>
 </busses>
@@ -15051,6 +15073,18 @@ Mfr Part: &lt;b&gt;PTSM 0,5/ 4-HH-2,5-THR&lt;/b&gt;</description>
 <pinref part="SUPPLY31" gate="G$1" pin="GND1"/>
 <wire x1="15.24" y1="68.58" x2="15.24" y2="71.12" width="0.1524" layer="91"/>
 <junction x="15.24" y="71.12"/>
+</segment>
+<segment>
+<pinref part="SUPPLY44" gate="G$1" pin="GND1"/>
+<pinref part="R10" gate="G$1" pin="1"/>
+<wire x1="162.56" y1="38.1" x2="162.56" y2="40.64" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="R11" gate="G$1" pin="1"/>
+<wire x1="116.84" y1="38.1" x2="116.84" y2="35.56" width="0.1524" layer="91"/>
+<wire x1="116.84" y1="35.56" x2="106.68" y2="35.56" width="0.1524" layer="91"/>
+<wire x1="106.68" y1="35.56" x2="106.68" y2="33.02" width="0.1524" layer="91"/>
+<pinref part="SUPPLY46" gate="G$1" pin="GND1"/>
 </segment>
 </net>
 <net name="USB_P" class="0">
@@ -15150,6 +15184,11 @@ Mfr Part: &lt;b&gt;PTSM 0,5/ 4-HH-2,5-THR&lt;/b&gt;</description>
 <wire x1="15.24" y1="83.82" x2="15.24" y2="86.36" width="0.1524" layer="91"/>
 <junction x="15.24" y="83.82"/>
 </segment>
+<segment>
+<pinref part="LED4" gate="G$1" pin="A"/>
+<pinref part="SUPPLY45" gate="G$1" pin="+5V/1"/>
+<wire x1="162.56" y1="63.5" x2="162.56" y2="68.58" width="0.1524" layer="91"/>
+</segment>
 </net>
 <net name="N$1" class="0">
 <segment>
@@ -15209,6 +15248,11 @@ Mfr Part: &lt;b&gt;PTSM 0,5/ 4-HH-2,5-THR&lt;/b&gt;</description>
 <pinref part="OK1" gate="B" pin="C2"/>
 <wire x1="170.18" y1="101.6" x2="185.42" y2="101.6" width="0.1524" layer="91"/>
 <label x="172.72" y="101.6" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="LED5" gate="G$1" pin="A"/>
+<wire x1="116.84" y1="63.5" x2="116.84" y2="68.58" width="0.1524" layer="91"/>
+<label x="116.84" y="66.04" size="1.778" layer="95" rot="R90"/>
 </segment>
 </net>
 <net name="RX_LED" class="0">
@@ -15309,6 +15353,11 @@ Mfr Part: &lt;b&gt;PTSM 0,5/ 4-HH-2,5-THR&lt;/b&gt;</description>
 <pinref part="SUPPLY40" gate="G$1" pin="+5V/2"/>
 <wire x1="144.78" y1="157.48" x2="144.78" y2="162.56" width="0.1524" layer="91"/>
 </segment>
+<segment>
+<pinref part="LED3" gate="G$1" pin="A"/>
+<pinref part="SUPPLY42" gate="G$1" pin="+5V/2"/>
+<wire x1="152.4" y1="68.58" x2="152.4" y2="63.5" width="0.1524" layer="91"/>
+</segment>
 </net>
 <net name="GND2" class="0">
 <segment>
@@ -15381,6 +15430,11 @@ Mfr Part: &lt;b&gt;PTSM 0,5/ 4-HH-2,5-THR&lt;/b&gt;</description>
 <pinref part="SUPPLY41" gate="G$1" pin="GND2"/>
 <pinref part="R2" gate="G$1" pin="1"/>
 <wire x1="149.86" y1="142.24" x2="149.86" y2="147.32" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="R9" gate="G$1" pin="1"/>
+<pinref part="SUPPLY43" gate="G$1" pin="GND2"/>
+<wire x1="152.4" y1="40.64" x2="152.4" y2="38.1" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="ISO_TXD" class="0">
@@ -15495,6 +15549,27 @@ Mfr Part: &lt;b&gt;PTSM 0,5/ 4-HH-2,5-THR&lt;/b&gt;</description>
 <pinref part="R3" gate="G$1" pin="1"/>
 <wire x1="154.94" y1="147.32" x2="154.94" y2="134.62" width="0.1524" layer="91"/>
 <label x="154.94" y="134.62" size="1.778" layer="95" rot="R90"/>
+</segment>
+</net>
+<net name="N$7" class="0">
+<segment>
+<pinref part="LED3" gate="G$1" pin="C"/>
+<pinref part="R9" gate="G$1" pin="2"/>
+<wire x1="152.4" y1="55.88" x2="152.4" y2="50.8" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$8" class="0">
+<segment>
+<pinref part="R10" gate="G$1" pin="2"/>
+<pinref part="LED4" gate="G$1" pin="C"/>
+<wire x1="162.56" y1="50.8" x2="162.56" y2="55.88" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$9" class="0">
+<segment>
+<pinref part="R11" gate="G$1" pin="2"/>
+<wire x1="116.84" y1="48.26" x2="116.84" y2="55.88" width="0.1524" layer="91"/>
+<pinref part="LED5" gate="G$1" pin="C"/>
 </segment>
 </net>
 </nets>
