@@ -22775,11 +22775,11 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <part name="R22" library="resistor" deviceset="R-EU_" device="R0603" value="0"/>
 <part name="R26" library="resistor" deviceset="R-EU_" device="R0603" value="0"/>
 <part name="R8" library="resistor" deviceset="R-EU_" device="R0603" value="0"/>
-<part name="R21" library="resistor" deviceset="R-EU_" device="R0603"/>
-<part name="R25" library="resistor" deviceset="R-EU_" device="R0603"/>
-<part name="R17" library="resistor" deviceset="R-EU_" device="R0603"/>
-<part name="R13" library="resistor" deviceset="R-EU_" device="R0603"/>
-<part name="R7" library="resistor" deviceset="R-EU_" device="R0603"/>
+<part name="R21" library="resistor" deviceset="R-EU_" device="R0603" value="DNP"/>
+<part name="R25" library="resistor" deviceset="R-EU_" device="R0603" value="DNP"/>
+<part name="R17" library="resistor" deviceset="R-EU_" device="R0603" value="DNP"/>
+<part name="R13" library="resistor" deviceset="R-EU_" device="R0603" value="DNP"/>
+<part name="R7" library="resistor" deviceset="R-EU_" device="R0603" value="DNP"/>
 <part name="GND1" library="supply1" deviceset="GND" device=""/>
 <part name="GND2" library="supply1" deviceset="GND" device=""/>
 <part name="GND3" library="supply1" deviceset="GND" device=""/>
@@ -22840,7 +22840,7 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <part name="C7" library="resistor" deviceset="C-EU" device="C1206" value="100n"/>
 <part name="C10" library="resistor" deviceset="C-EU" device="C1206" value="100n"/>
 <part name="C11" library="resistor" deviceset="C-EU" device="C1206" value="100n"/>
-<part name="C9" library="resistor" deviceset="C-EU" device="C1206"/>
+<part name="C9" library="resistor" deviceset="C-EU" device="C1206" value="1uF"/>
 <part name="GND15" library="supply1" deviceset="GND" device=""/>
 <part name="GND16" library="supply1" deviceset="GND" device=""/>
 <part name="P+5" library="supply1" deviceset="+5V" device=""/>
@@ -22873,9 +22873,9 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <part name="P+10" library="supply1" deviceset="+5V" device=""/>
 <part name="GND20" library="supply1" deviceset="GND" device=""/>
 <part name="+3V2" library="supply1" deviceset="+3V3" device=""/>
-<part name="R1" library="resistor" deviceset="R-EU_" device="R0603"/>
-<part name="R2" library="resistor" deviceset="R-EU_" device="R0603"/>
-<part name="R3" library="resistor" deviceset="R-EU_" device="R0603"/>
+<part name="R1" library="resistor" deviceset="R-EU_" device="R0603" value="33"/>
+<part name="R2" library="resistor" deviceset="R-EU_" device="R0603" value="33"/>
+<part name="R3" library="resistor" deviceset="R-EU_" device="R0603" value="33"/>
 <part name="P2" library="eko-parts" deviceset="CTB1500/2" device=""/>
 <part name="C12" library="resistor" deviceset="C-EU" device="C1206" value="100n"/>
 <part name="C13" library="resistor" deviceset="C-EU" device="C1206" value="100n"/>
@@ -22895,28 +22895,28 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <part name="GND23" library="supply1" deviceset="GND" device=""/>
 <part name="R28" library="resistor" deviceset="R-EU_" device="R0805" value="3k"/>
 <part name="R29" library="resistor" deviceset="R-EU_" device="R0805" value="1k"/>
-<part name="R31" library="resistor" deviceset="R-EU_" device="R0805"/>
+<part name="R31" library="resistor" deviceset="R-EU_" device="R0805" value="1M"/>
 <part name="GND24" library="supply1" deviceset="GND" device=""/>
-<part name="R33" library="resistor" deviceset="R-EU_" device="R0805"/>
+<part name="R33" library="resistor" deviceset="R-EU_" device="R0805" value="1M"/>
 <part name="GND25" library="supply1" deviceset="GND" device=""/>
-<part name="R35" library="resistor" deviceset="R-EU_" device="R0805"/>
+<part name="R35" library="resistor" deviceset="R-EU_" device="R0805" value="1M"/>
 <part name="GND26" library="supply1" deviceset="GND" device=""/>
-<part name="R37" library="resistor" deviceset="R-EU_" device="R0805"/>
+<part name="R37" library="resistor" deviceset="R-EU_" device="R0805" value="1M"/>
 <part name="GND27" library="supply1" deviceset="GND" device=""/>
-<part name="R39" library="resistor" deviceset="R-EU_" device="R0805"/>
+<part name="R39" library="resistor" deviceset="R-EU_" device="R0805" value="1M"/>
 <part name="GND28" library="supply1" deviceset="GND" device=""/>
-<part name="LED1" library="led" deviceset="LED" device="CHIPLED_0805"/>
-<part name="LED2" library="led" deviceset="LED" device="CHIPLED_0805"/>
-<part name="LED3" library="led" deviceset="LED" device="CHIPLED_0805"/>
-<part name="LED4" library="led" deviceset="LED" device="CHIPLED_0805"/>
-<part name="LED5" library="led" deviceset="LED" device="CHIPLED_0805"/>
+<part name="LED1" library="led" deviceset="LED" device="CHIPLED_0805" value="RED"/>
+<part name="LED2" library="led" deviceset="LED" device="CHIPLED_0805" value="AMBER"/>
+<part name="LED3" library="led" deviceset="LED" device="CHIPLED_0805" value="GREEN"/>
+<part name="LED4" library="led" deviceset="LED" device="CHIPLED_0805" value="GREEN"/>
+<part name="LED5" library="led" deviceset="LED" device="CHIPLED_0805" value="GREEN"/>
 <part name="LED6" library="led" deviceset="LED" device="CHIPLED_0805"/>
-<part name="R30" library="resistor" deviceset="R-EU_" device="R0603"/>
-<part name="R32" library="resistor" deviceset="R-EU_" device="R0603"/>
-<part name="R34" library="resistor" deviceset="R-EU_" device="R0603"/>
-<part name="R36" library="resistor" deviceset="R-EU_" device="R0603"/>
-<part name="R38" library="resistor" deviceset="R-EU_" device="R0603"/>
-<part name="R40" library="resistor" deviceset="R-EU_" device="R0603"/>
+<part name="R30" library="resistor" deviceset="R-EU_" device="R0603" value="200"/>
+<part name="R32" library="resistor" deviceset="R-EU_" device="R0603" value="200"/>
+<part name="R34" library="resistor" deviceset="R-EU_" device="R0603" value="200"/>
+<part name="R36" library="resistor" deviceset="R-EU_" device="R0603" value="200"/>
+<part name="R38" library="resistor" deviceset="R-EU_" device="R0603" value="200"/>
+<part name="R40" library="resistor" deviceset="R-EU_" device="R0603" value="200"/>
 <part name="GND29" library="supply1" deviceset="GND" device=""/>
 <part name="GND30" library="supply1" deviceset="GND" device=""/>
 <part name="TP1" library="testpad" deviceset="TP" device="TP13R"/>
@@ -23818,11 +23818,17 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <segment>
 <pinref part="R4" gate="G$1" pin="1"/>
 <pinref part="R11" gate="G$1" pin="2"/>
-<wire x1="109.22" y1="147.32" x2="109.22" y2="129.54" width="0.1524" layer="91"/>
+<wire x1="109.22" y1="147.32" x2="109.22" y2="139.7" width="0.1524" layer="91"/>
+<wire x1="109.22" y1="139.7" x2="109.22" y2="129.54" width="0.1524" layer="91"/>
 <wire x1="109.22" y1="129.54" x2="109.22" y2="127" width="0.1524" layer="91"/>
 <junction x="109.22" y="129.54"/>
 <pinref part="R10" gate="G$1" pin="2"/>
 <wire x1="109.22" y1="129.54" x2="119.38" y2="129.54" width="0.1524" layer="91"/>
+<pinref part="IC3" gate="G$1" pin="+IN"/>
+<wire x1="116.84" y1="149.86" x2="114.3" y2="149.86" width="0.1524" layer="91"/>
+<wire x1="114.3" y1="149.86" x2="114.3" y2="139.7" width="0.1524" layer="91"/>
+<wire x1="114.3" y1="139.7" x2="109.22" y2="139.7" width="0.1524" layer="91"/>
+<junction x="109.22" y="139.7"/>
 </segment>
 </net>
 <net name="SQR_OUT_AC" class="0">
