@@ -115,7 +115,6 @@
 <text x="2.16" y="30.67" size="3.81" layer="21" font="vector">e.quinox</text>
 <text x="2.43" y="26.05" size="3.81" layer="21" font="vector">PicKit 3</text>
 <text x="2.43" y="21.43" size="3.81" layer="21" font="vector">Adapter</text>
-<text x="0" y="39.37" size="1.27" layer="51">Can populate with female headers on the underside, ribbon cable on topside or pogo-pins going through board out of bottom</text>
 <rectangle x1="37.324" y1="24.638" x2="46.468" y2="26.162" layer="29"/>
 <rectangle x1="37.451" y1="22.098" x2="40.118" y2="23.622" layer="29"/>
 <rectangle x1="37.451" y1="19.558" x2="40.118" y2="21.082" layer="29"/>
