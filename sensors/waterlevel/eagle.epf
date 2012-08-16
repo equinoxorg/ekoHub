@@ -347,6 +347,16 @@ Loc="49 64 648 463"
 State=2
 Number=0
 
+[Win_2]
+Type="Text Editor"
+Loc="320 218 819 717"
+State=2
+Number=1
+File="/Users/ca508/Downloads/eagle.scr"
+CursorPos="19 38"
+Font="Courier,11,-1,5,50,0,0,0,0,0"
+
 [Desktop]
 Screen="1280 800"
 Window="Win_1"
+Window="Win_2"
