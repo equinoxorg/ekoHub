@@ -126,6 +126,7 @@
 <text x="11" y="9" size="1.27" layer="21" font="vector" ratio="14">DC Voltage Sensor</text>
 <text x="11" y="7" size="1.27" layer="21" font="vector" ratio="14">DC Current Sensor x2</text>
 <text x="11" y="11.5" size="1.778" layer="21" font="vector" ratio="14">e.quinox</text>
+<text x="60.96" y="3.81" size="1.778" layer="22" font="vector" ratio="14" rot="MR0">Fusion 57183-G</text>
 </plain>
 <libraries>
 <library name="ic-optoisolator">

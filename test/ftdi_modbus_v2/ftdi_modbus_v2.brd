@@ -145,6 +145,8 @@
 <text x="41.5" y="13" size="1.27" layer="25" font="vector" ratio="17">5V</text>
 <text x="18" y="2" size="1.4224" layer="25" font="vector" ratio="10">e.quinox (2012)</text>
 <text x="36" y="5" size="1.4224" layer="25" font="vector" ratio="17" rot="R180">FTDI_MODBUS_V2</text>
+<text x="3.5" y="44.5" size="0.8128" layer="21" font="vector" ratio="17">FUSION 57183-E</text>
+<text x="13.5" y="44.5" size="0.8128" layer="22" font="vector" ratio="17" rot="MR0">FUSION 57183-E</text>
 </plain>
 <libraries>
 <library name="ftdichip">

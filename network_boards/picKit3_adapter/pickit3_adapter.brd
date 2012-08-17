@@ -125,6 +125,7 @@
 <hole x="43.42" y="27.94" drill="1.1"/>
 <hole x="43.42" y="10.16" drill="1.1"/>
 <hole x="38.34" y="10.16" drill="1.1"/>
+<text x="3" y="2" size="1.778" layer="21">Fusion 57183-H</text>
 </plain>
 <libraries>
 <library name="con-headers-jp">
