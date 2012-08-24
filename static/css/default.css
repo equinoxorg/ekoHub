@@ -473,3 +473,11 @@ a.css3button:hover
 {
     height: 200px;
 }
+
+
+.textbox p
+{
+    font-size: 110%;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
