@@ -41,7 +41,7 @@ class EkoDispatcher(object):
         path = self.create_harvest_session()
         for config in self.valid_configs:
             try:
-                d = Harvester(config, path)
+                d = Harvester(config, path, self.context)
             except SensorConfigException:
                 logger.exception("Unable to read config file %s." % config)
                 continue

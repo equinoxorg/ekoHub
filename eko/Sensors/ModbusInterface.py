@@ -1,6 +1,6 @@
 import logging
 
-from datetime import datetime
+from datetime import datetime, time
 from os.path import join, splitext, exists, isdir, isfile, split
 
 import tempfile
@@ -38,7 +38,7 @@ class SensorConfigException( Exception ):
 
 class Harvester( object ):
     """Harvest data from a modbus device"""
-    def __init__(self, configpath, datapath):
+    def __init__(self, configpath, datapath, context):
         self.configpath = configpath
         self.datapath = datapath
         self.config = ConfigParser.SafeConfigParser()
@@ -51,7 +51,7 @@ class Harvester( object ):
         if not isdir(self.datapath):
             raise SensorConfigException(self.datapath, 'Directory Not Found')
         try:
-            self.config.readfp(open(configpath+'sensor.default.cfg'))
+            self.config.readfp(open(join(context['config'],'sensor.default.cfg')))
         except (ConfigParser.Error, IOError, ValueError, TypeError):
             logger.exception("Unable to load default sensor configuration")
         try:
@@ -250,6 +250,8 @@ class Harvester( object ):
         logger.info("Processing config section %s." % str(section))
         try:
             portname = self.config.get(section,'serialport')
+            logger.warn("%s" % portname)
+            time.sleep(20)
             speed = self.config.getint(section, 'serialbaud')
             if self.config.has_option(section, 'serialtimeout'):
                 timeout = self.config.getint(section, 'serialtimeout')

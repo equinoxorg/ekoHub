@@ -86,6 +86,7 @@ class DisplayController( object ):
         
         # process open
         return OSTools.polling_popen(args, 5.0)
+
     
     
     def init_leds(self):
