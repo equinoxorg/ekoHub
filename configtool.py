@@ -20,10 +20,11 @@ import eko.SystemInterface.Beagleboard as Beagleboard
 logging.basicConfig(format='%(levelname)s: %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p', level=logging.DEBUG)
 
 if __name__=="__main__":
-    if len(sys.argv) != 3:
-        print 'USAGE: configsingle.py CONFIG_FILE OUTPUT_FILE'
+    if len(sys.argv) != 4:
+        print 'USAGE: configsingle.py CONFIG_FILE OUTPUT_FILE CONFIG_PATH'
         sys.exit(0)
     cfgpath = sys.argv[1]
     datapath = sys.argv[2]
-    hv = Harvester(cfgpath, datapath)
+    context = {'config': sys.argv[3]}
+    hv = Harvester(cfgpath, datapath, context)
     hv.harvest()

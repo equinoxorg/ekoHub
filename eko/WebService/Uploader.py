@@ -201,7 +201,7 @@ class DataUploader( object ):
         manifest = basename+'.lst'
         files = []
         try:
-            shutil.copy('/var/log/kern.log', '/tmp/kern.log.'+basename)
+            shutil.copy('/var/log/kernel.log', '/tmp/kern.log.'+basename)
             files.append(('kern.log', '/tmp/kern.log.'+basename))
         except (OSError, IOError, shutil.Error):
             self.logger.exception("Unable to copy kernel log.")
@@ -213,15 +213,21 @@ class DataUploader( object ):
             self.logger.exception("Unable to copy daemon log.")
         
         try:
-            shutil.copy('/home/root/eko.log', '/tmp/eko.log.'+basename)
+            shutil.copy('/var/log/messages.log', '/tmp/messages.log.'+basename)
+            files.append(('messages.log', '/tmp/messages.log.'+basename))
+        except (OSError, IOError, shutil.Error):
+            self.logger.exception("Unable to copy messages log.")
+        
+        try:
+            shutil.copy('/var/log/eko.log', '/tmp/eko.log.'+basename)
             files.append(('eko.log', '/tmp/eko.log.'+basename))
         except (OSError, IOError, shutil.Error):
             self.logger.exception("Unable to copy eko log.")
         
-        files.append(('eko.log.1', '/home/root/eko.log.1'))
-        files.append(('eko.log.2', '/home/root/eko.log.2'))
-        files.append(('eko.log.3', '/home/root/eko.log.3'))
-        files.append(('eko.log.4', '/home/root/eko.log.4'))
+        files.append(('eko.log.1', '/var/log/eko.log.1'))
+        files.append(('eko.log.2', '/var/log/eko.log.2'))
+        files.append(('eko.log.3', '/var/log/eko.log.3'))
+        files.append(('eko.log.4', '/var/log/eko.log.4'))
         
         try:
             zf = ZipFile(join(self.zippath, filename), 'w', ZIP_DEFLATED)
