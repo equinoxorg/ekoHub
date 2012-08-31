@@ -12,9 +12,6 @@ from os.path import join, splitext, exists, isdir, relpath, isfile
 import tempfile
 import shutil
 
-
-CFG_ROOT = "/etc/eko"
-
 logger = logging.getLogger('eko.dbsetup')
 
 CREATE_FILELIST_TBL = """
@@ -45,16 +42,16 @@ CREATE TABLE IF NOT EXISTS synclog (id INTEGER PRIMARY KEY, time TIMESTAMP,
 
 SYNC_DB_NAME = "sync.db"
 
-def check_databases():
+def check_databases(rootdir):
     """Performs a filesystem check on the databases before checking them for integrity"""
     logger.info("Checking database sanity.")
-    logger.info("Configuration root is %s." % CFG_ROOT)
+    logger.info("Configuration root is %s." % rootdir)
     try:
-        if not _check_db_file('filelist.db'):
-            logger.error('filelist.db check failed!')
+        if not _check_db_file(rootdir, 'filelist.db'):
+            logger.warning('filelist.db check failed!')
             try:
-                logger.warning('creating new filelist.db')
-                _create_filelist_db(newfile=True)
+                logger.info('creating new filelist.db')
+                _create_filelist_db(rootdir, newfile=True)
             except (sqlite3.Error, IOError):
                 logger.exception('failed to create new filelist.db')
                 logger.critical('Database initialisation failure!')
@@ -62,14 +59,14 @@ def check_databases():
         logger.exception('filelist.db check failed!')
         logger.critical('filesystem failure')
     finally:
-        _create_filelist_db(newfile=False)
+        _create_filelist_db(rootdir, newfile=False)
     # sync.db
     try:
-        if not _check_db_file('sync.db'):
-            logger.error('sync.db check failed!')
+        if not _check_db_file(rootdir, 'sync.db'):
+            logger.warning('sync.db check failed!')
             try:
-                logger.warning('creating new sync.db')
-                _create_sync_db(newfile=True)
+                logger.info('creating new sync.db')
+                _create_sync_db(rootdir, newfile=True)
             except (sqlite3.Error, IOError):
                 logger.exception('failed to create new sync.db')
                 logger.critical('Database initialisation failure!')
@@ -77,25 +74,25 @@ def check_databases():
         logger.exception('sync.db check failed!')
         logger.critical('filesystem failure')
     finally:
-        _create_sync_db(newfile=False)
+        _create_sync_db(rootdir, newfile=False)
     return
     
-def _check_db_file(filename):
-    if isfile(join(CFG_ROOT, filename)):
+def _check_db_file(rootdir, filename):
+    if isfile(join(rootdir, filename)):
         logger.debug("Database %s exists" % filename)
     else:
-        logger.error("Database %s does not exist." % filename)
+        logger.info("Database %s does not exist." % filename)
         return False
         
-    fsize = os.stat(join(CFG_ROOT, filename)).st_size
+    fsize = os.stat(join(rootdir, filename)).st_size
     if fsize:
-        logger.info("Database %s is %d bytes." % (filename, fsize))
+        logger.debug("Database %s is %d bytes." % (filename, fsize))
     else:
         logger.error("Unable to stat database %s size." % filename) 
         return False
         
     try:
-        conn = sqlite3.connect(join(CFG_ROOT, filename), detect_types=sqlite3.PARSE_DECLTYPES)
+        conn = sqlite3.connect(join(rootdir, filename), detect_types=sqlite3.PARSE_DECLTYPES)
     except:
         logger.exception("Unable to connect to database file %s." % filename)
         return False
@@ -113,9 +110,9 @@ def _check_db_file(filename):
         conn.close()
         
     try:
-        conn = sqlite3.connect(join(CFG_ROOT, filename), timeout=500.0)
+        conn = sqlite3.connect(join(rootdir, filename), timeout=500.0)
         l = conn.execute("VACUUM")
-        logger.info("Ran VACUUM on %s" % filename)
+        logger.debug("Ran VACUUM on %s" % filename)
         conn.commit()
     except:
         logger.exception("Vaccum of db failed")
@@ -127,26 +124,26 @@ def _check_db_file(filename):
 
 
 
-def _create_sync_db(newfile=True):
-    if newfile or not isfile(join(CFG_ROOT, 'sync.db')):
-        if isfile(join(CFG_ROOT,'sync.db')):
+def _create_sync_db(rootdir, newfile=True):
+    if newfile or not isfile(join(rootdir, 'sync.db')):
+        if isfile(join(rootdir,'sync.db')):
             #backup the old file if it is present
             bkname = 'sync.db.%s' % datetime.now().strftime("%d%b%y.%H%M%S")
             try:
-                shutil.move(join(CFG_ROOT, 'sync.db'), join(CFG_ROOT, bkname))
+                shutil.move(join(rootdir, 'sync.db'), join(rootdir, bkname))
                 logger.info("Backing up old (corrupted?) sync.db to %s" % bkname)
             except:
                 logger.exception("Unable to backup sync.db")
-        if isfile(join(CFG_ROOT, 'sync.db')):
+        if isfile(join(rootdir, 'sync.db')):
             logger.warning("sync.db still present (???).")
             try:
-                os.remove(join(CFG_ROOT, 'sync.db'))
+                os.remove(join(rootdir, 'sync.db'))
             except:
                 logger.exception("Unable to delete sync.db.")
                 logger.critical("Filesystem Error")
     # try to create a sqlite instance
     try:
-        conn = sqlite3.connect(join(CFG_ROOT, 'sync.db'), detect_types=sqlite3.PARSE_DECLTYPES)
+        conn = sqlite3.connect(join(rootdir, 'sync.db'), detect_types=sqlite3.PARSE_DECLTYPES)
         logger.debug("Connection open to sync.db.")
         conn.execute(CREATE_CLIENT_MSG_TBL)
         conn.execute(CREATE_SERVER_CMD_TBL)
@@ -160,26 +157,26 @@ def _create_sync_db(newfile=True):
     finally:
         conn.close()
         
-def _create_filelist_db(newfile=True):
-    if newfile or not isfile(join(CFG_ROOT, 'filelist.db')):
-        if isfile(join(CFG_ROOT,'filelist.db')):
+def _create_filelist_db(rootdir, newfile=True):
+    if newfile or not isfile(join(rootdir, 'filelist.db')):
+        if isfile(join(rootdir,'filelist.db')):
             #backup the old file if it is present
             bkname = 'filelist.db.%s' % datetime.now().strftime("%d%b%y.%H%M%S")
             try:
-                shutil.move(join(CFG_ROOT, 'filelist.db'), join(CFG_ROOT, bkname))
+                shutil.move(join(rootdir, 'filelist.db'), join(rootdir, bkname))
                 logger.info("Backing up old (corrupted?) filelist.db to %s" % bkname)
             except:
                 logger.exception("Unable to backup filelist.db")
-        if isfile(join(CFG_ROOT, 'filelist.db')):
+        if isfile(join(rootdir, 'filelist.db')):
             logger.warning("Filelist.db still present (???).")
             try:
-                os.remove(join(CFG_ROOT, 'filelist.db'))
+                os.remove(join(rootdir, 'filelist.db'))
             except:
                 logger.exception("Unable to delete filelist.db.")
                 logger.critical("Filesystem Error")
     # try to create a sqlite instance
     try:
-        conn = sqlite3.connect(join(CFG_ROOT, 'filelist.db'), detect_types=sqlite3.PARSE_DECLTYPES)
+        conn = sqlite3.connect(join(rootdir, 'filelist.db'), detect_types=sqlite3.PARSE_DECLTYPES)
         logger.debug("Connection open to filelist.db.")
         conn.execute(CREATE_FILELIST_TBL)
         logger.debug("CREATE statement executed on filelist.db")

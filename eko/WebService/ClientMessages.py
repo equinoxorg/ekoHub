@@ -9,8 +9,6 @@ from datetime import datetime
 from Crypto.Hash import MD5
 import Crypto.PublicKey.RSA as RSA
 
-import eko.Constants as Constants
-
 import eko.SystemInterface.Beagleboard as Beagleboard
 
 import eko.Util.Security as Security
@@ -19,7 +17,7 @@ import logging
 
 logger = logging.getLogger('eko.webservice.clientmessages')
 
-def _update_clientmsg_table(ids, configpath=Constants.CONFIGPATH):
+def _update_clientmsg_table(ids, configpath):
     con = sqlite3.connect(join(configpath, 'sync.db'), detect_types=sqlite3.PARSE_DECLTYPES)
     logger.debug("Updating records with ids: %s" % ("".join(["%s " % i for i in ids])))
     c = con.cursor()
@@ -33,9 +31,15 @@ def _update_clientmsg_table(ids, configpath=Constants.CONFIGPATH):
     con.close()
     return
 
-def add_clientmessage(message, sessionref, origin, origintime):
-    con = sqlite3.connect(join(Constants.CONFIGPATH, 'sync.db'), detect_types=sqlite3.PARSE_DECLTYPES|sqlite3.PARSE_COLNAMES)
+def add_clientmessage(ctx, message, sessionref, origin, origintime):
+    """ Adds a client message to the database"""
+    logger.info("Adding client message to database")
+    # config path from passed context dictionary
+    configpath = ctx['config']
+    # open a db connection
+    con = sqlite3.connect(join(configpath, 'sync.db'), detect_types=sqlite3.PARSE_DECLTYPES|sqlite3.PARSE_COLNAMES)
     c = con.cursor()
+    # insert row
     try:
         c.execute("INSERT INTO clientmsg (message, sessionref, origin, origintime) VALUES (?, ?, ?, ?)",
                 (message,sessionref, origin, origintime))
@@ -46,9 +50,10 @@ def add_clientmessage(message, sessionref, origin, origintime):
     con.close()
     return
 
-def transmit_clientmessages(configpath=Constants.CONFIGPATH):
-    # upload
+def transmit_clientmessages(ctx):
     logger.info("Transmitting client messages to server.")
+    # config path from passed context
+    configpath = ctx['config']
     con = sqlite3.connect(join(configpath, 'sync.db'), detect_types=sqlite3.PARSE_DECLTYPES|sqlite3.PARSE_COLNAMES)
     c = con.cursor()
     try:
@@ -79,15 +84,16 @@ def transmit_clientmessages(configpath=Constants.CONFIGPATH):
     msg = {}
     msg['method'] = 'post_messages'
     msg['id'] = 0
-    msg['params'] = {'kiosk-id' : Beagleboard.get_dieid(), 'messages' : list}
+    msg['params'] = {'kiosk-id' : ctx['serial'], 'messages' : list}
     
     jsonstr = json.dumps(msg)
     
     hash = MD5.new(jsonstr).digest()
     
-    sig = Security.sign_digest(hash)
+    sig = Security.sign_digest(hash, join(configpath, 'privatekey.pem'))
     headers = {'X-eko-signature':  sig}
-    urlreq = urllib2.Request(Constants.URLJsonAPI, jsonstr, headers)
+
+    urlreq = urllib2.Request(ctx['json_api'], jsonstr, headers)
     
     try:
         resp = urllib2.urlopen(urlreq)
@@ -107,5 +113,5 @@ def transmit_clientmessages(configpath=Constants.CONFIGPATH):
         return False
     else:
         logger.info("Succesfully uploaded messages.")
-        _update_clientmsg_table([row[4] for row in rows])
+        _update_clientmsg_table([row[4] for row in rows], ctx['config'])
         return True

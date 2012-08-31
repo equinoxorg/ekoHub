@@ -51,7 +51,7 @@ class Harvester( object ):
         if not isdir(self.datapath):
             raise SensorConfigException(self.datapath, 'Directory Not Found')
         try:
-            self.config.readfp(open(Constants.SENSOR_DEFCONFIG))
+            self.config.readfp(open(configpath+'sensor.default.cfg'))
         except (ConfigParser.Error, IOError, ValueError, TypeError):
             logger.exception("Unable to load default sensor configuration")
         try:

@@ -7,8 +7,6 @@ from os import makedirs
 from os.path import join, splitext, exists, isdir
 import tempfile
 
-import eko.Constants as Constants
-
 from eko.Sensors.ModbusInterface import Harvester, SensorConfigException
 
 logger = logging.getLogger('eko.Dispatcher')
@@ -18,10 +16,11 @@ class EkoDispatcher(object):
     """Dispatches polling calls to sensors synchronously."""
     valid_configs = []
     
-    def __init__(self, configpath=Constants.CONFIGPATH, datapath=Constants.DATAPATH, sensorcfgpath=Constants.SENSORPATH):
-        self.configpath = configpath
-        self.datapath = datapath
-        self.sensorcfgpath = sensorcfgpath
+    def __init__(self, context):
+        self.configpath = context['config']
+        self.datapath = context['output']
+        self.sensorcfgpath = context['sensorcfg']
+        self.context = context
         return
     
     def import_configs(self):

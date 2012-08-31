@@ -6,7 +6,8 @@ import logging
 
 import os
 
-import eko.Constants as Constants
+from os.path import join
+
 import eko.SystemInterface.Beagleboard as Beagleboard
 from eko.Util.Security import solve_challenge
 
@@ -25,10 +26,12 @@ class DataUploader( object ):
     filelist = []
     logger = logging.getLogger('eko.webservice')
     
-    def __init__(self, configpath=Constants.CONFIGPATH, datapath=Constants.DATAPATH, zippath=Constants.ZIPPATH):
-        self.configpath = configpath
-        self.datapath  = datapath
-        self.zippath = zippath
+    def __init__(self, ctx):
+        self.context = ctx
+        self.configpath = self.context['config']
+        self.datapath  = self.context['output']
+        self.zippath = self.context['zip']
+
     
     def get_filelist(self, limit=15):
         conn = sqlite3.connect(join(self.configpath,'filelist.db'), detect_types=sqlite3.PARSE_DECLTYPES)
@@ -88,8 +91,8 @@ class DataUploader( object ):
         register_openers()
         
         # create post vars for encoding
-        pvars = {'kiosk-id': Beagleboard.get_dieid(),
-                'software_version': Constants.VERSION, 'type': upload_type}
+        pvars = {'kiosk-id': self.context['serial'],
+                'software_version': '1.2', 'type': upload_type}
         
         self.logger.debug("Sync variables: %s" % str(pvars))
         # check to see if zipfile exists
@@ -105,7 +108,7 @@ class DataUploader( object ):
         else:
             mf = None
         
-        get_target = urllib2.Request(Constants.URLUploadRequest)
+        get_target = urllib2.Request(self.context['upload_api'])
         
         try:
             resp_url = urllib2.urlopen(get_target)
@@ -122,7 +125,7 @@ class DataUploader( object ):
         datagen, headers = multipart_encode(pvars)
         
         headers['X-eko-challenge'] = resp_url.headers['X-eko-challenge']
-        headers['X-eko-signature'] = solve_challenge(resp_url.headers['X-eko-challenge'])
+        headers['X-eko-signature'] = solve_challenge(resp_url.headers['X-eko-challenge'], join(self.configpath,'privatekey.pem'))
         headers['kiosk-id'] = Beagleboard.get_dieid()
         self.logger.debug("Challenge: %s." % headers['X-eko-challenge'])
         self.logger.debug("Sig: %s." % headers['X-eko-signature'])

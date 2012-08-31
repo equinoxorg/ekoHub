@@ -1,59 +1,60 @@
 import os.path
-import urllib2
 
-
-from baseconv import BaseConverter
-
-from Crypto.Hash import MD5
 from Crypto.PublicKey import RSA
 
 from datetime import datetime
 import time
 
-import pickle
-
 import os
 
+import sys
 
-baseconv = BaseConverter('0123456789abcdef')
+def load_RSA(keypath):
+    f = open(keypath, 'r')
+    try:
+        k = RSA.importKey(f.read())
+    except (ValueError, IndexError, TypeError):
+        print("Problem importing specified key, delete and recreate please!")
+        exit(-1)
+    f.close()
+    return(k)
 
-def load_RSA():
-    if os.path.isfile('/etc/eko/prikey.pickle'):
-        fh = open('/etc/eko/prikey.pickle', 'rb')
-        p = pickle.Unpickler(fh)
-        key = p.load()
-        fh.close()
-        print('*** Found /etc/eko/prikey.pickle ***')
-        return key
-    else:
-        print('*** Generating new key ***')
-        return generate_RSA()
-
-def generate_RSA():
-    fh = open('/etc/eko/prikey.pickle', 'wb')
-    p = pickle.Pickler(fh)
-    key = RSA.generate(512, os.urandom)
-    p.dump(key)
+def generate_RSA(prikeypath):
+    fh = open(prikeypath, 'w')
+    
+    key = RSA.generate(1024)
+    fh.write(key.exportKey('PEM'))
+    
     fh.close()
-    baseconv = BaseConverter('0123456789abcdef')
-    fh2 = open('/etc/eko/pubkey.text', 'w')
-    fh2.write('Public Key e Parameter\n')
-    fh2.write(baseconv.from_decimal(key.publickey().e))
-    fh2.write('\nPublic key n Parameter\n')
-    fh2.write(baseconv.from_decimal(key.publickey().n))
-    fh2.close()
-    print "New Key Generated!"
-    print "-"*20
-    print "pubkey.e : %s" % key.publickey().e
-    print ""
-    print "pubkey.n : %s" % key.publickey().n
-    print "-"*20
+
+    print('Wrote Private Key to %s' % prikeypath)
     return key
 
+def write_pubkey(key, pubkeypath):
+    fh2 = open(pubkeypath, 'w')
+    fh2.write(key.publickey().exportKey('PEM'))
+    fh2.close()
+
+    print('Wrote Public Key to %s' % pubkeypath)
+    print('*'*5 + 'Copy below this line' + '*'*5)
+    print(key.publickey().exportKey('PEM'))
+    print('*'*5 + 'Copy above this line' + '*'*5)
+
 if __name__=="__main__":
-    key = load_RSA()
-    print('Public Key e Parameter\n')
-    print(baseconv.from_decimal(key.publickey().e))
-    print('\nPublic key n Parameter\n')
-    print(baseconv.from_decimal(key.publickey().n))
+    if len(sys.argv) != 2:
+        print ('eko-keygen.py CONFIGPATH')
+        exit(-1)
+    # Check if RSA Key exists
+    configpath = sys.argv[1]
+    prikeypath = os.path.join(configpath, 'privatekey.pem')
+    pubkeypath = os.path.join(configpath, 'pubkey.pem')
+    if (os.path.exists(prikeypath)):
+        # load key
+        key = load_RSA(prikeypath)
+        write_pubkey(key, pubkeypath)
+    else:
+        # generate key
+        key = generate_RSA(prikeypath)
+        write_pubkey(key, pubkeypath)
+
     exit(0)

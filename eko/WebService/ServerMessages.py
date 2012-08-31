@@ -20,23 +20,26 @@ import socket
 
 import eko.Constants as Constants
 
+from os.path import join
+
 logger = logging.getLogger('eko.webservice.servermessages')
 
 # gets server messages:
 
-def get_messages():
+def get_messages(ctx):
+    configpath = ctx['config']
     json_query = {}
     json_query['method'] = 'get_messages'
     json_query['id'] = '0'
-    json_query['params'] = {'kiosk-id': Beagleboard.get_dieid()}
+    json_query['params'] = {'kiosk-id': ctx['serial']}
     json_query_str = json.dumps(json_query)
     logger.debug("Sending JSON Query: %s" % json_query_str)
     hash = MD5.new(json_query_str).digest()
     # encoding signature
-    encoded_sig = Security.sign_digest(hash)
+    encoded_sig = Security.sign_digest(hash, join(configpath, 'privatekey.pem'))
     headers = {'X-eko-signature': encoded_sig}
     
-    urlreq = urllib2.Request(Constants.URLJsonAPI, json_query_str, headers)
+    urlreq = urllib2.Request(ctx['json_api'], json_query_str, headers)
     try:
         response = urllib2.urlopen(urlreq)
     except urllib2.URLError:

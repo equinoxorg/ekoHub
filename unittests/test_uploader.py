@@ -11,7 +11,11 @@ class UploaderTest(unittest.TestCase):
 
     configpath = 'unittests/config'
     datapath = 'unittests/data'
-    zippath = 'unittests/zip'
+    zippath = 'unittests/zipfiles'
+    context = {'config': configpath, 'zip' : zippath, 'output' : datapath, 'serial': '123456'}
+    context['json_api'] = 'http://v2.ekohub.org/api/json'
+    context['upload_api'] = 'http://v2.ekohub.org/api/upload_request'
+    context['serial'] = '123456'
     def setUp(self):
         # create a small filelist
         con = sqlite3.connect('unittests/config/filelist.db', detect_types=sqlite3.PARSE_DECLTYPES)
@@ -66,7 +70,7 @@ class UploaderTest(unittest.TestCase):
     def testAllUnSyncLoad(self):
         """Fills filelist with 6 fresh values, checks if they were loaded properly."""
         self._create_all_unsync()
-        uploader = upd.DataUploader(self.configpath, self.datapath, self.zippath)
+        uploader = upd.DataUploader(self.context)
         uploader.get_filelist()
         list = [file[1] for file in uploader.filelist]
         check = ['unittests/data/a', 'unittests/data/b', 'unittests/data/c', 'unittests/data/d', 'unittests/data/e', 'unittests/data/f']
@@ -76,7 +80,7 @@ class UploaderTest(unittest.TestCase):
     def testSomeUnSyncLoad(self):
         """Fills filelist with 6 fresh values, checks if they were loaded properly."""
         self._create_all_unsync()
-        uploader = upd.DataUploader(self.configpath, self.datapath, self.zippath)
+        uploader = upd.DataUploader(self.context)
         uploader.get_filelist()
         list = [file[1] for file in uploader.filelist]
         check = [ 'unittests/data/c', 'unittests/data/d', 'unittests/data/f']
@@ -86,7 +90,7 @@ class UploaderTest(unittest.TestCase):
     def testAllUnSyncInZip(self):
         """Tests to see if zipfile is built."""
         self._create_all_unsync()
-        uploader = upd.DataUploader(self.configpath, self.datapath, self.zippath)
+        uploader = upd.DataUploader(self.context)
         uploader.get_filelist()
         basename = datetime.utcnow().strftime('%d%b%y-%H%M%S.sync')
         filename = basename+'.zip'
@@ -101,7 +105,7 @@ class UploaderTest(unittest.TestCase):
     
     def testSomeUnsyncInZip(self):
         self._create_some_unsync()
-        uploader = upd.DataUploader(self.configpath, self.datapath, self.zippath)
+        uploader = upd.DataUploader(self.context)
         uploader.get_filelist()
         basename = datetime.utcnow().strftime('%d%b%y-%H%M%S.sync')
         filename = basename+'.zip'
@@ -116,7 +120,7 @@ class UploaderTest(unittest.TestCase):
     
     def testNoneInZip(self):
         self._create_all_sync()
-        uploader = upd.DataUploader(self.configpath, self.datapath, self.zippath)
+        uploader = upd.DataUploader(self.context)
         uploader.get_filelist()
         basename = datetime.utcnow().strftime('%d%b%y-%H%M%S.sync')
         filename = basename+'.zip'
