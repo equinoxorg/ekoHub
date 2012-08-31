@@ -112,7 +112,7 @@ def build_template(template_text, output_path, dict):
     
 if __name__=="__main__":
     if len(sys.argv) < 5:
-        print "Usage: ppp_script_gen.py MODEM OPERATOR APN USERNAME [COMPLEXITY] [PASSWORD]"
+        print "Usage: pppd_scriptgen.py MODEM OPERATOR APN USERNAME [COMPLEXITY] [PASSWORD]"
         print "   MODEM: he220 || mf112"
         print "   OPERATOR, APN, USERNAME: ..."
         print "   COMPLEXITY: 0 to 4 where 0 is most basic, 3 is all settings"
