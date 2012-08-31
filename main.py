@@ -39,6 +39,7 @@ def launch():
 
 	parser.add_argument('-c', '--config', action='store', default='/etc/eko/eko.cfg', help="Path to config file", metavar="CONFIG")
 	parser.add_argument('-o', '--output', action='store', default='/data', help="Path to output directory", metavar="OUTDIR")
+	parser.add_argument('-z', '--zip', action='store', default='/zipfiles', help="Path to storage directory for zip payloads", metavar="ZIPDIR")
 	parser.add_argument('-p', '--poll', action='store', default=600, type=int, help="Seconds between sensor polls", metavar="SECONDS")
 	parser.add_argument('-s', '--sync', action='store', default=60*60*4, type=int, help="Seconds between data synchronisations", metavar="SECONDS")
 

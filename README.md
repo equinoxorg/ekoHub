@@ -18,6 +18,24 @@ As of 31st August 2012, some of this is still a Work in Progress
 * The heartbeat script needs to be tested
 * Seperation between platform specific and generic code to be fully implemented by use of hooks
 
+## Pre-requisite Packages
+* GCC 4.x toolchain (a binary toolchain available from most distros is sufficient)
+* Python 2.7.x (2.7.3 or later reccomended)
+* PySerial
+* PyCrypto 2.3 (2.6 may also be acceptable)
+* Poster (http://pypi.python.org/pypi/poster/0.4)
+* Modbus-Tk (http://code.google.com/p/modbus-tk/)
+
+It is also reccomended that the following standard linux packages are installed
+* OpenSSH / Dropbear SSH
+* NTP
+
+### Installation Notes
+
+For the python modules, most are available via Python Setuptools (i.e. easy_install PACKAGENAME). This is the reccomended path for installation. This is also why GCC is required on the target as some libraries must be built from source (automatically).
+
+mobdus-tk is not available via easy_install, thus download the zip package and install it manually.
+
 ## The main.py script
 
 main.py is a newly added launcher for the DataLogger script. It serves to perform two primary functions:
@@ -25,6 +43,13 @@ main.py is a newly added launcher for the DataLogger script. It serves to perfor
 2. Self-Checks to ensure operating environment meets the minimum requirements for execution of the script set
 
 Type `main.py --help` for a usage printout
+
+Typical usage:
+`main.py --config /etc/eko --output /data`
+
+Note that the directories passed to main.py must exist. Sanity checks at startup will otherwise exit.
+
+Read main.py for more documentation. Note some parameters are not fully programmable yet. Fix this in code until someone fixes it and updates this doc / main.py.
 
 ### Notes on the new Context dictionary
 
