@@ -140,7 +140,7 @@ class DataLogger(object):
             self.logger.exception("An error occured when uploading messages.")
         
     def upload_logs(self):
-        upd = Uploader.DataUploader()
+        upd = Uploader.DataUploader(self.context)
         ret = upd.zip_logfiles()
         if not ret:
             self.logger.info("Upload task exited. Error or nothing to sync.")
