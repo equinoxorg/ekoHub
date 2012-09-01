@@ -380,13 +380,13 @@ int main (void)
 		rx_len = 0;
 		init_uart1(25);
 	
-		confbuf[SYS_FW_VERSION] = 0x03;
-		#ifdef TARG_EKOBB_R2
-			confbuf[SYS_HW_VERSION = 0x02;
+		confbuf[SYS_FW_VERSION] = 0x05;
+		#ifdef TARGET_EKOBB_R2
+			confbuf[SYS_HW_VERSION] = 0x02;
 		#endif
 
-		#ifdef TARG_EKOBB_R3
-			confbuf[SYS_HW_VERSION = 0x03;
+		#ifdef TARGET_EKOBB_R3
+			confbuf[SYS_HW_VERSION] = 0x03;
 		#endif
 
   		// failsafe, check address validity and reset
