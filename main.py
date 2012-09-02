@@ -37,12 +37,14 @@ def launch():
 	parser.add_argument('-n', '--always-online', action='store_true', help="Assume constant internet connection (no connect/disconnect attempts")
 	parser.add_argument('-u', '--usb-always-on', action='store_true', help="Do not disconnect / power-down USB hub")
 
-	parser.add_argument('-c', '--config', action='store', default='/etc/eko/eko.cfg', help="Path to config file", metavar="CONFIG")
+	parser.add_argument('-c', '--config', action='store', default='/etc/eko/', help="Path to config file", metavar="CONFIG")
 	parser.add_argument('-o', '--output', action='store', default='/data', help="Path to output directory", metavar="OUTDIR")
-	parser.add_argument('-z', '--zip', action='store', default='/zipfiles', help="Path to storage directory for zip payloads", metavar="ZIPDIR")
+	parser.add_argument('-z', '--zip', action='store', default='/tmp', help="Path to storage directory for zip payloads", metavar="ZIPDIR")
+	parser.add_argument('--sensor_configs', action='store', default='configs/sensors', help="Path to Sensor Config files", metavar="SENSOR_CONFIGS")
 	parser.add_argument('-p', '--poll', action='store', default=600, type=int, help="Seconds between sensor polls", metavar="SECONDS")
 	parser.add_argument('-s', '--sync', action='store', default=60*60*4, type=int, help="Seconds between data synchronisations", metavar="SECONDS")
-
+	parser.add_argument('serial', action='store', help='kiosk identifier', metavar="SERIAL")
+	
 	args = parser.parse_args()
 	_print_startup(vars(args))
 	return vars(args)
@@ -121,9 +123,7 @@ if  __name__=="__main__":
 
 	ctx['json_api'] = 'http://v2.ekohub.org/api/json'
 	ctx['upload_api'] = 'http://v2.ekohub.org/api/upload_request'
-	ctx['serial'] = '123456'
-	ctx['zip'] = '/tmp'
-	ctx['sensorcfg'] = 'Configs/sensors'
+	ctx['sensorcfg'] = 'configs/sensors'
 	# run self tests
 	self_checks(ctx)
 

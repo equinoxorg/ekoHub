@@ -13,7 +13,6 @@ modem
 noauth
 # dns, routing
 usepeerdns
-replacedefaultroute
 defaultroute
 noipdefault
 noccp

@@ -8,7 +8,7 @@ CHATDIR = "build/etc/chatscripts/"
 PEERDIR = "build/etc/ppp/peers/"
 SHDIR = "build/usr/sbin/"
 
-def main(modem, operator, apn, username, password="", level="0"):
+def main(modem, operator, apn, username, password="", level="0", usb=""):
     dict = {'OperatorName':operator, 'APN': apn, 'username': username, 'password': password}
     dict['ipcpRetryStuff'] = False
     dict['lcpRetryStuff'] = False
@@ -35,13 +35,13 @@ def main(modem, operator, apn, username, password="", level="0"):
         dict['chatfile_pre'] = fileprefix + "_prep.chat"
         dict['chatfile_post'] = fileprefix + "_call.chat"
         dict['peerfile'] = fileprefix + ".peer"
-        dict['USBDevice'] = 'ttyUSB0'
+        dict['USBDevice'] = 'ttyUSB0' if usb != "" else usb
         build_huawei_scripts(dict)
     elif modem == "mf112":
         fileprefix = "mf112.%s" % (operator,)
         dict['chatfile'] = fileprefix + ".chat"
         dict['peerfile'] = fileprefix + ".peer"
-        dict['USBDevice'] = 'ttyUSB2'
+        dict['USBDevice'] = 'ttyUSB2' if usb != "" else usb
         build_zte_scripts(dict)
     else:
         print "Invalid modem %s specified: he220, mf112 supported" % modem
@@ -112,11 +112,12 @@ def build_template(template_text, output_path, dict):
     
 if __name__=="__main__":
     if len(sys.argv) < 5:
-        print "Usage: pppd_scriptgen.py MODEM OPERATOR APN USERNAME [COMPLEXITY] [PASSWORD]"
+        print "Usage: pppd_scriptgen.py MODEM OPERATOR APN USERNAME [COMPLEXITY] [PASSWORD] [USB]"
         print "   MODEM: he220 || mf112"
         print "   OPERATOR, APN, USERNAME: ..."
         print "   COMPLEXITY: 0 to 4 where 0 is most basic, 3 is all settings"
         print "   PASSWORD: ..."
+        print "   USB: Port modem is connected to, default /dev/gsmmodem, try /dev/ttyUSB0..2"
         print ""
         print "Output will be placed in ./build/"
         sys.exit(0)
@@ -136,11 +137,17 @@ if __name__=="__main__":
     else:
         level = "0"
     
-    if len(sys.argv) == 7:
+    if len(sys.argv) >= 7:
         password = sys.argv[6]
         print "Password set to: %s" % password
     else:
         password = ""
     
-    main(modem, operator, apn, uname, password, level)
+    if len(sys.argv) == 8:
+    	usb = sys.argv[7]
+    	print "USB Port set to: %s" % usb
+    else:
+    	usb = ""
+    
+    main(modem, operator, apn, uname, password, level, usb)
     
