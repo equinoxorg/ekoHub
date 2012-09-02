@@ -118,6 +118,7 @@ if __name__=="__main__":
         print "   COMPLEXITY: 0 to 4 where 0 is most basic, 3 is all settings"
         print "   PASSWORD: ..."
         print "   USB: Port modem is connected to, default /dev/gsmmodem, try /dev/ttyUSB0..2"
+        print "        Enter ttyUSB0 or gsmmodem (i.e. without the /dev/ part"
         print ""
         print "Output will be placed in ./build/"
         sys.exit(0)

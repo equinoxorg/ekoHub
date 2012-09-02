@@ -15,15 +15,15 @@ Run the pppd script generator by calling:
 
 *PASSWORD* (Optional), if supplied provide here, if empty but you want to type USB (next up), use ""
 
-*USB* (Optional), By default it is assumed the modem is at /dev/gsmmodem, but you can manually override through this variable
+*USB* (Optional), By default it is assumed the modem is at /dev/gsmmodem, but you can manually override through this variable. Do not specify the /dev/ parameter, i.e. valid options are *ttyUSB0* or *gsmmodem*
 
 Example uses:
 
 `python pppd_scriptgen.py he220 tigorwanda web.tigo.rw "" 0`
 
-`python pppd_scriptgen.py he220 tigorwanda web.tigo.rw "" 0 "" /dev/USB0`
+`python pppd_scriptgen.py he220 tigorwanda web.tigo.rw "" 0 "" ttyUSB0`
 
-`python pppd_scriptgen.py he220 giffgaffuk giffgaff.com giffgaff 1 "" /dev/USB0`
+`python pppd_scriptgen.py he220 giffgaffuk giffgaff.com giffgaff 1 "" ttyUSB0`
 
 # Installation
 
