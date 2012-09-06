@@ -21,7 +21,7 @@ logging.basicConfig(format='%(levelname)s: %(message)s', datefmt='%m/%d/%Y %I:%M
 
 if __name__=="__main__":
     if len(sys.argv) != 4:
-        print 'USAGE: configsingle.py CONFIG_FILE OUTPUT_FILE CONFIG_PATH'
+        print 'USAGE: configsingle.py CONFIG_FILE OUTPUT_PATH CONFIG_PATH'
         sys.exit(0)
     cfgpath = sys.argv[1]
     datapath = sys.argv[2]

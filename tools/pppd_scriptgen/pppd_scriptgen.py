@@ -35,13 +35,13 @@ def main(modem, operator, apn, username, password="", level="0", usb=""):
         dict['chatfile_pre'] = fileprefix + "_prep.chat"
         dict['chatfile_post'] = fileprefix + "_call.chat"
         dict['peerfile'] = fileprefix + ".peer"
-        dict['USBDevice'] = 'ttyUSB0' if usb != "" else usb
+        dict['USBDevice'] = 'gsmmodem' if usb == "" else usb
         build_huawei_scripts(dict)
     elif modem == "mf112":
         fileprefix = "mf112.%s" % (operator,)
         dict['chatfile'] = fileprefix + ".chat"
         dict['peerfile'] = fileprefix + ".peer"
-        dict['USBDevice'] = 'ttyUSB2' if usb != "" else usb
+        dict['USBDevice'] = 'gsmmodem' if usb == "" else usb
         build_zte_scripts(dict)
     else:
         print "Invalid modem %s specified: he220, mf112 supported" % modem
