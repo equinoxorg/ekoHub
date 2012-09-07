@@ -206,7 +206,7 @@ class DataLogger(object):
                 self.datalog()
 
                 # set the next poll to POLL_INTERVAL
-                nextpoll = datetime.utcnow() + timedelta(seconds=10)
+                nextpoll = datetime.utcnow() + timedelta(seconds=self.context['poll'])
 
             # determine if we should do a network sync
             if (datetime.utcnow() > nextsync):
@@ -219,7 +219,7 @@ class DataLogger(object):
                 self.netsync()
 
                 # next sync is in SYNC_INTERVAL
-                nextsync = datetime.utcnow() + timedelta(hours=6)
+                nextsync = datetime.utcnow() + timedelta(seconds=self.context['sync'])
 
             # sleep for 10 seconds before looping
             time.sleep(10)
