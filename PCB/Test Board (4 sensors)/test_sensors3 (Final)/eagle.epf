@@ -1,0 +1,49 @@
+[Eagle]
+Version="06 04 00"
+Platform="Windows"
+Serial="62191E841E-LSR-WLM-1EL"
+Globals="Globals"
+Desktop="Desktop"
+
+[Globals]
+AutoSaveProject=1
+UsedLibrary="C:/Program Files (x86)/EAGLE-6.4.0/lbr/resistor.lbr"
+UsedLibrary="C:/Program Files (x86)/EAGLE-6.4.0/lbr/supply1.lbr"
+UsedLibrary="C:/Users/Saurab/Documents/eagle/lbr/ADC.lbr"
+UsedLibrary="C:/Users/Saurab/Documents/eagle/lbr/amd.lbr"
+UsedLibrary="C:/Users/Saurab/Documents/eagle/lbr/ase.lbr"
+UsedLibrary="C:/Users/Saurab/Documents/eagle/lbr/axis.lbr"
+UsedLibrary="C:/Users/Saurab/Documents/eagle/lbr/con-phoenix-me_max.lbr"
+UsedLibrary="C:/Users/Saurab/Documents/eagle/lbr/dimensions.lbr"
+UsedLibrary="C:/Users/Saurab/Documents/eagle/lbr/logo.lbr"
+UsedLibrary="C:/Users/Saurab/Documents/eagle/lbr/marks.lbr"
+UsedLibrary="C:/Users/Saurab/Documents/eagle/lbr/nec-lqfp100-pack.lbr"
+UsedLibrary="C:/Users/Saurab/Documents/eagle/lbr/plcc-socket.lbr"
+UsedLibrary="C:/Users/Saurab/Documents/eagle/lbr/ref-packages.lbr"
+UsedLibrary="C:/Users/Saurab/Documents/eagle/lbr/ref-packages-longpad.lbr"
+UsedLibrary="C:/Users/Saurab/Documents/eagle/lbr/smd-ipc.lbr"
+UsedLibrary="C:/Users/Saurab/Documents/eagle/eko-hardware-designs-master/libraries/atmospheric.lbr"
+UsedLibrary="C:/Users/Saurab/Documents/eagle/eko-hardware-designs-master/libraries/connectors-pheonix.lbr"
+UsedLibrary="C:/Users/Saurab/Documents/eagle/eko-hardware-designs-master/libraries/connectors-terminal.lbr"
+UsedLibrary="C:/Users/Saurab/Documents/eagle/eko-hardware-designs-master/libraries/connectors-usb-ca508fyp.lbr"
+UsedLibrary="C:/Users/Saurab/Documents/eagle/eko-hardware-designs-master/libraries/diodes.lbr"
+UsedLibrary="C:/Users/Saurab/Documents/eagle/eko-hardware-designs-master/libraries/eko-parts.lbr"
+UsedLibrary="C:/Users/Saurab/Documents/eagle/eko-hardware-designs-master/libraries/ic-optoisolator.lbr"
+UsedLibrary="C:/Users/Saurab/Documents/eagle/eko-hardware-designs-master/libraries/modules.lbr"
+UsedLibrary="C:/Users/Saurab/Documents/eagle/eko-hardware-designs-master/libraries/passive-trimmer.lbr"
+UsedLibrary="C:/Users/Saurab/Documents/eagle/eko-hardware-designs-master/libraries/Pauls_parts.lbr"
+UsedLibrary="C:/Users/Saurab/Documents/eagle/eko-hardware-designs-master/libraries/Sensor.lbr"
+UsedLibrary="C:/Users/Saurab/Documents/eagle/EEE Design Rules & Parts Library/EEE_Lab.lbr"
+UsedLibrary="C:/Users/Saurab/Downloads/jumper.lbr"
+UsedLibrary="C:/Users/Saurab/Downloads/con-headers-jp.lbr"
+UsedLibrary="C:/Users/Saurab/Documents/eagle/eko-hardware-designs-master/libraries/mcp.lbr"
+
+[Win_1]
+Type="Control Panel"
+Loc="652 0 1287 729"
+State=1
+Number=0
+
+[Desktop]
+Screen="1366 768"
+Window="Win_1"
