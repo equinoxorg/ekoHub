@@ -11755,7 +11755,7 @@ In this library the device names are the same as the pin names of the symbols, t
 <instance part="C19" gate="G$1" x="165.1" y="294.64"/>
 <instance part="C20" gate="G$1" x="162.56" y="317.5"/>
 <instance part="SUPPLY28" gate="G$1" x="162.56" y="309.88"/>
-<instance part="SUPPLY29" gate="G$1" x="71.12" y="325.12"/>
+<instance part="SUPPLY29" gate="G$1" x="71.12" y="322.58"/>
 <instance part="SUPPLY30" gate="G$1" x="205.74" y="266.7"/>
 <instance part="SUPPLY31" gate="G$1" x="190.5" y="322.58"/>
 <instance part="SUPPLY32" gate="G$1" x="208.28" y="337.82"/>
@@ -11783,7 +11783,7 @@ In this library the device names are the same as the pin names of the symbols, t
 <instance part="C27" gate="G$1" x="165.1" y="403.86"/>
 <instance part="C28" gate="G$1" x="162.56" y="426.72"/>
 <instance part="SUPPLY39" gate="G$1" x="162.56" y="419.1"/>
-<instance part="SUPPLY40" gate="G$1" x="71.12" y="434.34"/>
+<instance part="SUPPLY40" gate="G$1" x="71.12" y="431.8"/>
 <instance part="SUPPLY41" gate="G$1" x="205.74" y="375.92"/>
 <instance part="SUPPLY42" gate="G$1" x="190.5" y="431.8"/>
 <instance part="SUPPLY43" gate="G$1" x="208.28" y="447.04"/>
@@ -12071,6 +12071,7 @@ In this library the device names are the same as the pin names of the symbols, t
 <segment>
 <pinref part="C18" gate="G$1" pin="2"/>
 <pinref part="SUPPLY29" gate="G$1" pin="GND1"/>
+<wire x1="71.12" y1="325.12" x2="71.12" y2="327.66" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <wire x1="129.54" y1="383.54" x2="129.54" y2="378.46" width="0.1524" layer="91"/>
@@ -12115,6 +12116,7 @@ In this library the device names are the same as the pin names of the symbols, t
 <segment>
 <pinref part="C26" gate="G$1" pin="2"/>
 <pinref part="SUPPLY40" gate="G$1" pin="GND1"/>
+<wire x1="71.12" y1="434.34" x2="71.12" y2="436.88" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="JP3" gate="G$1" pin="4"/>
