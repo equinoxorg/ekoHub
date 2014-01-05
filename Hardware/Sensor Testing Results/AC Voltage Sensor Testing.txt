@@ -1,0 +1,7 @@
+1. The low pass filter filter has a cutoff frequency of 72Hz. This comes from the pormula f = 1/(2*pi*R*C) where R = 10k and C = 22nF.
+
+2. At the output, we have a peak-to-peak voltage of 1.57V. 
+
+3. The output at the initial potential divider is approximately 4V pk-pk therefore therefore the voltage drop must be due to R6(5.1k). Need to test this.  
+
+4. Placing the filter at the first buffer op amp stage causes a large voltage drop since you need another resistor in series with R6. 
