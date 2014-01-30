@@ -743,32 +743,32 @@ type 0207, grid 10 mm</description>
 <parts>
 <part name="GND9" library="ee2parts" deviceset="GND" device=""/>
 <part name="GND10" library="ee2parts" deviceset="GND" device=""/>
-<part name="C3" library="ee2parts" deviceset="C" device="5P"/>
-<part name="R5" library="ee2parts" deviceset="R" device=""/>
-<part name="C5" library="ee2parts" deviceset="CPOL" device="1"/>
+<part name="C3" library="ee2parts" deviceset="C" device="5P" value="100n"/>
+<part name="R5" library="ee2parts" deviceset="R" device="" value="20k"/>
+<part name="C5" library="ee2parts" deviceset="CPOL" device="1" value="100n"/>
 <part name="GND11" library="ee2parts" deviceset="GND" device=""/>
-<part name="C1" library="ee2parts" deviceset="CPOL" device="1"/>
+<part name="C1" library="ee2parts" deviceset="CPOL" device="1" value="100u Electrolytic"/>
 <part name="C4" library="ee2parts" deviceset="CPOL" device="1"/>
 <part name="GND12" library="ee2parts" deviceset="GND" device=""/>
-<part name="R4" library="ee2parts" deviceset="R" device=""/>
-<part name="R3" library="ee2parts" deviceset="R" device=""/>
-<part name="R2" library="ee2parts" deviceset="R" device=""/>
-<part name="R1" library="ee2parts" deviceset="R" device=""/>
+<part name="R4" library="ee2parts" deviceset="R" device="" value="5.1k"/>
+<part name="R3" library="ee2parts" deviceset="R" device="" value="5.1k"/>
+<part name="R2" library="ee2parts" deviceset="R" device="" value="10k"/>
+<part name="R1" library="ee2parts" deviceset="R" device="" value="56k"/>
 <part name="GND14" library="ee2parts" deviceset="GND" device=""/>
 <part name="U$5" library="Pauls_parts" deviceset="MYRRA_4408" device=""/>
 <part name="GND17" library="ee2parts" deviceset="GND" device=""/>
 <part name="U$6" library="Pauls_parts" deviceset="SD103A" device=""/>
 <part name="U$7" library="Pauls_parts" deviceset="SD103A" device=""/>
-<part name="R6" library="ee2parts" deviceset="R" device=""/>
+<part name="R6" library="ee2parts" deviceset="R" device="" value="5.1k"/>
 <part name="U$8" library="eko-parts" deviceset="CTB1500/2" device=""/>
 <part name="U1" library="MCP" deviceset="MCP602-E/P" device=""/>
 <part name="+3V2" library="supply1" deviceset="+3V3" device=""/>
-<part name="R7" library="ee2parts" deviceset="R" device=""/>
-<part name="C2" library="ee2parts" deviceset="CPOL" device="1"/>
+<part name="R7" library="ee2parts" deviceset="R" device="" value="100k"/>
+<part name="C2" library="ee2parts" deviceset="CPOL" device="1" value="22n Ceramic"/>
 <part name="GND1" library="ee2parts" deviceset="GND" device=""/>
 <part name="U2" library="MCP" deviceset="MCP602-E/P" device=""/>
-<part name="R8" library="ee2parts" deviceset="R" device=""/>
-<part name="C6" library="ee2parts" deviceset="CPOL" device="1"/>
+<part name="R8" library="ee2parts" deviceset="R" device="" value="500"/>
+<part name="C6" library="ee2parts" deviceset="CPOL" device="1" value="100n"/>
 <part name="GND2" library="ee2parts" deviceset="GND" device=""/>
 </parts>
 <sheets>
