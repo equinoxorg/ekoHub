@@ -5581,7 +5581,7 @@ type RDH, grid 15 mm</description>
 <label x="43.18" y="45.72" size="1.778" layer="95" rot="R90"/>
 </segment>
 </net>
-<net name="N$4" class="0">
+<net name="V_OUT" class="0">
 <segment>
 <pinref part="U$2" gate="G$1" pin="VOUT"/>
 <wire x1="73.66" y1="58.42" x2="78.74" y2="58.42" width="0.1524" layer="91"/>
@@ -5590,6 +5590,7 @@ type RDH, grid 15 mm</description>
 <wire x1="68.58" y1="78.74" x2="78.74" y2="78.74" width="0.1524" layer="91"/>
 <wire x1="78.74" y1="78.74" x2="78.74" y2="58.42" width="0.1524" layer="91"/>
 <junction x="78.74" y="58.42"/>
+<label x="91.44" y="60.96" size="1.778" layer="95" rot="R180"/>
 </segment>
 </net>
 <net name="I_OUT" class="0">

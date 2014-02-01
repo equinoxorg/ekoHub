@@ -6203,12 +6203,12 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <parts>
 <part name="U$1" library="Pauls_parts" deviceset="ACS712" device=""/>
 <part name="U$2" library="Pauls_parts" deviceset="MCP601" device=""/>
-<part name="C1" library="resistor" deviceset="C-EU" device="050-050X075"/>
-<part name="C2" library="resistor" deviceset="C-EU" device="050-050X075"/>
-<part name="R1" library="resistor" deviceset="R-EU_" device="0309/12"/>
-<part name="R2" library="resistor" deviceset="R-EU_" device="0309/12"/>
-<part name="R3" library="resistor" deviceset="R-EU_" device="0309/12"/>
-<part name="R4" library="resistor" deviceset="R-EU_" device="0309/12"/>
+<part name="C1" library="resistor" deviceset="C-EU" device="050-050X075" value="1n"/>
+<part name="C2" library="resistor" deviceset="C-EU" device="050-050X075" value="100n"/>
+<part name="R1" library="resistor" deviceset="R-EU_" device="0309/12" value="1k"/>
+<part name="R2" library="resistor" deviceset="R-EU_" device="0309/12" value="1k"/>
+<part name="R3" library="resistor" deviceset="R-EU_" device="0309/12" value="1k"/>
+<part name="R4" library="resistor" deviceset="R-EU_" device="0309/12" value="1.5k"/>
 <part name="P+1" library="supply1" deviceset="+5V" device=""/>
 <part name="GND1" library="supply1" deviceset="GND" device=""/>
 <part name="P+2" library="supply1" deviceset="+5V" device=""/>
@@ -6223,8 +6223,8 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <part name="+5V" library="testpad" deviceset="TP" device="PAD1-17Y"/>
 <part name="GND" library="testpad" deviceset="TP" device="PAD1-17Y"/>
 <part name="U$3" library="Pauls_parts" deviceset="MCP601" device=""/>
-<part name="R5" library="resistor" deviceset="R-EU_" device="0309/12"/>
-<part name="R6" library="resistor" deviceset="R-EU_" device="0309/12"/>
+<part name="R5" library="resistor" deviceset="R-EU_" device="0309/12" value="2k"/>
+<part name="R6" library="resistor" deviceset="R-EU_" device="0309/12" value="1k"/>
 <part name="P+4" library="supply1" deviceset="+5V" device=""/>
 <part name="GND5" library="supply1" deviceset="GND" device=""/>
 <part name="G1_OUT" library="testpad" deviceset="TP" device="PAD1-17Y"/>

@@ -6220,6 +6220,8 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <part name="I_IN" library="testpad" deviceset="TP" device="PAD1-17Y"/>
 <part name="I_OUT" library="testpad" deviceset="TP" device="PAD1-17Y"/>
 <part name="V_UNSC" library="testpad" deviceset="TP" device="PAD1-17Y"/>
+<part name="+5V" library="testpad" deviceset="TP" device="PAD1-17Y"/>
+<part name="GND" library="testpad" deviceset="TP" device="PAD1-17Y"/>
 </parts>
 <sheets>
 <sheet>
@@ -6245,6 +6247,8 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <instance part="I_IN" gate="G$1" x="-27.94" y="71.12"/>
 <instance part="I_OUT" gate="G$1" x="-27.94" y="63.5"/>
 <instance part="V_UNSC" gate="G$1" x="35.56" y="73.66"/>
+<instance part="+5V" gate="G$1" x="22.86" y="30.48"/>
+<instance part="GND" gate="G$1" x="48.26" y="30.48"/>
 </instances>
 <busses>
 </busses>
@@ -6339,7 +6343,12 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <segment>
 <pinref part="R1" gate="G$1" pin="1"/>
 <pinref part="P+2" gate="1" pin="+5V"/>
-<wire x1="30.48" y1="38.1" x2="22.86" y2="38.1" width="0.1524" layer="91"/>
+<wire x1="30.48" y1="38.1" x2="27.94" y2="38.1" width="0.1524" layer="91"/>
+<wire x1="27.94" y1="38.1" x2="22.86" y2="38.1" width="0.1524" layer="91"/>
+<wire x1="27.94" y1="38.1" x2="27.94" y2="27.94" width="0.1524" layer="91"/>
+<junction x="27.94" y="38.1"/>
+<pinref part="+5V" gate="G$1" pin="TP"/>
+<wire x1="27.94" y1="27.94" x2="22.86" y2="27.94" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="U$2" gate="G$1" pin="VDD"/>
@@ -6364,6 +6373,11 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <pinref part="GND3" gate="1" pin="GND"/>
 <pinref part="R2" gate="G$1" pin="2"/>
 <wire x1="58.42" y1="38.1" x2="55.88" y2="38.1" width="0.1524" layer="91"/>
+<wire x1="55.88" y1="38.1" x2="55.88" y2="25.4" width="0.1524" layer="91"/>
+<junction x="55.88" y="38.1"/>
+<pinref part="GND" gate="G$1" pin="TP"/>
+<wire x1="55.88" y1="25.4" x2="48.26" y2="25.4" width="0.1524" layer="91"/>
+<wire x1="48.26" y1="25.4" x2="48.26" y2="27.94" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="U$1" gate="ACS712" pin="GND5"/>

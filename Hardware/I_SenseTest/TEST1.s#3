@@ -6244,7 +6244,7 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <instance part="GND3" gate="1" x="58.42" y="35.56"/>
 <instance part="GND4" gate="1" x="50.8" y="48.26"/>
 <instance part="V_OUT" gate="G$1" x="101.6" y="63.5"/>
-<instance part="I_IN" gate="G$1" x="-27.94" y="71.12"/>
+<instance part="I_IN" gate="G$1" x="-30.48" y="71.12"/>
 <instance part="I_OUT" gate="G$1" x="-27.94" y="63.5"/>
 <instance part="V_UNSC" gate="G$1" x="35.56" y="73.66"/>
 <instance part="+5V" gate="G$1" x="22.86" y="30.48"/>
@@ -6315,20 +6315,17 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <wire x1="-2.54" y1="60.96" x2="-27.94" y2="60.96" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="N$6" class="0">
-<segment>
-<pinref part="U$1" gate="ACS712" pin="IP+2"/>
-<pinref part="U$1" gate="ACS712" pin="IP+1"/>
-<wire x1="-2.54" y1="63.5" x2="-2.54" y2="66.04" width="0.1524" layer="91"/>
-</segment>
-</net>
 <net name="I_IN" class="0">
 <segment>
 <wire x1="-2.54" y1="63.5" x2="-7.62" y2="63.5" width="0.1524" layer="91"/>
 <label x="-12.7" y="63.5" size="1.778" layer="95"/>
 <pinref part="I_IN" gate="G$1" pin="TP"/>
-<wire x1="-27.94" y1="68.58" x2="-7.62" y2="68.58" width="0.1524" layer="91"/>
+<wire x1="-30.48" y1="68.58" x2="-7.62" y2="68.58" width="0.1524" layer="91"/>
 <wire x1="-7.62" y1="68.58" x2="-7.62" y2="63.5" width="0.1524" layer="91"/>
+<pinref part="U$1" gate="ACS712" pin="IP+2"/>
+<pinref part="U$1" gate="ACS712" pin="IP+1"/>
+<wire x1="-2.54" y1="63.5" x2="-2.54" y2="66.04" width="0.1524" layer="91"/>
+<junction x="-2.54" y="63.5"/>
 </segment>
 </net>
 <net name="+5V" class="0">
