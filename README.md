@@ -1,4 +1,5 @@
-Datalogging_2013-2014
-=====================
+#Datalogging 2013-2014 Designs and Files
 
-Files for the Datalogging Project 2013-2014
+##Contents
+* Hardware: Contains all PCB designs and hardware related stuff
+* Other Folders will come soon
