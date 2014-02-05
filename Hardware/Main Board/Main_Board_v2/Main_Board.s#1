@@ -6211,7 +6211,7 @@ Source: tuxgr_12x2_r2.pdf</description>
 <part name="U$2" library="ekohub2013" deviceset="MICROSD_SOCKET" device=""/>
 <part name="U$3" library="Datalogging_Custom_Parts" deviceset="PANASONIC_CR2032" device=""/>
 <part name="JP9" library="jumper" deviceset="JP1E" device="" value="JP9"/>
-<part name="JP10" library="jumper" deviceset="JP1E" device=""/>
+<part name="JP10" library="jumper" deviceset="JP1E" device="" value="POWER"/>
 <part name="R6" library="rcl" deviceset="R-EU_" device="0411/12"/>
 <part name="R7" library="rcl" deviceset="R-EU_" device="0411/12" value="20"/>
 <part name="D1" library="display-hp" deviceset="HLMP6" device=""/>
@@ -6228,7 +6228,7 @@ Source: tuxgr_12x2_r2.pdf</description>
 <part name="C3" library="capacitor-wima" deviceset="C" device="5/3" value="100nF"/>
 <part name="Q1" library="transistor-power" deviceset="IRF3704" device=""/>
 <part name="Q2" library="transistor-small-signal" deviceset="BS170" device=""/>
-<part name="R13" library="rcl" deviceset="R-EU_" device="0411/12"/>
+<part name="R13" library="rcl" deviceset="R-EU_" device="0411/12" value="1M"/>
 <part name="U$5" library="ekohub2013" deviceset="TACT_SWITCH" device=""/>
 <part name="R14" library="rcl" deviceset="R-EU_" device="0411/12" value="1K"/>
 <part name="C4" library="capacitor-wima" deviceset="C" device="5/3" value="100nF"/>
@@ -6263,8 +6263,8 @@ Source: tuxgr_12x2_r2.pdf</description>
 <part name="IC2" library="st-microelectronics" deviceset="NE555" device=""/>
 <part name="C7" library="capacitor-wima" deviceset="C" device="5/3" value="10nF/0.01u"/>
 <part name="SUPPLY6" library="supply2" deviceset="GND" device=""/>
-<part name="C10" library="capacitor-wima" deviceset="C" device="5/3"/>
-<part name="R4" library="rcl" deviceset="R-EU_" device="0411/12"/>
+<part name="C10" library="capacitor-wima" deviceset="C" device="5/3" value="10n"/>
+<part name="R4" library="rcl" deviceset="R-EU_" device="0411/12" value="300k"/>
 <part name="SUPPLY7" library="supply2" deviceset="GND" device=""/>
 <part name="2N7000" library="jumper" deviceset="JP2E" device=""/>
 <part name="SUPPLY8" library="supply2" deviceset="GND" device=""/>
@@ -7452,21 +7452,22 @@ Source: tuxgr_12x2_r2.pdf</description>
 </sheet>
 </sheets>
 <errors>
+<approved hash="104,1,106.68,-99.06,IC2,VCC+,5V_MBED,,,"/>
 <approved hash="104,1,-71.12,-63.5,DIS1,VCC,5V_MBED,,,"/>
 <approved hash="202,1,-58.42,-63.5,DIS1,D0,,,,"/>
 <approved hash="202,1,-55.88,-63.5,DIS1,D1,,,,"/>
 <approved hash="202,1,-53.34,-63.5,DIS1,D2,,,,"/>
 <approved hash="202,1,-50.8,-63.5,DIS1,D3,,,,"/>
 <approved hash="103,1,-38.1,-63.5,DIS1,NC,N$45,,,"/>
-<approved hash="103,1,-35.56,-63.5,DIS1,NC,GND,,,"/>
-<approved hash="104,1,448.31,8.89,IC2,V+,5V_MBED,,,"/>
-<approved hash="104,1,448.31,-6.35,IC2,V-,GND,,,"/>
-<approved hash="104,1,347.98,43.18,IC3P,V+,5V_MBED,,,"/>
-<approved hash="104,1,347.98,27.94,IC3P,V-,GND,,,"/>
-<approved hash="104,1,347.98,-8.89,IC4P,V+,5V_MBED,,,"/>
-<approved hash="104,1,347.98,-24.13,IC4P,V-,GND,,,"/>
-<approved hash="104,1,414.02,-33.02,IC5P,VSS,GND,,,"/>
-<approved hash="104,1,414.02,-17.78,IC5P,VDD,5V_MBED,,,"/>
+<approved hash="103,1,-35.56,-63.5,DIS1,NC,P16_LCD,,,"/>
+<approved hash="115,1,103.145,12.7,R2,,,,,"/>
+<approved hash="115,1,108.225,12.7,R3,,,,,"/>
+<approved hash="115,1,155.215,24.13,R8,,,,,"/>
+<approved hash="115,1,172.995,24.13,R9,,,,,"/>
+<approved hash="115,1,189.505,24.13,R10,,,,,"/>
+<approved hash="115,1,207.285,24.13,R11,,,,,"/>
+<approved hash="115,1,223.795,24.13,R12,,,,,"/>
+<approved hash="115,1,148.699,-105.799,2N7000,,,,,"/>
 </errors>
 </schematic>
 </drawing>
