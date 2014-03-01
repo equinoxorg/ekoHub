@@ -8,34 +8,34 @@
 </settings>
 <grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
-<layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
-<layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
-<layer number="3" name="Route3" color="4" fill="3" visible="no" active="no"/>
-<layer number="4" name="Route4" color="1" fill="4" visible="no" active="no"/>
-<layer number="5" name="Route5" color="4" fill="4" visible="no" active="no"/>
-<layer number="6" name="Route6" color="1" fill="8" visible="no" active="no"/>
-<layer number="7" name="Route7" color="4" fill="8" visible="no" active="no"/>
-<layer number="8" name="Route8" color="1" fill="2" visible="no" active="no"/>
-<layer number="9" name="Route9" color="4" fill="2" visible="no" active="no"/>
-<layer number="10" name="Route10" color="1" fill="7" visible="no" active="no"/>
-<layer number="11" name="Route11" color="4" fill="7" visible="no" active="no"/>
-<layer number="12" name="Route12" color="1" fill="5" visible="no" active="no"/>
-<layer number="13" name="Route13" color="4" fill="5" visible="no" active="no"/>
-<layer number="14" name="Route14" color="1" fill="6" visible="no" active="no"/>
-<layer number="15" name="Route15" color="4" fill="6" visible="no" active="no"/>
-<layer number="16" name="Bottom" color="1" fill="1" visible="no" active="no"/>
-<layer number="17" name="Pads" color="2" fill="1" visible="no" active="no"/>
-<layer number="18" name="Vias" color="2" fill="1" visible="no" active="no"/>
-<layer number="19" name="Unrouted" color="6" fill="1" visible="no" active="no"/>
-<layer number="20" name="Dimension" color="15" fill="1" visible="no" active="no"/>
-<layer number="21" name="tPlace" color="7" fill="1" visible="no" active="no"/>
-<layer number="22" name="bPlace" color="7" fill="1" visible="no" active="no"/>
-<layer number="23" name="tOrigins" color="15" fill="1" visible="no" active="no"/>
-<layer number="24" name="bOrigins" color="15" fill="1" visible="no" active="no"/>
-<layer number="25" name="tNames" color="7" fill="1" visible="no" active="no"/>
-<layer number="26" name="bNames" color="7" fill="1" visible="no" active="no"/>
-<layer number="27" name="tValues" color="7" fill="1" visible="no" active="no"/>
-<layer number="28" name="bValues" color="7" fill="1" visible="no" active="no"/>
+<layer number="1" name="Top" color="4" fill="1" visible="yes" active="no"/>
+<layer number="2" name="Route2" color="1" fill="3" visible="yes" active="no"/>
+<layer number="3" name="Route3" color="4" fill="3" visible="yes" active="no"/>
+<layer number="4" name="Route4" color="1" fill="4" visible="yes" active="no"/>
+<layer number="5" name="Route5" color="4" fill="4" visible="yes" active="no"/>
+<layer number="6" name="Route6" color="1" fill="8" visible="yes" active="no"/>
+<layer number="7" name="Route7" color="4" fill="8" visible="yes" active="no"/>
+<layer number="8" name="Route8" color="1" fill="2" visible="yes" active="no"/>
+<layer number="9" name="Route9" color="4" fill="2" visible="yes" active="no"/>
+<layer number="10" name="Route10" color="1" fill="7" visible="yes" active="no"/>
+<layer number="11" name="Route11" color="4" fill="7" visible="yes" active="no"/>
+<layer number="12" name="Route12" color="1" fill="5" visible="yes" active="no"/>
+<layer number="13" name="Route13" color="4" fill="5" visible="yes" active="no"/>
+<layer number="14" name="Route14" color="1" fill="6" visible="yes" active="no"/>
+<layer number="15" name="Route15" color="4" fill="6" visible="yes" active="no"/>
+<layer number="16" name="Bottom" color="1" fill="1" visible="yes" active="no"/>
+<layer number="17" name="Pads" color="2" fill="1" visible="yes" active="no"/>
+<layer number="18" name="Vias" color="2" fill="1" visible="yes" active="no"/>
+<layer number="19" name="Unrouted" color="6" fill="1" visible="yes" active="no"/>
+<layer number="20" name="Dimension" color="15" fill="1" visible="yes" active="no"/>
+<layer number="21" name="tPlace" color="7" fill="1" visible="yes" active="no"/>
+<layer number="22" name="bPlace" color="7" fill="1" visible="yes" active="no"/>
+<layer number="23" name="tOrigins" color="15" fill="1" visible="yes" active="no"/>
+<layer number="24" name="bOrigins" color="15" fill="1" visible="yes" active="no"/>
+<layer number="25" name="tNames" color="7" fill="1" visible="yes" active="no"/>
+<layer number="26" name="bNames" color="7" fill="1" visible="yes" active="no"/>
+<layer number="27" name="tValues" color="7" fill="1" visible="yes" active="no"/>
+<layer number="28" name="bValues" color="7" fill="1" visible="yes" active="no"/>
 <layer number="29" name="tStop" color="7" fill="3" visible="no" active="no"/>
 <layer number="30" name="bStop" color="7" fill="6" visible="no" active="no"/>
 <layer number="31" name="tCream" color="7" fill="4" visible="no" active="no"/>
@@ -44,8 +44,8 @@
 <layer number="34" name="bFinish" color="6" fill="6" visible="no" active="no"/>
 <layer number="35" name="tGlue" color="7" fill="4" visible="no" active="no"/>
 <layer number="36" name="bGlue" color="7" fill="5" visible="no" active="no"/>
-<layer number="37" name="tTest" color="7" fill="1" visible="no" active="no"/>
-<layer number="38" name="bTest" color="7" fill="1" visible="no" active="no"/>
+<layer number="37" name="tTest" color="7" fill="1" visible="yes" active="no"/>
+<layer number="38" name="bTest" color="7" fill="1" visible="yes" active="no"/>
 <layer number="39" name="tKeepout" color="4" fill="11" visible="no" active="no"/>
 <layer number="40" name="bKeepout" color="1" fill="11" visible="no" active="no"/>
 <layer number="41" name="tRestrict" color="4" fill="10" visible="no" active="no"/>
@@ -53,16 +53,16 @@
 <layer number="43" name="vRestrict" color="2" fill="10" visible="no" active="no"/>
 <layer number="44" name="Drills" color="7" fill="1" visible="no" active="no"/>
 <layer number="45" name="Holes" color="7" fill="1" visible="no" active="no"/>
-<layer number="46" name="Milling" color="3" fill="1" visible="no" active="no"/>
-<layer number="47" name="Measures" color="7" fill="1" visible="no" active="no"/>
-<layer number="48" name="Document" color="7" fill="1" visible="no" active="no"/>
-<layer number="49" name="Reference" color="7" fill="1" visible="no" active="no"/>
-<layer number="50" name="dxf" color="7" fill="1" visible="no" active="no"/>
-<layer number="51" name="tDocu" color="7" fill="1" visible="no" active="no"/>
-<layer number="52" name="bDocu" color="7" fill="1" visible="no" active="no"/>
-<layer number="53" name="tGND_GNDA" color="7" fill="1" visible="no" active="no"/>
-<layer number="54" name="bGND_GNDA" color="7" fill="1" visible="no" active="no"/>
-<layer number="56" name="wert" color="7" fill="1" visible="no" active="no"/>
+<layer number="46" name="Milling" color="3" fill="1" visible="yes" active="no"/>
+<layer number="47" name="Measures" color="7" fill="1" visible="yes" active="no"/>
+<layer number="48" name="Document" color="7" fill="1" visible="yes" active="no"/>
+<layer number="49" name="Reference" color="7" fill="1" visible="yes" active="no"/>
+<layer number="50" name="dxf" color="7" fill="1" visible="yes" active="no"/>
+<layer number="51" name="tDocu" color="7" fill="1" visible="yes" active="no"/>
+<layer number="52" name="bDocu" color="7" fill="1" visible="yes" active="no"/>
+<layer number="53" name="tGND_GNDA" color="7" fill="1" visible="yes" active="no"/>
+<layer number="54" name="bGND_GNDA" color="7" fill="1" visible="yes" active="no"/>
+<layer number="56" name="wert" color="7" fill="1" visible="yes" active="no"/>
 <layer number="91" name="Nets" color="2" fill="1" visible="yes" active="yes"/>
 <layer number="92" name="Busses" color="1" fill="1" visible="yes" active="yes"/>
 <layer number="93" name="Pins" color="2" fill="1" visible="no" active="yes"/>
@@ -5230,23 +5230,23 @@ naming: grid - package width</description>
 <library name="ekohub2013">
 <packages>
 <package name="USBA_SOCKET">
-<hole x="-6.5" y="3.11" drill="2.3"/>
-<hole x="6.7" y="3.11" drill="2.3"/>
-<hole x="-3.42" y="5.61" drill="0.92"/>
-<hole x="-0.92" y="5.61" drill="0.92"/>
-<hole x="1.08" y="5.61" drill="0.92"/>
-<hole x="3.58" y="5.61" drill="0.92"/>
-<pad name="D+" x="1.08" y="5.6" drill="0.92" shape="square"/>
-<pad name="5V" x="3.58" y="5.61" drill="0.92" shape="square"/>
-<pad name="D-" x="-0.92" y="5.61" drill="0.92" shape="square"/>
-<pad name="GND" x="-3.42" y="5.61" drill="0.92" shape="square"/>
-<wire x1="-6.45" y1="-7.1" x2="6.61" y2="-7.1" width="0.127" layer="21"/>
-<wire x1="6.61" y1="-7.1" x2="6.61" y2="-6.97" width="0.127" layer="21"/>
-<wire x1="-6.54" y1="-7.1" x2="-6.45" y2="-7.1" width="0.127" layer="21"/>
-<wire x1="-6.45" y1="-7.1" x2="-6.45" y2="6.91" width="0.127" layer="21"/>
-<wire x1="-6.45" y1="6.91" x2="6.6" y2="6.91" width="0.127" layer="21"/>
-<wire x1="6.6" y1="6.91" x2="6.6" y2="-6.99" width="0.127" layer="21"/>
-<text x="-1.79" y="-5.12" size="1.27" layer="21">USB</text>
+<hole x="-5.23" y="-1.97" drill="2.3"/>
+<hole x="7.97" y="-1.97" drill="2.3"/>
+<hole x="-2.15" y="0.53" drill="0.92"/>
+<hole x="0.35" y="0.53" drill="0.92"/>
+<hole x="2.35" y="0.53" drill="0.92"/>
+<hole x="4.85" y="0.53" drill="0.92"/>
+<pad name="5V" x="4.85" y="0.53" drill="0.92" shape="square"/>
+<pad name="GND" x="-2.15" y="0.53" drill="0.92" shape="square"/>
+<wire x1="-5.18" y1="-12.18" x2="7.88" y2="-12.18" width="0.127" layer="21"/>
+<wire x1="7.88" y1="-12.18" x2="7.88" y2="-12.05" width="0.127" layer="21"/>
+<wire x1="-5.27" y1="-12.18" x2="-5.18" y2="-12.18" width="0.127" layer="21"/>
+<wire x1="-5.18" y1="-12.18" x2="-5.18" y2="1.83" width="0.127" layer="21"/>
+<wire x1="-5.18" y1="1.83" x2="7.87" y2="1.83" width="0.127" layer="21"/>
+<wire x1="7.87" y1="1.83" x2="7.87" y2="-12.07" width="0.127" layer="21"/>
+<text x="-0.52" y="-10.2" size="1.27" layer="21">USB</text>
+<pad name="D++" x="2.335278125" y="0.5306375" drill="0.8"/>
+<pad name="D--" x="0.35509375" y="0.5306375" drill="0.8"/>
 </package>
 <package name="MICROSD_SOCKET">
 <smd name="RSV" x="-4.7" y="-7.475" dx="1.75" dy="0.7" layer="1" rot="R90"/>
@@ -5280,17 +5280,20 @@ naming: grid - package width</description>
 <text x="-3.175" y="-0.635" size="1.016" layer="21">SWITCH</text>
 </package>
 <package name="TRACO_ISOLATED_SUPPLY">
-<wire x1="-3.81" y1="17.78" x2="27.94" y2="17.78" width="0.127" layer="21"/>
-<wire x1="27.94" y1="17.78" x2="27.94" y2="-2.54" width="0.127" layer="21"/>
-<wire x1="27.94" y1="-2.54" x2="-3.81" y2="-2.54" width="0.127" layer="21"/>
+<wire x1="-3.81" y1="17.78" x2="29.21" y2="17.78" width="0.127" layer="21"/>
+<wire x1="29.21" y1="17.78" x2="29.21" y2="-2.54" width="0.127" layer="21"/>
+<wire x1="29.21" y1="-2.54" x2="-3.81" y2="-2.54" width="0.127" layer="21"/>
 <wire x1="-3.81" y1="-2.54" x2="-3.81" y2="17.78" width="0.127" layer="21"/>
-<pad name="P$23" x="0.635" y="15.24" drill="0.8" shape="square"/>
-<pad name="P$2" x="0.635" y="0" drill="0.8" shape="square"/>
-<pad name="P$3" x="3.175" y="0" drill="0.8" shape="square"/>
-<pad name="P$22" x="3.175" y="15.24" drill="0.8" shape="square"/>
-<pad name="P$16" x="19.685" y="15.24" drill="0.8" shape="square"/>
-<pad name="P$14" x="23.495" y="15.24" drill="0.8" shape="square"/>
+<pad name="P$23" x="0" y="15.24" drill="0.8" shape="square"/>
+<pad name="P$2" x="0" y="0" drill="0.8" shape="square"/>
+<pad name="P$3" x="2.54" y="0" drill="0.8" shape="square"/>
+<pad name="P$22" x="2.54" y="15.24" drill="0.8" shape="square"/>
+<pad name="P$16" x="17.78" y="15.24" drill="0.8" shape="square"/>
+<pad name="P$14" x="22.86" y="15.24" drill="0.8" shape="square"/>
 <text x="5.08" y="7.62" size="1.27" layer="21">TRACO TEL 5-1211</text>
+<dimension x1="2.54" y1="15.24" x2="17.78" y2="15.24" x3="10.16" y3="17.78" layer="21"/>
+<dimension x1="17.78" y1="15.24" x2="22.86" y2="15.24" x3="20.32" y3="12.7" layer="21"/>
+<dimension x1="27.94" y1="-2.54" x2="-3.81" y2="-2.54" x3="12.065" y3="-6.35" layer="21"/>
 </package>
 <package name="INPUT_VOLTAGE_CONNECTOR">
 <text x="-10.16" y="-0.635" size="1.27" layer="21">V_IN</text>
@@ -5379,8 +5382,8 @@ naming: grid - package width</description>
 <device name="" package="USBA_SOCKET">
 <connects>
 <connect gate="G$1" pin="5V" pad="5V"/>
-<connect gate="G$1" pin="D+" pad="D+"/>
-<connect gate="G$1" pin="D-" pad="D-"/>
+<connect gate="G$1" pin="D+" pad="D++"/>
+<connect gate="G$1" pin="D-" pad="D--"/>
 <connect gate="G$1" pin="GND" pad="GND"/>
 </connects>
 <technologies>
