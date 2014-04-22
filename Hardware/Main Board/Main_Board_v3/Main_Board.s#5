@@ -7394,6 +7394,8 @@ Source: tuxgr_12x2_r2.pdf</description>
 <part name="JP20" library="jumper" deviceset="JP4E" device=""/>
 <part name="JP3" library="jumper" deviceset="JP4E" device=""/>
 <part name="JP4" library="jumper" deviceset="JP4E" device=""/>
+<part name="R7" library="rcl" deviceset="R-EU_" device="0411/12"/>
+<part name="R18" library="rcl" deviceset="R-EU_" device="0411/12"/>
 </parts>
 <sheets>
 <sheet>
@@ -7479,6 +7481,8 @@ Source: tuxgr_12x2_r2.pdf</description>
 <instance part="JP20" gate="G$1" x="215.9" y="44.45" rot="R270"/>
 <instance part="JP3" gate="G$1" x="228.6" y="44.45" rot="R270"/>
 <instance part="JP4" gate="G$1" x="240.03" y="44.45" rot="R270"/>
+<instance part="R7" gate="G$1" x="139.7" y="30.48" rot="R90"/>
+<instance part="R18" gate="G$1" x="132.08" y="30.48" rot="R90"/>
 </instances>
 <busses>
 </busses>
@@ -7807,6 +7811,14 @@ Source: tuxgr_12x2_r2.pdf</description>
 <wire x1="-142.24" y1="-118.11" x2="-142.24" y2="-115.57" width="0.1524" layer="91"/>
 <label x="-141.478" y="-115.57" size="1.4224" layer="95"/>
 </segment>
+<segment>
+<pinref part="R18" gate="G$1" pin="1"/>
+<wire x1="132.08" y1="25.4" x2="132.08" y2="22.86" width="0.1524" layer="91"/>
+<pinref part="R7" gate="G$1" pin="1"/>
+<wire x1="132.08" y1="22.86" x2="139.7" y2="22.86" width="0.1524" layer="91"/>
+<wire x1="139.7" y1="22.86" x2="139.7" y2="25.4" width="0.1524" layer="91"/>
+<label x="134.62" y="20.32" size="1.778" layer="95"/>
+</segment>
 </net>
 <net name="3V3_MBED" class="0">
 <segment>
@@ -7871,8 +7883,9 @@ Source: tuxgr_12x2_r2.pdf</description>
 <label x="36.195" y="-5.715" size="1.778" layer="95"/>
 </segment>
 <segment>
-<wire x1="116.84" y1="39.37" x2="139.7" y2="39.37" width="0.1524" layer="91"/>
+<wire x1="116.84" y1="39.37" x2="132.08" y2="39.37" width="0.1524" layer="91"/>
 <label x="114.3" y="40.005" size="1.778" layer="95"/>
+<wire x1="132.08" y1="39.37" x2="139.7" y2="39.37" width="0.1524" layer="91"/>
 <wire x1="139.7" y1="39.37" x2="139.7" y2="41.91" width="0.1524" layer="91"/>
 <pinref part="JP15" gate="G$1" pin="3"/>
 <wire x1="139.7" y1="41.91" x2="146.05" y2="41.91" width="0.1524" layer="91"/>
@@ -7897,6 +7910,9 @@ Source: tuxgr_12x2_r2.pdf</description>
 <pinref part="JP4" gate="G$1" pin="3"/>
 <wire x1="226.06" y1="41.91" x2="237.49" y2="41.91" width="0.1524" layer="91"/>
 <junction x="226.06" y="41.91"/>
+<pinref part="R18" gate="G$1" pin="2"/>
+<wire x1="132.08" y1="35.56" x2="132.08" y2="39.37" width="0.1524" layer="91"/>
+<junction x="132.08" y="39.37"/>
 </segment>
 </net>
 <net name="SCL" class="0">
@@ -7906,9 +7922,10 @@ Source: tuxgr_12x2_r2.pdf</description>
 <label x="36.195" y="-8.255" size="1.778" layer="95"/>
 </segment>
 <segment>
-<wire x1="116.84" y1="36.83" x2="140.97" y2="36.83" width="0.1524" layer="91"/>
+<wire x1="116.84" y1="36.83" x2="139.7" y2="36.83" width="0.1524" layer="91"/>
 <label x="114.3" y="34.29" size="1.778" layer="95"/>
 <pinref part="JP15" gate="G$1" pin="4"/>
+<wire x1="139.7" y1="36.83" x2="140.97" y2="36.83" width="0.1524" layer="91"/>
 <wire x1="146.05" y1="39.37" x2="140.97" y2="39.37" width="0.1524" layer="91"/>
 <wire x1="140.97" y1="39.37" x2="140.97" y2="36.83" width="0.1524" layer="91"/>
 <pinref part="JP16" gate="G$1" pin="4"/>
@@ -7932,6 +7949,9 @@ Source: tuxgr_12x2_r2.pdf</description>
 <pinref part="JP4" gate="G$1" pin="4"/>
 <wire x1="226.06" y1="39.37" x2="237.49" y2="39.37" width="0.1524" layer="91"/>
 <junction x="226.06" y="39.37"/>
+<pinref part="R7" gate="G$1" pin="2"/>
+<wire x1="139.7" y1="35.56" x2="139.7" y2="36.83" width="0.1524" layer="91"/>
+<junction x="139.7" y="36.83"/>
 </segment>
 </net>
 <net name="P24" class="0">

@@ -6462,10 +6462,10 @@ naming: grid - package width</description>
 <pad name="D--" x="0.35509375" y="0.5306375" drill="0.8"/>
 </package>
 <package name="TACT_SWITCH">
-<pad name="3" x="-3.5" y="-2.5" drill="0.8" shape="square"/>
-<pad name="1" x="-3.5" y="2" drill="0.8" shape="square"/>
-<pad name="4" x="3" y="-2.5" drill="0.8" shape="square"/>
-<pad name="2" x="3" y="2" drill="0.8" shape="square"/>
+<pad name="3" x="-3.5" y="-2.5" drill="1" shape="square"/>
+<pad name="1" x="-3.5" y="2" drill="1" shape="square"/>
+<pad name="4" x="3" y="-2.5" drill="1" shape="square"/>
+<pad name="2" x="3" y="2" drill="1" shape="square"/>
 <wire x1="-4.77" y1="3.35" x2="4.12" y2="3.35" width="0.127" layer="21"/>
 <wire x1="4.12" y1="3.35" x2="4.12" y2="-3.77" width="0.127" layer="21"/>
 <wire x1="4.12" y1="-3.77" x2="-4.77" y2="-3.77" width="0.127" layer="21"/>

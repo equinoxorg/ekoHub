@@ -1918,9 +1918,9 @@ Restring (top, bottom pad minimum size detrrmines how large are pads),</descript
 <element name="U$11" library="holes" package="3,0" value="" x="102.786" y="81.28"/>
 <element name="U$12" library="holes" package="3,0" value="" x="6.804" y="81.28"/>
 <element name="U$13" library="holes" package="3,0" value="" x="102.44" y="4.28"/>
-<element name="JP1" library="jumper" package="JP2W" value="" x="31.545" y="77.47"/>
-<element name="JP2" library="jumper" package="JP2W" value="" x="39.19" y="77.47"/>
-<element name="C11" library="capacitor-wima" package="C5B3.5" value="100nF" x="45.31" y="70.52" rot="R90"/>
+<element name="JP1" library="jumper" package="JP2W" value="" x="31.545" y="78.37"/>
+<element name="JP2" library="jumper" package="JP2W" value="" x="39.19" y="78.37"/>
+<element name="C11" library="capacitor-wima" package="C5B3.5" value="100nF" x="46.52" y="68.39"/>
 <element name="R5" library="rcl" package="IRG2014TRIM" value="" x="21.59" y="24.13"/>
 <element name="Q1" library="transistor-small-signal" package="SOT54E" value="BS170" x="22.352" y="18.796" rot="R90"/>
 <element name="Q4" library="transistor-power" package="TO262-V" value="IRF3704L-V" x="22.86" y="6.35" rot="R270"/>
@@ -2050,16 +2050,16 @@ Restring (top, bottom pad minimum size detrrmines how large are pads),</descript
 <via x="38" y="59" extent="1-16" drill="0.6" shape="square"/>
 <wire x1="38" y1="59" x2="35" y2="59" width="0.4064" layer="1"/>
 <wire x1="35" y1="59" x2="35" y2="72.08" width="0.4064" layer="1"/>
-<wire x1="38.1" y1="63.5" x2="38.2" y2="63.5" width="0.4064" layer="16"/>
-<wire x1="38.2" y1="63.5" x2="38.2" y2="67.3" width="0.4064" layer="16"/>
-<wire x1="38.2" y1="67.3" x2="45.4" y2="67.3" width="0.4064" layer="16"/>
-<wire x1="45.4" y1="67.3" x2="45.4" y2="68.1" width="0.4064" layer="16"/>
-<wire x1="45.4" y1="68.1" x2="45.2" y2="68.1" width="0.4064" layer="16"/>
-<wire x1="45.2" y1="68.1" x2="45.2" y2="68" width="0.4064" layer="16"/>
 <wire x1="36.83" y1="72.08" x2="36.83" y2="76.2" width="0.4064" layer="1"/>
 <wire x1="35" y1="72.08" x2="36.83" y2="72.08" width="0.4064" layer="1"/>
-<wire x1="36.83" y1="76.2" x2="36.65" y2="76.2" width="0" layer="19" extent="1-1"/>
-<wire x1="45.31" y1="67.98" x2="45.2" y2="68" width="0" layer="19" extent="16-16"/>
+<wire x1="38.1" y1="63.5" x2="38.1" y2="67.31" width="0.4064" layer="16"/>
+<wire x1="38.1" y1="67.31" x2="44" y2="67.31" width="0.4064" layer="16"/>
+<wire x1="44" y1="67.31" x2="44" y2="68.4" width="0.4064" layer="16"/>
+<wire x1="36.83" y1="76.2" x2="36.8" y2="76.2" width="0.4064" layer="1"/>
+<wire x1="36.8" y1="76.2" x2="36.8" y2="77.1" width="0.4064" layer="1"/>
+<wire x1="36.65" y1="77.1" x2="36.8" y2="77.1" width="0.4064" layer="1"/>
+<wire x1="36.8" y1="77.1" x2="36.8" y2="77.2" width="0.4064" layer="1"/>
+<wire x1="44" y1="68.4" x2="43.98" y2="68.39" width="0" layer="19" extent="16-16"/>
 </signal>
 <signal name="5V_MBED">
 <contactref element="IC1" pad="39"/>
@@ -2323,8 +2323,8 @@ Restring (top, bottom pad minimum size detrrmines how large are pads),</descript
 <signal name="P5">
 <contactref element="IC1" pad="5"/>
 <contactref element="JP2" pad="2"/>
-<wire x1="39.19" y1="76.2" x2="39.595" y2="76.2" width="0.4064" layer="16"/>
-<wire x1="39.595" y1="76.2" x2="39.595" y2="70.4" width="0.4064" layer="16"/>
+<wire x1="39.19" y1="77.1" x2="39.595" y2="77.1" width="0.4064" layer="16"/>
+<wire x1="39.595" y1="77.1" x2="39.595" y2="70.4" width="0.4064" layer="16"/>
 <wire x1="39.595" y1="70.4" x2="32.6" y2="70.4" width="0.4064" layer="16"/>
 <wire x1="32.6" y1="70.4" x2="32.6" y2="54.5" width="0.4064" layer="16"/>
 <wire x1="32.6" y1="54.5" x2="48.26" y2="54.5" width="0.4064" layer="16"/>
@@ -2341,7 +2341,7 @@ Restring (top, bottom pad minimum size detrrmines how large are pads),</descript
 <wire x1="29" y1="66.2" x2="29" y2="70" width="0.4064" layer="1"/>
 <via x="29" y="70" extent="1-16" drill="0.8" shape="square"/>
 <wire x1="29" y1="70" x2="29.005" y2="70" width="0.4064" layer="16"/>
-<wire x1="29.005" y1="70" x2="29.005" y2="76.2" width="0.4064" layer="16"/>
+<wire x1="29.005" y1="70" x2="29.005" y2="77.1" width="0.4064" layer="16"/>
 </signal>
 <signal name="P7">
 <contactref element="IC1" pad="7"/>
@@ -2350,7 +2350,7 @@ Restring (top, bottom pad minimum size detrrmines how large are pads),</descript
 <via x="32.5" y="72.4" extent="1-16" drill="0.8" shape="square"/>
 <wire x1="53.34" y1="48.26" x2="32.5" y2="48.26" width="0.4064" layer="1"/>
 <wire x1="32.5" y1="48.26" x2="32.5" y2="72.4" width="0.4064" layer="1"/>
-<wire x1="34.085" y1="76.2" x2="34.29" y2="76.2" width="0.4064" layer="16"/>
+<wire x1="34.085" y1="77.1" x2="34.29" y2="76.2" width="0.4064" layer="16"/>
 <wire x1="34.29" y1="76.2" x2="34.29" y2="72.39" width="0.4064" layer="16"/>
 <wire x1="34.29" y1="72.39" x2="32.5" y2="72.39" width="0.4064" layer="16"/>
 <wire x1="32.5" y1="72.39" x2="32.5" y2="72.4" width="0.4064" layer="16"/>
@@ -2359,8 +2359,8 @@ Restring (top, bottom pad minimum size detrrmines how large are pads),</descript
 <signal name="P8">
 <contactref element="IC1" pad="8"/>
 <contactref element="JP2" pad="3"/>
-<wire x1="41.73" y1="76.2" x2="41.46" y2="76.2" width="0.4064" layer="16"/>
-<wire x1="41.46" y1="76.2" x2="41.46" y2="69" width="0.4064" layer="16"/>
+<wire x1="41.73" y1="77.1" x2="41.46" y2="77.1" width="0.4064" layer="16"/>
+<wire x1="41.46" y1="77.1" x2="41.46" y2="69" width="0.4064" layer="16"/>
 <wire x1="41.46" y1="69" x2="34" y2="69" width="0.4064" layer="16"/>
 <wire x1="34" y1="69" x2="34" y2="56" width="0.4064" layer="16"/>
 <wire x1="34" y1="56" x2="55.88" y2="56" width="0.4064" layer="16"/>

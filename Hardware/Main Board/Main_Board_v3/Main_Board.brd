@@ -1896,15 +1896,15 @@ Restring (top, bottom pad minimum size detrrmines how large are pads),</descript
 <element name="U$8" library="ekohub2013" package="TACT_SWITCH" value="TACT_SWITCH" x="67.564" y="17.272"/>
 <element name="C8" library="capacitor-wima" package="C5B3.5" value="100nF" x="25.62" y="63.28" rot="R180"/>
 <element name="C9" library="capacitor-wima" package="C5B3.5" value="10uF" x="24.23" y="36.77" rot="R180"/>
-<element name="IC2" library="st-microelectronics" package="DIL-08" value="NE555" x="11.43" y="31.75" rot="R180">
-<attribute name="OC_NEWARK" value="89K1486" x="-82.55" y="114.3" size="1.778" layer="27" rot="R180" display="off"/>
-<attribute name="MPN" value="NE555N" x="-82.55" y="114.3" size="1.778" layer="27" rot="R180" display="off"/>
-<attribute name="MF" value="Arrow Electronics" x="-82.55" y="114.3" size="1.778" layer="27" rot="R180" display="off"/>
-<attribute name="OC_FARNELL" value="1467742" x="-82.55" y="114.3" size="1.778" layer="27" rot="R180" display="off"/>
+<element name="IC2" library="st-microelectronics" package="DIL-08" value="NE555" x="12.7" y="34.29" rot="R180">
+<attribute name="OC_NEWARK" value="89K1486" x="-81.28" y="116.84" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="MPN" value="NE555N" x="-81.28" y="116.84" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="MF" value="Arrow Electronics" x="-81.28" y="116.84" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="OC_FARNELL" value="1467742" x="-81.28" y="116.84" size="1.778" layer="27" rot="R180" display="off"/>
 </element>
-<element name="C7" library="capacitor-wima" package="C5B3.5" value="10nF/0.01u" x="6.35" y="21.082" rot="R270"/>
-<element name="C10" library="capacitor-wima" package="C5B3.5" value="10n" x="12.192" y="21.082" rot="R270"/>
-<element name="R4" library="rcl" package="0411/12" value="300k" x="13.97" y="8.89" rot="R270"/>
+<element name="C7" library="capacitor-wima" package="C5B3.5" value="10nF/0.01u" x="4.5466" y="33.8836" rot="R90"/>
+<element name="C10" library="capacitor-wima" package="C5B3.5" value="10n" x="16.002" y="23.622" rot="R270"/>
+<element name="R4" library="rcl" package="0411/12" value="300k" x="14.2748" y="8.89" rot="R270"/>
 <element name="U$9" library="ekohub2013" package="TRACO_ISOLATED_SUPPLY" value="TRACO_ISOLATED_SUPPLY" x="5.08" y="43.18"/>
 <element name="U$4" library="ekohub2013" package="INPUT_VOLTAGE_CONNECTOR" value="INPUT_VOLTAGE_CONNECTOR" x="16.51" y="69.85"/>
 <element name="DIS1" library="display-lcd3" package="TUXGR_16X2_R2" value="TUXGR_16X2_R2" x="31.75" y="-17.78">
@@ -1940,6 +1940,9 @@ Restring (top, bottom pad minimum size detrrmines how large are pads),</descript
 <element name="Q5" library="transistor-small-signal" package="SOT54E" value="BS170" x="17.78" y="74.93" rot="R270"/>
 <element name="R19" library="rcl" package="0411/12" value="1M" x="34.29" y="81.915"/>
 <element name="Q6" library="transistor-power" package="TO262-V" value="IRF3704L-V" x="19.76" y="80.53"/>
+<element name="Q7" library="transistor-small-signal" package="SOT54E" value="BS170" x="5.5626" y="12.7" rot="R270"/>
+<element name="R20" library="rcl" package="0411/12" value="1M" x="10.8458" y="20.3962" rot="R90"/>
+<element name="Q8" library="transistor-power" package="TO262-V" value="IRF3704L-V" x="5.7658" y="21.59" rot="R90"/>
 </elements>
 <signals>
 <signal name="GND">
@@ -2000,6 +2003,7 @@ Restring (top, bottom pad minimum size detrrmines how large are pads),</descript
 <contactref element="Q5" pad="S"/>
 <contactref element="C11" pad="1"/>
 <wire x1="83.82" y1="69.2658" x2="83.82" y2="69.85" width="0.4064" layer="1"/>
+<contactref element="Q7" pad="S"/>
 </signal>
 <signal name="VIN">
 <contactref element="IC1" pad="2"/>
@@ -2008,13 +2012,11 @@ Restring (top, bottom pad minimum size detrrmines how large are pads),</descript
 <contactref element="U$9" pad="P$14"/>
 <contactref element="R13" pad="2"/>
 <contactref element="Q3" pad="3"/>
-<contactref element="DIS1" pad="2"/>
 <contactref element="U$7" pad="4"/>
 <contactref element="U$5" pad="4"/>
 <contactref element="U$6" pad="4"/>
 <contactref element="U$8" pad="4"/>
 <contactref element="D1" pad="A"/>
-<contactref element="C1" pad="1"/>
 <contactref element="R6" pad="2"/>
 <contactref element="Q4" pad="3"/>
 <contactref element="IC2" pad="8"/>
@@ -2045,6 +2047,8 @@ Restring (top, bottom pad minimum size detrrmines how large are pads),</descript
 <contactref element="R18" pad="1"/>
 <contactref element="R7" pad="1"/>
 <contactref element="JP5" pad="2"/>
+<contactref element="R20" pad="2"/>
+<contactref element="Q8" pad="3"/>
 </signal>
 <signal name="3V3_MBED">
 <contactref element="IC1" pad="40"/>
@@ -2407,20 +2411,25 @@ Restring (top, bottom pad minimum size detrrmines how large are pads),</descript
 <signal name="N$2">
 <contactref element="IC2" pad="5"/>
 <contactref element="C7" pad="1"/>
-<wire x1="7.62" y1="27.94" x2="6.35" y2="27.94" width="0.6096" layer="16"/>
-<wire x1="6.35" y1="27.94" x2="6.35" y2="23.622" width="0.6096" layer="16"/>
+<wire x1="8.89" y1="30.48" x2="4.5466" y2="30.48" width="0.6096" layer="16"/>
+<wire x1="4.5466" y1="30.48" x2="4.5466" y2="31.3436" width="0.6096" layer="16"/>
 </signal>
 <signal name="N$6">
 <contactref element="R4" pad="1"/>
 <contactref element="C10" pad="1"/>
 <contactref element="IC2" pad="6"/>
 <contactref element="IC2" pad="7"/>
-<wire x1="10.16" y1="27.94" x2="12.7" y2="27.94" width="0.6096" layer="16"/>
-<wire x1="12.7" y1="27.94" x2="12.192" y2="27.94" width="0.6096" layer="16"/>
-<wire x1="12.192" y1="27.94" x2="12.192" y2="23.622" width="0.6096" layer="16"/>
-<wire x1="12.192" y1="23.622" x2="15.24" y2="23.622" width="0.6096" layer="16"/>
-<wire x1="15.24" y1="23.622" x2="15.24" y2="15.24" width="0.6096" layer="16"/>
-<wire x1="15.24" y1="15.24" x2="13.97" y2="15.24" width="0.6096" layer="16"/>
+<wire x1="11.43" y1="30.48" x2="13.97" y2="30.48" width="0.6096" layer="16"/>
+<wire x1="15.24" y1="15.24" x2="14.2748" y2="15.24" width="0.6096" layer="16"/>
+<wire x1="13.97" y1="30.48" x2="13.97" y2="27.94" width="0.4064" layer="16"/>
+<wire x1="13.97" y1="27.94" x2="16.002" y2="27.94" width="0.4064" layer="16"/>
+<wire x1="16.002" y1="27.94" x2="16.002" y2="26.162" width="0.4064" layer="16"/>
+<wire x1="15.24" y1="15.24" x2="16.51" y2="15.24" width="0.4064" layer="16"/>
+<wire x1="16.51" y1="15.24" x2="16.51" y2="19.05" width="0.4064" layer="16"/>
+<wire x1="16.51" y1="19.05" x2="17.8308" y2="19.05" width="0.4064" layer="16"/>
+<wire x1="17.8308" y1="19.05" x2="17.8308" y2="26.1366" width="0.4064" layer="16"/>
+<wire x1="17.8308" y1="26.1366" x2="16.002" y2="26.1366" width="0.4064" layer="16"/>
+<wire x1="16.002" y1="26.1366" x2="16.002" y2="26.162" width="0.4064" layer="16"/>
 </signal>
 <signal name="N$8">
 <contactref element="Q1" pad="D"/>
@@ -2434,10 +2443,10 @@ Restring (top, bottom pad minimum size detrrmines how large are pads),</descript
 <signal name="N$11">
 <contactref element="Q1" pad="G"/>
 <contactref element="IC2" pad="3"/>
-<wire x1="10.16" y1="35.56" x2="10.16" y2="31.75" width="0.6096" layer="16"/>
-<wire x1="10.16" y1="31.75" x2="17.78" y2="31.75" width="0.6096" layer="16"/>
-<wire x1="17.78" y1="31.75" x2="17.78" y2="19.05" width="0.6096" layer="16"/>
-<wire x1="17.78" y1="19.05" x2="20.447" y2="19.05" width="0.6096" layer="16"/>
+<wire x1="11.43" y1="38.1" x2="11.43" y2="34.29" width="0.6096" layer="16"/>
+<wire x1="11.43" y1="34.29" x2="19.05" y2="34.29" width="0.6096" layer="16"/>
+<wire x1="19.05" y1="34.29" x2="19.05" y2="19.05" width="0.6096" layer="16"/>
+<wire x1="19.05" y1="19.05" x2="20.447" y2="19.05" width="0.6096" layer="16"/>
 <wire x1="20.447" y1="19.05" x2="20.447" y2="18.796" width="0.6096" layer="16"/>
 </signal>
 <signal name="N$12">
@@ -2463,9 +2472,9 @@ Restring (top, bottom pad minimum size detrrmines how large are pads),</descript
 <wire x1="68.58" y1="50.8" x2="43.18" y2="50.8" width="0.4064" layer="1"/>
 <via x="43.18" y="50.8" extent="1-16" drill="0.8" shape="square"/>
 <wire x1="43.18" y1="50.8" x2="30.48" y2="50.8" width="0.4064" layer="16"/>
-<wire x1="30.48" y1="50.8" x2="30.48" y2="39.37" width="0.4064" layer="16"/>
-<wire x1="30.48" y1="39.37" x2="12.7" y2="39.37" width="0.4064" layer="16"/>
-<wire x1="12.7" y1="39.37" x2="12.7" y2="35.56" width="0.4064" layer="16"/>
+<wire x1="30.48" y1="50.8" x2="30.48" y2="40.64" width="0.4064" layer="16"/>
+<wire x1="30.48" y1="40.64" x2="13.97" y2="40.64" width="0.4064" layer="16"/>
+<wire x1="13.97" y1="40.64" x2="13.97" y2="38.1" width="0.4064" layer="16"/>
 <wire x1="71.12" y1="40.64" x2="71.12" y2="44.45" width="0.4064" layer="16"/>
 <wire x1="71.12" y1="44.45" x2="68.58" y2="44.45" width="0.4064" layer="16"/>
 <wire x1="68.58" y1="44.45" x2="68.58" y2="50.8" width="0.4064" layer="16"/>
@@ -2560,6 +2569,49 @@ Restring (top, bottom pad minimum size detrrmines how large are pads),</descript
 <wire x1="25.4" y1="80.01" x2="25.4" y2="77.47" width="0.4064" layer="16"/>
 <wire x1="25.4" y1="77.47" x2="19.76" y2="77.47" width="0.4064" layer="16"/>
 <wire x1="19.76" y1="77.47" x2="19.76" y2="80.53" width="0.4064" layer="16"/>
+</signal>
+<signal name="N$10">
+<contactref element="Q7" pad="D"/>
+<contactref element="Q8" pad="1"/>
+<contactref element="R20" pad="1"/>
+<wire x1="5.5626" y1="13.97" x2="5.7658" y2="13.97" width="0.4064" layer="16"/>
+<wire x1="5.7658" y1="13.97" x2="5.7658" y2="19.05" width="0.4064" layer="16"/>
+<wire x1="10.8458" y1="14.0462" x2="10.8458" y2="19.0246" width="0.4064" layer="16"/>
+<wire x1="10.8458" y1="19.0246" x2="5.7658" y2="19.0246" width="0.4064" layer="16"/>
+<wire x1="5.7658" y1="19.0246" x2="5.7658" y2="19.05" width="0.4064" layer="16"/>
+</signal>
+<signal name="VIN_LCD">
+<contactref element="DIS1" pad="2"/>
+<contactref element="C1" pad="1"/>
+<contactref element="Q8" pad="2"/>
+<wire x1="34.57" y1="9.27" x2="34.29" y2="9.27" width="0.6096" layer="1"/>
+<wire x1="34.29" y1="9.27" x2="34.29" y2="19.05" width="0.6096" layer="1"/>
+<wire x1="34.29" y1="19.05" x2="33.02" y2="19.05" width="0.6096" layer="1"/>
+<wire x1="33.02" y1="19.05" x2="33.02" y2="33.02" width="0.6096" layer="1"/>
+<wire x1="33.02" y1="33.02" x2="26.67" y2="33.02" width="0.6096" layer="1"/>
+<wire x1="26.67" y1="33.02" x2="26.67" y2="26.67" width="0.6096" layer="1"/>
+<wire x1="26.67" y1="26.67" x2="19.05" y2="26.67" width="0.6096" layer="1"/>
+<wire x1="19.05" y1="26.67" x2="19.05" y2="24.13" width="0.6096" layer="1"/>
+<wire x1="19.05" y1="24.13" x2="10.7442" y2="24.13" width="0.6096" layer="1"/>
+<wire x1="10.7442" y1="24.13" x2="10.7442" y2="21.59" width="0.6096" layer="1"/>
+<wire x1="10.7442" y1="21.59" x2="5.7658" y2="21.59" width="0.6096" layer="1"/>
+</signal>
+<signal name="P25">
+<contactref element="Q7" pad="G"/>
+<contactref element="IC1" pad="25"/>
+<wire x1="76.2" y1="63.5" x2="76.2" y2="55.88" width="0.4064" layer="16"/>
+<wire x1="76.2" y1="55.88" x2="82.55" y2="55.88" width="0.4064" layer="16"/>
+<wire x1="82.55" y1="55.88" x2="82.55" y2="44.45" width="0.4064" layer="16"/>
+<via x="82.55" y="44.45" extent="1-16" drill="0.8" shape="square"/>
+<wire x1="82.55" y1="44.45" x2="95.25" y2="44.45" width="0.4064" layer="1"/>
+<wire x1="95.25" y1="44.45" x2="95.25" y2="5.08" width="0.4064" layer="1"/>
+<wire x1="95.25" y1="5.08" x2="80.01" y2="5.08" width="0.4064" layer="1"/>
+<wire x1="80.01" y1="5.08" x2="80.01" y2="1.0414" width="0.4064" layer="1"/>
+<wire x1="80.01" y1="1.0414" x2="16.51" y2="1.0414" width="0.4064" layer="1"/>
+<wire x1="16.51" y1="1.0414" x2="16.51" y2="10.16" width="0.4064" layer="1"/>
+<wire x1="16.51" y1="10.16" x2="7.62" y2="10.16" width="0.4064" layer="1"/>
+<wire x1="7.62" y1="10.16" x2="7.62" y2="12.7" width="0.4064" layer="1"/>
+<wire x1="7.62" y1="12.7" x2="7.4676" y2="12.7" width="0" layer="19" extent="1-1"/>
 </signal>
 </signals>
 </board>
