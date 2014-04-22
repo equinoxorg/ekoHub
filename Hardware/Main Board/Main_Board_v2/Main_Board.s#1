@@ -5230,23 +5230,23 @@ naming: grid - package width</description>
 <library name="ekohub2013">
 <packages>
 <package name="USBA_SOCKET">
-<hole x="-6.5" y="3.11" drill="2.3"/>
-<hole x="6.7" y="3.11" drill="2.3"/>
-<hole x="-3.42" y="5.61" drill="0.92"/>
-<hole x="-0.92" y="5.61" drill="0.92"/>
-<hole x="1.08" y="5.61" drill="0.92"/>
-<hole x="3.58" y="5.61" drill="0.92"/>
-<pad name="D+" x="1.08" y="5.6" drill="0.92" shape="square"/>
-<pad name="5V" x="3.58" y="5.61" drill="0.92" shape="square"/>
-<pad name="D-" x="-0.92" y="5.61" drill="0.92" shape="square"/>
-<pad name="GND" x="-3.42" y="5.61" drill="0.92" shape="square"/>
-<wire x1="-6.45" y1="-7.1" x2="6.61" y2="-7.1" width="0.127" layer="21"/>
-<wire x1="6.61" y1="-7.1" x2="6.61" y2="-6.97" width="0.127" layer="21"/>
-<wire x1="-6.54" y1="-7.1" x2="-6.45" y2="-7.1" width="0.127" layer="21"/>
-<wire x1="-6.45" y1="-7.1" x2="-6.45" y2="6.91" width="0.127" layer="21"/>
-<wire x1="-6.45" y1="6.91" x2="6.6" y2="6.91" width="0.127" layer="21"/>
-<wire x1="6.6" y1="6.91" x2="6.6" y2="-6.99" width="0.127" layer="21"/>
-<text x="-1.79" y="-5.12" size="1.27" layer="21">USB</text>
+<hole x="-5.23" y="-1.97" drill="2.3"/>
+<hole x="7.97" y="-1.97" drill="2.3"/>
+<hole x="-2.15" y="0.53" drill="0.92"/>
+<hole x="0.35" y="0.53" drill="0.92"/>
+<hole x="2.35" y="0.53" drill="0.92"/>
+<hole x="4.85" y="0.53" drill="0.92"/>
+<pad name="5V" x="4.85" y="0.53" drill="0.92" shape="square"/>
+<pad name="GND" x="-2.15" y="0.53" drill="0.92" shape="square"/>
+<wire x1="-5.18" y1="-12.18" x2="7.88" y2="-12.18" width="0.127" layer="21"/>
+<wire x1="7.88" y1="-12.18" x2="7.88" y2="-12.05" width="0.127" layer="21"/>
+<wire x1="-5.27" y1="-12.18" x2="-5.18" y2="-12.18" width="0.127" layer="21"/>
+<wire x1="-5.18" y1="-12.18" x2="-5.18" y2="1.83" width="0.127" layer="21"/>
+<wire x1="-5.18" y1="1.83" x2="7.87" y2="1.83" width="0.127" layer="21"/>
+<wire x1="7.87" y1="1.83" x2="7.87" y2="-12.07" width="0.127" layer="21"/>
+<text x="-0.52" y="-10.2" size="1.27" layer="21">USB</text>
+<pad name="D++" x="2.335278125" y="0.5306375" drill="0.8"/>
+<pad name="D--" x="0.35509375" y="0.5306375" drill="0.8"/>
 </package>
 <package name="MICROSD_SOCKET">
 <smd name="RSV" x="-4.7" y="-7.475" dx="1.75" dy="0.7" layer="1" rot="R90"/>
@@ -5382,8 +5382,8 @@ naming: grid - package width</description>
 <device name="" package="USBA_SOCKET">
 <connects>
 <connect gate="G$1" pin="5V" pad="5V"/>
-<connect gate="G$1" pin="D+" pad="D+"/>
-<connect gate="G$1" pin="D-" pad="D-"/>
+<connect gate="G$1" pin="D+" pad="D++"/>
+<connect gate="G$1" pin="D-" pad="D--"/>
 <connect gate="G$1" pin="GND" pad="GND"/>
 </connects>
 <technologies>

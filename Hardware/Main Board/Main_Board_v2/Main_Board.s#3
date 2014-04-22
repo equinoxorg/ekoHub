@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -6226,7 +6226,6 @@ Source: tuxgr_12x2_r2.pdf</description>
 <part name="R12" library="rcl" deviceset="R-EU_" device="0411/12"/>
 <part name="C2" library="capacitor-wima" deviceset="C" device="5/3" value="100nF"/>
 <part name="C3" library="capacitor-wima" deviceset="C" device="5/3" value="100nF"/>
-<part name="Q1" library="transistor-power" deviceset="IRF3704" device=""/>
 <part name="Q2" library="transistor-small-signal" deviceset="BS170" device=""/>
 <part name="R13" library="rcl" deviceset="R-EU_" device="0411/12" value="1M"/>
 <part name="U$5" library="ekohub2013" deviceset="TACT_SWITCH" device=""/>
@@ -6271,6 +6270,7 @@ Source: tuxgr_12x2_r2.pdf</description>
 <part name="U$9" library="ekohub2013" deviceset="TRACO_ISOLATED_SUPPLY" device=""/>
 <part name="U$4" library="ekohub2013" deviceset="INPUT_VOLTAGE_CONNECTOR" device=""/>
 <part name="DIS1" library="display-lcd3" deviceset="TUXGR_16X2_R2" device=""/>
+<part name="Q3" library="transistor-power" deviceset="IRF3704" device="L-V"/>
 </parts>
 <sheets>
 <sheet>
@@ -6305,7 +6305,6 @@ Source: tuxgr_12x2_r2.pdf</description>
 <instance part="R12" gate="G$1" x="224.79" y="24.13" rot="R90"/>
 <instance part="C2" gate="G$1" x="-3.81" y="-83.82"/>
 <instance part="C3" gate="G$1" x="193.04" y="-46.99"/>
-<instance part="Q1" gate="G$1" x="149.86" y="-6.35" rot="R90"/>
 <instance part="Q2" gate="1" x="149.86" y="-26.67"/>
 <instance part="R13" gate="G$1" x="162.56" y="-13.97" rot="R90"/>
 <instance part="U$5" gate="G$1" x="189.23" y="-22.86" rot="R90"/>
@@ -6350,6 +6349,7 @@ Source: tuxgr_12x2_r2.pdf</description>
 <instance part="U$9" gate="G$1" x="82.55" y="-55.88"/>
 <instance part="U$4" gate="G$1" x="175.26" y="-88.9"/>
 <instance part="DIS1" gate="G$1" x="-55.88" y="-53.34"/>
+<instance part="Q3" gate="G$1" x="149.86" y="-6.35" rot="R90"/>
 </instances>
 <busses>
 </busses>
@@ -7250,7 +7250,6 @@ Source: tuxgr_12x2_r2.pdf</description>
 </net>
 <net name="N$5" class="0">
 <segment>
-<pinref part="Q1" gate="G$1" pin="G"/>
 <pinref part="Q2" gate="1" pin="D"/>
 <wire x1="152.4" y1="-8.89" x2="152.4" y2="-20.32" width="0.1524" layer="91"/>
 <pinref part="R13" gate="G$1" pin="1"/>
@@ -7258,24 +7257,25 @@ Source: tuxgr_12x2_r2.pdf</description>
 <wire x1="162.56" y1="-19.05" x2="162.56" y2="-20.32" width="0.1524" layer="91"/>
 <wire x1="162.56" y1="-20.32" x2="152.4" y2="-20.32" width="0.1524" layer="91"/>
 <junction x="152.4" y="-20.32"/>
+<pinref part="Q3" gate="G$1" pin="G"/>
 </segment>
 </net>
 <net name="5V" class="0">
 <segment>
-<pinref part="Q1" gate="G$1" pin="S"/>
 <wire x1="154.94" y1="-3.81" x2="162.56" y2="-3.81" width="0.1524" layer="91"/>
 <pinref part="R13" gate="G$1" pin="2"/>
 <wire x1="162.56" y1="-3.81" x2="165.1" y2="-3.81" width="0.1524" layer="91"/>
 <wire x1="162.56" y1="-8.89" x2="162.56" y2="-3.81" width="0.1524" layer="91"/>
 <junction x="162.56" y="-3.81"/>
 <label x="165.1" y="-1.27" size="1.4224" layer="95" rot="R180"/>
+<pinref part="Q3" gate="G$1" pin="S"/>
 </segment>
 </net>
 <net name="MODEM" class="0">
 <segment>
-<pinref part="Q1" gate="G$1" pin="D"/>
 <wire x1="144.78" y1="-3.81" x2="138.43" y2="-3.81" width="0.1524" layer="91"/>
 <label x="142.24" y="-1.27" size="1.4224" layer="95" rot="R180"/>
+<pinref part="Q3" gate="G$1" pin="D"/>
 </segment>
 <segment>
 <pinref part="U$1" gate="G$1" pin="5V"/>
