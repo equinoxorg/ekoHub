@@ -36,25 +36,25 @@
 <layer number="26" name="bNames" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="27" name="tValues" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="28" name="bValues" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="29" name="tStop" color="7" fill="3" visible="no" active="yes"/>
-<layer number="30" name="bStop" color="7" fill="6" visible="no" active="yes"/>
-<layer number="31" name="tCream" color="7" fill="4" visible="no" active="yes"/>
-<layer number="32" name="bCream" color="7" fill="5" visible="no" active="yes"/>
-<layer number="33" name="tFinish" color="6" fill="3" visible="no" active="yes"/>
-<layer number="34" name="bFinish" color="6" fill="6" visible="no" active="yes"/>
-<layer number="35" name="tGlue" color="7" fill="4" visible="no" active="yes"/>
-<layer number="36" name="bGlue" color="7" fill="5" visible="no" active="yes"/>
-<layer number="37" name="tTest" color="7" fill="1" visible="no" active="yes"/>
-<layer number="38" name="bTest" color="7" fill="1" visible="no" active="yes"/>
+<layer number="29" name="tStop" color="7" fill="3" visible="yes" active="yes"/>
+<layer number="30" name="bStop" color="7" fill="6" visible="yes" active="yes"/>
+<layer number="31" name="tCream" color="7" fill="4" visible="yes" active="yes"/>
+<layer number="32" name="bCream" color="7" fill="5" visible="yes" active="yes"/>
+<layer number="33" name="tFinish" color="6" fill="3" visible="yes" active="yes"/>
+<layer number="34" name="bFinish" color="6" fill="6" visible="yes" active="yes"/>
+<layer number="35" name="tGlue" color="7" fill="4" visible="yes" active="yes"/>
+<layer number="36" name="bGlue" color="7" fill="5" visible="yes" active="yes"/>
+<layer number="37" name="tTest" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="38" name="bTest" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="39" name="tKeepout" color="4" fill="11" visible="yes" active="yes"/>
 <layer number="40" name="bKeepout" color="1" fill="11" visible="yes" active="yes"/>
 <layer number="41" name="tRestrict" color="4" fill="10" visible="yes" active="yes"/>
 <layer number="42" name="bRestrict" color="1" fill="10" visible="yes" active="yes"/>
 <layer number="43" name="vRestrict" color="2" fill="10" visible="yes" active="yes"/>
-<layer number="44" name="Drills" color="7" fill="1" visible="no" active="yes"/>
-<layer number="45" name="Holes" color="7" fill="1" visible="no" active="yes"/>
-<layer number="46" name="Milling" color="3" fill="1" visible="no" active="yes"/>
-<layer number="47" name="Measures" color="7" fill="1" visible="no" active="yes"/>
+<layer number="44" name="Drills" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="45" name="Holes" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="46" name="Milling" color="3" fill="1" visible="yes" active="yes"/>
+<layer number="47" name="Measures" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="48" name="Document" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="49" name="Reference" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="50" name="dxf" color="7" fill="1" visible="no" active="no"/>
@@ -92,7 +92,7 @@
 <layer number="208" name="208bmp" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="250" name="Descript" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="251" name="SMDround" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="254" name="cooling" color="7" fill="1" visible="no" active="yes"/>
+<layer number="254" name="cooling" color="7" fill="1" visible="yes" active="yes"/>
 </layers>
 <board>
 <plain>
@@ -1285,10 +1285,6 @@ type 0411, grid 12.5 mm</description>
 <package name="USBA_SOCKET">
 <hole x="-5.23" y="-1.97" drill="2.3"/>
 <hole x="7.97" y="-1.97" drill="2.3"/>
-<hole x="-2.15" y="0.53" drill="0.92"/>
-<hole x="0.35" y="0.53" drill="0.92"/>
-<hole x="2.35" y="0.53" drill="0.92"/>
-<hole x="4.85" y="0.53" drill="0.92"/>
 <pad name="5V" x="4.85" y="0.53" drill="0.92" shape="square"/>
 <pad name="GND" x="-2.15" y="0.53" drill="0.92" shape="square"/>
 <wire x1="-5.18" y1="-12.18" x2="7.88" y2="-12.18" width="0.127" layer="21"/>
@@ -1298,8 +1294,8 @@ type 0411, grid 12.5 mm</description>
 <wire x1="-5.18" y1="1.83" x2="7.87" y2="1.83" width="0.127" layer="21"/>
 <wire x1="7.87" y1="1.83" x2="7.87" y2="-12.07" width="0.127" layer="21"/>
 <text x="-0.52" y="-10.2" size="1.27" layer="21">USB</text>
-<pad name="D++" x="2.335278125" y="0.5306375" drill="0.8"/>
-<pad name="D--" x="0.35509375" y="0.5306375" drill="0.8"/>
+<pad name="D++" x="2.335278125" y="0.5306375" drill="0.92" diameter="1.016" shape="square"/>
+<pad name="D--" x="0.35509375" y="0.5306375" drill="0.92" diameter="1.016" shape="square"/>
 </package>
 <package name="TACT_SWITCH">
 <pad name="3" x="-3.5" y="-2.5" drill="1" shape="square"/>
@@ -1658,6 +1654,47 @@ Source: tuxgr_12x2_r2.pdf</description>
 </package>
 </packages>
 </library>
+<library name="diode">
+<description>&lt;b&gt;Diodes&lt;/b&gt;&lt;p&gt;
+Based on the following sources:
+&lt;ul&gt;
+&lt;li&gt;Motorola : www.onsemi.com
+&lt;li&gt;Fairchild : www.fairchildsemi.com
+&lt;li&gt;Philips : www.semiconductors.com
+&lt;li&gt;Vishay : www.vishay.de
+&lt;/ul&gt;
+&lt;author&gt;Created by librarian@cadsoft.de&lt;/author&gt;</description>
+<packages>
+<package name="DO35-10">
+<description>&lt;B&gt;DIODE&lt;/B&gt;&lt;p&gt;
+diameter 2 mm, horizontal, grid 10.16 mm</description>
+<wire x1="5.08" y1="0" x2="4.191" y2="0" width="0.508" layer="51"/>
+<wire x1="-5.08" y1="0" x2="-4.191" y2="0" width="0.508" layer="51"/>
+<wire x1="-0.635" y1="0" x2="0" y2="0" width="0.1524" layer="21"/>
+<wire x1="1.016" y1="0.635" x2="1.016" y2="-0.635" width="0.1524" layer="21"/>
+<wire x1="1.016" y1="-0.635" x2="0" y2="0" width="0.1524" layer="21"/>
+<wire x1="0" y1="0" x2="1.524" y2="0" width="0.1524" layer="21"/>
+<wire x1="0" y1="0" x2="1.016" y2="0.635" width="0.1524" layer="21"/>
+<wire x1="0" y1="0.635" x2="0" y2="0" width="0.1524" layer="21"/>
+<wire x1="0" y1="0" x2="0" y2="-0.635" width="0.1524" layer="21"/>
+<wire x1="2.032" y1="1.016" x2="2.286" y2="0.762" width="0.1524" layer="21" curve="-90"/>
+<wire x1="-2.286" y1="0.762" x2="-2.032" y2="1.016" width="0.1524" layer="21" curve="-90"/>
+<wire x1="-2.286" y1="-0.762" x2="-2.032" y2="-1.016" width="0.1524" layer="21" curve="90"/>
+<wire x1="2.032" y1="-1.016" x2="2.286" y2="-0.762" width="0.1524" layer="21" curve="90"/>
+<wire x1="2.286" y1="-0.762" x2="2.286" y2="0.762" width="0.1524" layer="21"/>
+<wire x1="-2.286" y1="0.762" x2="-2.286" y2="-0.762" width="0.1524" layer="21"/>
+<wire x1="-2.032" y1="1.016" x2="2.032" y2="1.016" width="0.1524" layer="21"/>
+<wire x1="-2.032" y1="-1.016" x2="2.032" y2="-1.016" width="0.1524" layer="21"/>
+<pad name="C" x="-5.08" y="0" drill="0.8128" shape="long"/>
+<pad name="A" x="5.08" y="0" drill="0.8128" shape="long"/>
+<text x="-2.159" y="1.27" size="1.27" layer="25" ratio="10">&gt;NAME</text>
+<text x="-2.159" y="-2.667" size="1.27" layer="27" ratio="10">&gt;VALUE</text>
+<rectangle x1="-1.905" y1="-1.016" x2="-1.397" y2="1.016" layer="21"/>
+<rectangle x1="2.286" y1="-0.254" x2="4.191" y2="0.254" layer="21"/>
+<rectangle x1="-4.191" y1="-0.254" x2="-2.286" y2="0.254" layer="21"/>
+</package>
+</packages>
+</library>
 </libraries>
 <attributes>
 </attributes>
@@ -1706,11 +1743,11 @@ Restring (top, bottom pad minimum size detrrmines how large are pads),</descript
 <param name="rvViaInner" value="0.15"/>
 <param name="rvMicroViaOuter" value="0.25"/>
 <param name="rvMicroViaInner" value="0.25"/>
-<param name="rlMinPadTop" value="20mil"/>
+<param name="rlMinPadTop" value="14mil"/>
 <param name="rlMaxPadTop" value="25mil"/>
-<param name="rlMinPadInner" value="10mil"/>
+<param name="rlMinPadInner" value="14mil"/>
 <param name="rlMaxPadInner" value="20mil"/>
-<param name="rlMinPadBottom" value="20mil"/>
+<param name="rlMinPadBottom" value="14mil"/>
 <param name="rlMaxPadBottom" value="25mil"/>
 <param name="rlMinViaOuter" value="20mil"/>
 <param name="rlMaxViaOuter" value="20mil"/>
@@ -1845,7 +1882,7 @@ Restring (top, bottom pad minimum size detrrmines how large are pads),</descript
 <element name="C1" library="capacitor-wima" package="C5B3.5" value="100nF" x="24.13" y="33.02" rot="R180"/>
 <element name="R2" library="rcl" package="0411/12" value="" x="59.182" y="52.07" rot="R90"/>
 <element name="R3" library="rcl" package="0411/12" value="" x="64.516" y="52.07" rot="R90"/>
-<element name="U$1" library="ekohub2013" package="USBA_SOCKET" value="USBA_SOCKET" x="55.88" y="72.39" rot="R180"/>
+<element name="U$1" library="ekohub2013" package="USBA_SOCKET" value="USBA_SOCKET" x="55.88" y="72.39" smashed="yes" rot="R180"/>
 <element name="D1" library="display-hp" package="HLMP6" value="HLMP6" x="89.662" y="15.875" rot="R270">
 <attribute name="OC_NEWARK" value="40K0088" x="-39.878" y="-8.255" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="MPN" value="HLMP-6500" x="-39.878" y="-8.255" size="1.778" layer="27" rot="R270" display="off"/>
@@ -1866,7 +1903,7 @@ Restring (top, bottom pad minimum size detrrmines how large are pads),</descript
 <attribute name="MF" value="AGILENT TECHNOLOGIES" x="-47.117" y="-36.195" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="OC_FARNELL" value="1652490" x="-47.117" y="-36.195" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
-<element name="R10" library="rcl" package="0411/12" value="" x="97.79" y="10.922" rot="R180"/>
+<element name="R10" library="rcl" package="0411/12" value="" x="99.06" y="10.922" rot="R180"/>
 <element name="D4" library="display-hp" package="HLMP6" value="HLMP6" x="78.613" y="15.875" rot="R270">
 <attribute name="OC_NEWARK" value="40K0088" x="-50.927" y="-50.165" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="MPN" value="HLMP-6500" x="-50.927" y="-50.165" size="1.778" layer="27" rot="R270" display="off"/>
@@ -1883,7 +1920,7 @@ Restring (top, bottom pad minimum size detrrmines how large are pads),</descript
 <element name="R12" library="rcl" package="0411/12" value="" x="82.55" y="3.302" rot="R180"/>
 <element name="C3" library="capacitor-wima" package="C5B3.5" value="100nF" x="30.48" y="26.67" rot="R90"/>
 <element name="Q2" library="transistor-small-signal" package="SOT54E" value="BS170" x="67.31" y="70.866" rot="R90"/>
-<element name="R13" library="rcl" package="0411/12" value="1M" x="73.66" y="76.2" rot="R270"/>
+<element name="R13" library="rcl" package="0411/12" value="1M" x="74.93" y="76.2" rot="R270"/>
 <element name="U$5" library="ekohub2013" package="TACT_SWITCH" value="TACT_SWITCH" x="34.036" y="17.272"/>
 <element name="R14" library="rcl" package="0411/12" value="1K" x="47.117" y="29.21" rot="R270"/>
 <element name="C4" library="capacitor-wima" package="C5B3.5" value="100nF" x="41.656" y="26.67" rot="R90"/>
@@ -1943,6 +1980,7 @@ Restring (top, bottom pad minimum size detrrmines how large are pads),</descript
 <element name="Q7" library="transistor-small-signal" package="SOT54E" value="BS170" x="5.5626" y="12.7" rot="R270"/>
 <element name="R20" library="rcl" package="0411/12" value="1M" x="10.8458" y="20.3962" rot="R90"/>
 <element name="Q8" library="transistor-power" package="TO262-V" value="IRF3704L-V" x="5.7658" y="21.59" rot="R90"/>
+<element name="D6" library="diode" package="DO35-10" value="1N4148DO35-10" x="6.35" y="68.58" rot="R270"/>
 </elements>
 <signals>
 <signal name="GND">
@@ -1985,7 +2023,6 @@ Restring (top, bottom pad minimum size detrrmines how large are pads),</descript
 <vertex x="2.54" y="0"/>
 </polygon>
 <wire x1="67.31" y1="72.136" x2="67.31" y2="72.39" width="0.6096" layer="16"/>
-<wire x1="58.03" y1="72.39" x2="58.03" y2="71.86" width="0.6096" layer="16"/>
 <contactref element="JP15" pad="2"/>
 <contactref element="JP16" pad="2"/>
 <contactref element="JP17" pad="2"/>
@@ -1999,7 +2036,6 @@ Restring (top, bottom pad minimum size detrrmines how large are pads),</descript
 <wire x1="100.33" y1="70.358" x2="100.33" y2="66.548" width="0.4064" layer="1"/>
 <via x="100.33" y="66.548" extent="1-16" drill="0.8" shape="square"/>
 <wire x1="100.33" y1="66.548" x2="100.33" y2="63.5" width="0.4064" layer="16"/>
-<wire x1="58.03" y1="72.39" x2="67.31" y2="72.39" width="0.4064" layer="16"/>
 <contactref element="Q5" pad="S"/>
 <contactref element="C11" pad="1"/>
 <wire x1="83.82" y1="69.2658" x2="83.82" y2="69.85" width="0.4064" layer="1"/>
@@ -2311,7 +2347,7 @@ Restring (top, bottom pad minimum size detrrmines how large are pads),</descript
 <contactref element="R10" pad="2"/>
 <wire x1="82.423" y1="14.605" x2="82.042" y2="14.605" width="0.4064" layer="16"/>
 <wire x1="82.042" y1="14.605" x2="82.042" y2="10.922" width="0.4064" layer="16"/>
-<wire x1="82.042" y1="10.922" x2="91.44" y2="10.922" width="0.4064" layer="16"/>
+<wire x1="82.042" y1="10.922" x2="92.71" y2="10.922" width="0.4064" layer="16"/>
 </signal>
 <signal name="N$16">
 <contactref element="D4" pad="K"/>
@@ -2376,12 +2412,12 @@ Restring (top, bottom pad minimum size detrrmines how large are pads),</descript
 <contactref element="Q2" pad="D"/>
 <contactref element="Q3" pad="1"/>
 <contactref element="R13" pad="1"/>
-<wire x1="67.31" y1="81.28" x2="73.66" y2="81.28" width="0.6096" layer="16"/>
-<wire x1="73.66" y1="81.28" x2="73.66" y2="82.55" width="0.6096" layer="16"/>
-<wire x1="70.358" y1="80.01" x2="73.66" y2="80.01" width="0.6096" layer="1"/>
-<wire x1="73.66" y1="80.01" x2="73.66" y2="82.55" width="0.6096" layer="1"/>
-<wire x1="70.358" y1="80.01" x2="70.358" y2="69.596" width="0.6096" layer="1"/>
-<wire x1="70.358" y1="69.596" x2="67.31" y2="69.596" width="0.6096" layer="1"/>
+<wire x1="67.31" y1="81.28" x2="74.93" y2="81.28" width="0.6096" layer="16"/>
+<wire x1="74.93" y1="81.28" x2="74.93" y2="82.55" width="0.6096" layer="16"/>
+<wire x1="71.628" y1="80.01" x2="74.93" y2="80.01" width="0.6096" layer="1"/>
+<wire x1="74.93" y1="80.01" x2="74.93" y2="82.55" width="0.6096" layer="1"/>
+<wire x1="71.628" y1="80.01" x2="71.628" y2="69.596" width="0.6096" layer="1"/>
+<wire x1="71.628" y1="69.596" x2="67.31" y2="69.596" width="0.6096" layer="1"/>
 </signal>
 <signal name="MODEM">
 <contactref element="Q3" pad="2"/>
@@ -2399,6 +2435,11 @@ Restring (top, bottom pad minimum size detrrmines how large are pads),</descript
 <wire x1="20.066" y1="43.18" x2="20.066" y2="66.04" width="1.4224" layer="16"/>
 <wire x1="20.066" y1="66.04" x2="22.01" y2="66.04" width="1.4224" layer="16"/>
 <wire x1="22.01" y1="66.04" x2="22.01" y2="69.85" width="1.4224" layer="16"/>
+<contactref element="D6" pad="C"/>
+<wire x1="6.35" y1="73.66" x2="11.43" y2="73.66" width="1.016" layer="1"/>
+<wire x1="11.43" y1="73.66" x2="11.43" y2="66.04" width="1.016" layer="1"/>
+<wire x1="11.43" y1="66.04" x2="22.01" y2="66.04" width="1.016" layer="1"/>
+<wire x1="22.01" y1="66.04" x2="22.01" y2="69.85" width="1.016" layer="1"/>
 </signal>
 <signal name="VIN+">
 <contactref element="U$9" pad="P$22"/>
@@ -2407,6 +2448,9 @@ Restring (top, bottom pad minimum size detrrmines how large are pads),</descript
 <wire x1="5.08" y1="58.42" x2="7.62" y2="58.42" width="1.4224" layer="16"/>
 <wire x1="7.62" y1="58.42" x2="16.51" y2="58.42" width="1.4224" layer="16"/>
 <wire x1="16.51" y1="58.42" x2="16.51" y2="69.85" width="1.4224" layer="16"/>
+<contactref element="D6" pad="A"/>
+<wire x1="6.35" y1="63.5" x2="7.62" y2="63.5" width="1.016" layer="16"/>
+<wire x1="7.62" y1="63.5" x2="7.62" y2="58.42" width="1.016" layer="16"/>
 </signal>
 <signal name="N$2">
 <contactref element="IC2" pad="5"/>
@@ -2611,7 +2655,7 @@ Restring (top, bottom pad minimum size detrrmines how large are pads),</descript
 <wire x1="16.51" y1="1.0414" x2="16.51" y2="10.16" width="0.4064" layer="1"/>
 <wire x1="16.51" y1="10.16" x2="7.62" y2="10.16" width="0.4064" layer="1"/>
 <wire x1="7.62" y1="10.16" x2="7.62" y2="12.7" width="0.4064" layer="1"/>
-<wire x1="7.62" y1="12.7" x2="7.4676" y2="12.7" width="0" layer="19" extent="1-1"/>
+<wire x1="7.62" y1="12.7" x2="7.4676" y2="12.7" width="0.254" layer="1"/>
 </signal>
 </signals>
 </board>
