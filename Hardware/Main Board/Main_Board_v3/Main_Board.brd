@@ -2589,9 +2589,8 @@ Restring (top, bottom pad minimum size detrrmines how large are pads),</descript
 <via x="62.23" y="53.34" extent="1-16" drill="0.8" shape="square"/>
 <wire x1="62.23" y1="53.34" x2="35.4584" y2="53.3908" width="0.4064" layer="1"/>
 <wire x1="35.4584" y1="53.3908" x2="35.4584" y2="74.4982" width="0.4064" layer="1"/>
-<wire x1="35.4584" y1="74.4982" x2="19.7358" y2="74.4474" width="0.4064" layer="1"/>
-<wire x1="19.7358" y1="74.4474" x2="19.7358" y2="74.9808" width="0.4064" layer="1"/>
-<wire x1="19.7358" y1="74.9808" x2="19.685" y2="74.93" width="0" layer="19" extent="1-1"/>
+<wire x1="35.4584" y1="74.4982" x2="19.685" y2="74.4982" width="0.4064" layer="1"/>
+<wire x1="19.685" y1="74.4982" x2="19.685" y2="74.93" width="0.4064" layer="1"/>
 </signal>
 <signal name="N$7">
 <contactref element="Q5" pad="D"/>

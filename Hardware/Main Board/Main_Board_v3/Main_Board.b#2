@@ -1658,6 +1658,47 @@ Source: tuxgr_12x2_r2.pdf</description>
 </package>
 </packages>
 </library>
+<library name="diode">
+<description>&lt;b&gt;Diodes&lt;/b&gt;&lt;p&gt;
+Based on the following sources:
+&lt;ul&gt;
+&lt;li&gt;Motorola : www.onsemi.com
+&lt;li&gt;Fairchild : www.fairchildsemi.com
+&lt;li&gt;Philips : www.semiconductors.com
+&lt;li&gt;Vishay : www.vishay.de
+&lt;/ul&gt;
+&lt;author&gt;Created by librarian@cadsoft.de&lt;/author&gt;</description>
+<packages>
+<package name="DO35-10">
+<description>&lt;B&gt;DIODE&lt;/B&gt;&lt;p&gt;
+diameter 2 mm, horizontal, grid 10.16 mm</description>
+<wire x1="5.08" y1="0" x2="4.191" y2="0" width="0.508" layer="51"/>
+<wire x1="-5.08" y1="0" x2="-4.191" y2="0" width="0.508" layer="51"/>
+<wire x1="-0.635" y1="0" x2="0" y2="0" width="0.1524" layer="21"/>
+<wire x1="1.016" y1="0.635" x2="1.016" y2="-0.635" width="0.1524" layer="21"/>
+<wire x1="1.016" y1="-0.635" x2="0" y2="0" width="0.1524" layer="21"/>
+<wire x1="0" y1="0" x2="1.524" y2="0" width="0.1524" layer="21"/>
+<wire x1="0" y1="0" x2="1.016" y2="0.635" width="0.1524" layer="21"/>
+<wire x1="0" y1="0.635" x2="0" y2="0" width="0.1524" layer="21"/>
+<wire x1="0" y1="0" x2="0" y2="-0.635" width="0.1524" layer="21"/>
+<wire x1="2.032" y1="1.016" x2="2.286" y2="0.762" width="0.1524" layer="21" curve="-90"/>
+<wire x1="-2.286" y1="0.762" x2="-2.032" y2="1.016" width="0.1524" layer="21" curve="-90"/>
+<wire x1="-2.286" y1="-0.762" x2="-2.032" y2="-1.016" width="0.1524" layer="21" curve="90"/>
+<wire x1="2.032" y1="-1.016" x2="2.286" y2="-0.762" width="0.1524" layer="21" curve="90"/>
+<wire x1="2.286" y1="-0.762" x2="2.286" y2="0.762" width="0.1524" layer="21"/>
+<wire x1="-2.286" y1="0.762" x2="-2.286" y2="-0.762" width="0.1524" layer="21"/>
+<wire x1="-2.032" y1="1.016" x2="2.032" y2="1.016" width="0.1524" layer="21"/>
+<wire x1="-2.032" y1="-1.016" x2="2.032" y2="-1.016" width="0.1524" layer="21"/>
+<pad name="C" x="-5.08" y="0" drill="0.8128" shape="long"/>
+<pad name="A" x="5.08" y="0" drill="0.8128" shape="long"/>
+<text x="-2.159" y="1.27" size="1.27" layer="25" ratio="10">&gt;NAME</text>
+<text x="-2.159" y="-2.667" size="1.27" layer="27" ratio="10">&gt;VALUE</text>
+<rectangle x1="-1.905" y1="-1.016" x2="-1.397" y2="1.016" layer="21"/>
+<rectangle x1="2.286" y1="-0.254" x2="4.191" y2="0.254" layer="21"/>
+<rectangle x1="-4.191" y1="-0.254" x2="-2.286" y2="0.254" layer="21"/>
+</package>
+</packages>
+</library>
 </libraries>
 <attributes>
 </attributes>
@@ -1943,6 +1984,7 @@ Restring (top, bottom pad minimum size detrrmines how large are pads),</descript
 <element name="Q7" library="transistor-small-signal" package="SOT54E" value="BS170" x="5.5626" y="12.7" rot="R270"/>
 <element name="R20" library="rcl" package="0411/12" value="1M" x="10.8458" y="20.3962" rot="R90"/>
 <element name="Q8" library="transistor-power" package="TO262-V" value="IRF3704L-V" x="5.7658" y="21.59" rot="R90"/>
+<element name="D6" library="diode" package="DO35-10" value="1N4148DO35-10" x="6.35" y="68.58" rot="R270"/>
 </elements>
 <signals>
 <signal name="GND">
@@ -2399,6 +2441,11 @@ Restring (top, bottom pad minimum size detrrmines how large are pads),</descript
 <wire x1="20.066" y1="43.18" x2="20.066" y2="66.04" width="1.4224" layer="16"/>
 <wire x1="20.066" y1="66.04" x2="22.01" y2="66.04" width="1.4224" layer="16"/>
 <wire x1="22.01" y1="66.04" x2="22.01" y2="69.85" width="1.4224" layer="16"/>
+<contactref element="D6" pad="C"/>
+<wire x1="6.35" y1="73.66" x2="11.43" y2="73.66" width="1.016" layer="1"/>
+<wire x1="11.43" y1="73.66" x2="11.43" y2="66.04" width="1.016" layer="1"/>
+<wire x1="11.43" y1="66.04" x2="22.01" y2="66.04" width="1.016" layer="1"/>
+<wire x1="22.01" y1="66.04" x2="22.01" y2="69.85" width="1.016" layer="1"/>
 </signal>
 <signal name="VIN+">
 <contactref element="U$9" pad="P$22"/>
@@ -2407,6 +2454,9 @@ Restring (top, bottom pad minimum size detrrmines how large are pads),</descript
 <wire x1="5.08" y1="58.42" x2="7.62" y2="58.42" width="1.4224" layer="16"/>
 <wire x1="7.62" y1="58.42" x2="16.51" y2="58.42" width="1.4224" layer="16"/>
 <wire x1="16.51" y1="58.42" x2="16.51" y2="69.85" width="1.4224" layer="16"/>
+<contactref element="D6" pad="A"/>
+<wire x1="6.35" y1="63.5" x2="7.62" y2="63.5" width="1.016" layer="16"/>
+<wire x1="7.62" y1="63.5" x2="7.62" y2="58.42" width="1.016" layer="16"/>
 </signal>
 <signal name="N$2">
 <contactref element="IC2" pad="5"/>
