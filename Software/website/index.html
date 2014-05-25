@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+{% autoescape true %}
+<html>
+  <head>
+    <title>e.quinox | ekohub</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="stylesheets/bootstrap.css" rel="stylesheet" media="screen">
+	  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+	  <script type="text/javascript" src="//www.google.com/jsapi"></script>
+    {% block javascript %}
+        <script type="text/javascript" >
+          {% include "plotgraphs.js" %}
+        </script>
+    {% endblock %}
+
+    <!--<script type="text/javascript"> count_rabbits() </script> -->
+  	<script type="text/javascript">
+    	google.load('visualization', '1', {'packages':['annotatedtimeline', 'corechart']});
+      google.setOnLoadCallback(drawVisualization);
+    	drawVisualization();
+  	</script> 
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="../../assets/js/html5shiv.js"></script>
+      <script src="../../assets/js/respond.min.js"></script>
+    <![endif]-->
+
+  </head>
+  <body>
+	<div id="topnav_wrap">
+        <div id="topnav">
+            <div class="moduletable">                                                      
+              <ul class="menu">
+                <li><a href="http://e.quinox.org/join" >Get Involved</a></li>
+                <li><a href="http://www.e.quinox.org/" >Main Site</a></li>
+				        <li><a href="http://www.e.quinox.org/wiki" >Wiki</a></li>
+				        <li><a href="https://github.com/equinoxorg/Datalogging_2012-2013" ><img src="images/socialicon/github.png" alt="Twitter" /></a></li>
+                <li><a href="http://twitter.com/equinoximperial" ><img src="images/socialicon/twitter.png" alt="Twitter" /></a></li>
+                <li><a href="http://facebook.com/equinoximperial" ><img src="images/socialicon/facebook.png" alt="Facebook" /></a></li>
+                <li><a href="http://www.flickr.com/equinoximperial" ><img src="images/socialicon/flickr.png" alt="Flickr" /></a></li>
+                <li><a href="http://www.youtube.com/equinoxvloggers" ><img src="images/socialicon/youtube.png" alt="Youtube" /></a></li>
+              </ul>
+			     </div>									
+        </div>
+  </div>
+
+												
+    <nav class="navbar navbar-inverse" role="navigation">
+		<div class="navbar-width">
+
+	  <!-- Brand and toggle get grouped for better mobile display -->
+	   <div class="navbar-header">
+		    <a class="navbar-brand" href="http://e.quinox.org"><img src="images/logo.png"></a>
+		    <a class="navbar-brand"><img class="logohub" src="images/logo_hub.png"></a>
+	   </div>
+
+	   <!-- Collect the nav links, forms, and other content for toggling -->
+	  <div class="collapse navbar-collapse navbar-ex1-collapse">
+		<ul class="nav navbar-nav navbar-right">
+		  <li><a href="#">Home</a></li>
+		  <li><a href="#">Downloads</a></li>
+		  <li><a href="#">Technical Resources</a></li>
+		  <li><a href="#">Contact</a></li>
+		</ul>
+		</div>
+	  </div><!-- /.navbar-collapse -->
+	</nav>
+	
+
+	<div class="container" >
+		<h1>ekoHUB: Energy Kiosk Observer</h1> </br>
+		<!--<div id="maingraph">
+		div id: maingraph </br>
+		This is a container which will house the graph chosen by the user
+		</div> -->
+
+    <div id="graphcont">
+
+    
+        <h1><u>Left Solar Panel</u></h1></br>
+    		  <!--<div id="timeline" title="graph" style="max-width: 600px; height: 300px;"></div>-->
+        <div id="timeline" title="graph"></div>
+    		
+        <!--<div id="rightSolarPanelGraph">
+          <h1><u>Right Solar Panel</u></h1></br>
+          <div id="timeline2" title="graph" style="width: 665px; height: 300px;"></div>
+        </div> -->
+
+      <div id="description" ></div>
+
+    </div>
+
+    <div id="bottom_list">
+         <div class="moduletable"> 
+        <ul class="nav navbar-nav">
+            <li><a href="#" >System Information</a></li>
+            <li><a href="#" >Left Solar Panel</a></li>
+            <li><a href="#" >Right Solar Panel</a></li>
+            <li><a href="#" >Left Battery</a></li>
+            <li><a href="#" >Right Battery</a></li>
+            <li><a href="#" >Left Inverter</a></li>
+            <li><a href="#" >Right Inverter</a></li>
+        </ul> 
+        </div>
+    </div> 
+
+      
+  </div>
+    
+
+		<div id="footer">
+			EkoHUB: Energy kiosk Observer. All rights reserved. 
+		</div>
+	
+	
+	
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="//code.jquery.com/jquery.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>
+{% endautoescape %}

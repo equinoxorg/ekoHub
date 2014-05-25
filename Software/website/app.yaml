@@ -1,0 +1,31 @@
+application: s~eqdatalogger2
+version: 1
+runtime : python27
+api_version: 1
+threadsafe: true
+
+
+
+handlers:
+- url: /images
+  static_dir: images
+  mime_type: image/png  
+
+
+- url: /stylesheets
+  static_dir: stylesheets
+
+- url: /.*
+  script: dataloggerMain.app
+
+
+
+
+builtins:
+- remote_api: on
+
+libraries:
+- name: webapp2
+  version: latest
+- name: jinja2
+  version: latest
