@@ -16,7 +16,7 @@ handlers:
   static_dir: stylesheets
 
 - url: /.*
-  script: dataloggerMain.app
+  script: main.app
 
 
 

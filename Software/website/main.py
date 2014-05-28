@@ -1,111 +1,129 @@
-import os
 import cgi
-import random
+import wsgiref.handlers
+from dataFile import sensorReadings , ObjectCounter
+from timeUtilities import GMT1, GMT2, TimeHandler
+from modemHandlers import sensorsHandler, logHandler, remoteSettingsHandler
 from google.appengine.ext import db
-from dataFile import remoteSettings, electricalValues
-
-import jinja2
+from google.appengine.ext.webapp.util import run_wsgi_app
+from datetime import date, datetime
 import webapp2
-
+import time
+from math import pow
+import json
+import jinja2
+import os
+import random
  
 JINJA_ENVIRONMENT = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
     extensions=['jinja2.ext.autoescape'],
     autoescape=True)
  
+# converts datastore instances to a list of dictionnaries
+# this list will then be accessed sequentially by the JS code
+# each element will be parsed as a JSON object
+# the model argument is the kind of the datastore model
+def serialize(model):
+    # fetch all instances of the model and sort them in ascending
+    # date order : from oldest to most recent
+    allInstances = model.all().order('tdate')
+    itemsList = []
+    for p in allInstances:
 
- 
+        d = db.to_dict(p)
+        # change the date to an appropriate format which the json dump can parse
+        #d['tdate'] = p.tdate.strftime('%Y-%m-%dT%H:%M:%S')
+        convertToAnalogue(d)
+        d['tdate'] = p.tdate.isoformat()
+        #convertToAnalogue(d)
+
+
+        itemsList.append(d)
+
+
+    return  json.dumps(itemsList)
+
+
+# converts the decimal readings to analogue form
+def convertToAnalogue(data_instance):
+    
+    Vref = 5 # voltage reference
+    n = 10 # number of bits
+    ADCmaxValue = pow(2, n)
+    #check if argument is a dictionnary
+    if isinstance(data_instance, dict):
+        data_instance['ac_current1'] = data_instance['ac_current1'] * (Vref / ADCmaxValue)   
+        data_instance['ac_current2'] = data_instance['ac_current2'] * (Vref / ADCmaxValue)
+        data_instance['ac_voltage1'] = data_instance['ac_voltage1'] * (Vref / ADCmaxValue)
+        data_instance['ac_voltage2'] = data_instance['ac_voltage2'] * (Vref / ADCmaxValue)
+
+        data_instance['dc_current1'] = data_instance['dc_current1'] * (Vref / ADCmaxValue)
+        data_instance['dc_current2'] = data_instance['dc_current2'] * (Vref / ADCmaxValue)
+        data_instance['dc_current3'] = data_instance['dc_current3'] * (Vref / ADCmaxValue)
+        data_instance['dc_current4'] = data_instance['dc_current4'] * (Vref / ADCmaxValue)
+
+        data_instance['dc_voltage1'] = data_instance['dc_voltage1'] * (Vref / ADCmaxValue)
+        data_instance['dc_voltage2'] = data_instance['dc_voltage2'] * (Vref / ADCmaxValue)
+        data_instance['dc_voltage3'] = data_instance['dc_voltage3'] * (Vref / ADCmaxValue)
+        data_instance['dc_voltage4'] = data_instance['dc_voltage4'] * (Vref / ADCmaxValue)
+
 class MainPage(webapp2.RequestHandler):
- 
+
   def get(self):
-    self.response.write("<html>")
-    #template = JINJA_ENVIRONMENT.get_template('index.html')
-    #self.response.write(template.render())
-    
-    for j in range(0, 10):
-      electricalValues(v = random.randint(1, 10), i = random.randint(1, 10)).put()
-    
-    self.response.write("Most recent values: <br>")
-    query = db.Query(electricalValues)
-    query.order('-tdate')
-    for temp in query.run(limit=5):
-      self.response.write("voltage: " + str(temp.v) + ",current: " + str(temp.i) + "<br>")
-    
-    self.response.write("""
-    <head>
-    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    <script type="text/javascript">
-      google.load("visualization", "1", {packages:["corechart"]});
-      google.setOnLoadCallback(drawChart);
-      function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-          ['Voltage', 'Current'],
-          ['1',  100],
-          ['2',  15],
-          ['3',  20],
-          ['4',  30]
-        ]);
+    #self.response.out.write("Welcome to the webpage of e.quinox's second datalogger.<br/>")
+    #self.response.out.write("Unfortunately the page is still undergoing development...")
+
+    i = 0
+    #!!!!!MAKE SURE YOU COMMENT THE LINE BELOW BEFORE DEPLOYMENT!!!
+    db.delete(sensorReadings.all())
+    while i < 10:
+        newObject = sensorReadings()
+
+        newObject.sampleTime  = random.randint(1, 50)
+        newObject.ac_current1 = random.randint(1, 50)
+        newObject.ac_current2 = random.randint(1, 50)
+        newObject.ac_voltage1 = random.randint(1, 50)
+        newObject.ac_voltage2 = random.randint(1, 50)
+
+        newObject.dc_current1 = random.randint(1, 50)
+        newObject.dc_current2 = random.randint(1, 50)
+        newObject.dc_current3 = random.randint(1, 50)
+        newObject.dc_current4 = random.randint(1, 50)
 
 
 
-        var firstChart = new google.visualization.LineChart(document.getElementById('chart_div'));
-        var secondChart = new google.visualization.LineChart(document.getElementById('second_chart'));
-     
-        
-        firstChart.draw(data, {title: 'IV characteristic',
-                          width: 500, height: 500,
-                          hAxis: {title: "Voltage(V)"},
-                          vAxis: {title: "Current(mA)"},
-                          legend: {alignment: "center"},
-                          lineWidth: 10
-        });
-        
-       secondChart.draw(data, {title: 'VI characteristic',
-                          width: 500, height: 500,
-                          hAxis: {title: "Current(mA)"},
-                          vAxis: {title: "Voltage(V)"},
-                          legend: {alignment: "end"},
-                          pointSize: 5, 
-                          colors: ['red','#004411']
-        });
-      }
-                          
-     //google.setOnLoadCallback(drawChart);
-    </script>
-  </head>
-  <body>
-    <div id="chart_div"  style="width: 500px; height: 500px; float: right;"></div>
-    <div id="second_chart" style="width: 500px; height: 500px; float: left;"></div>
-  </body>
-</html> """)
-                        
-    
- 
- 
- 
-class sensorParameters(webapp2.RequestHandler):
- 
-  def get(self):
-    template = JINJA_ENVIRONMENT.get_template('parametersPage.html')
-    self.response.write(template.render())
- 
-  def post(self):
-    self.response.write('<html><body>You wrote:<pre>')
-    self.response.write('Remote Variables are:<br>')
-    sampleTime = cgi.escape(self.request.get('SampleTime', '0'))
-    watchdogTime = cgi.escape(self.request.get('WatchdogTime', '0'))
-    noLines = cgi.escape(self.request.get('nolines', '0'))
-    startOfDay = cgi.escape(self.request.get('startDay', '0'))
-    self.response.write( sampleTime + '<br>')
-    self.response.write( watchdogTime + '<br>')
-    self.response.write( noLines + '<br>')
-    self.response.write( startOfDay + '<br>')
-    self.response.write( '<br>')
-    self.response.write('</pre></body></html>')
- 
- 
-application = webapp2.WSGIApplication([
-    ('/', MainPage),
-    ('/Parameters', sensorParameters),
-], debug=True)
+        newObject.dc_voltage1 = random.randint(1, 50)
+        newObject.dc_voltage2 = random.randint(1, 50)
+        newObject.dc_voltage3 = random.randint(1, 50)
+        newObject.dc_voltage4 = random.randint(1, 50)
+        newObject.put()
 
+        i = i + 1
+
+    template_values = {
+    	'json_data':  serialize(sensorReadings)
+
+    }
+
+    template = JINJA_ENVIRONMENT.get_template('index.html')
+    self.response.write(template.render(template_values))
+
+
+ 
+app = webapp2.WSGIApplication([( '/' , MainPage ), 
+                              ( '/sensors' , sensorsHandler),
+                              ( '/Parameters', remoteSettingsHandler),
+                              ( '/log' , logHandler),
+                              ( '/time' , TimeHandler)],
+                                debug = True)
+ 
+
+
+
+
+
+def main():
+    run_wsgi_app(app)
+ 
+if __name__ == '__main__':
+  main()

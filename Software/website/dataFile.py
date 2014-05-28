@@ -8,14 +8,13 @@ default_entity_name = 'Sensor Values'
 class ObjectCounter(db.Model):
   count = db.IntegerProperty()
 
-class FileObject(db.Model):
+class log(db.Model):
   text = db.TextProperty()
   tdate = db.DateTimeProperty(auto_now_add=False)
  
- 
-
 class sensorReadings(db.Model):
 
+  kiosk = db.StringProperty()
   sampleTime = db.IntegerProperty(default=0)
   # from the AC board
   ac_current1 = db.IntegerProperty(default=0)
@@ -35,9 +34,17 @@ class sensorReadings(db.Model):
   dc_voltage4 = db.IntegerProperty(default=0)
   no = db.IntegerProperty()
 
-  
   tdate = db.DateTimeProperty(auto_now_add=True)
   
+# Only one instance of the settings will be saved in the database and will
+# be regularly updated as users will change the settings. So this object
+# shouldn't affect storage limit.
+class remoteSettings(db.Model):
+  sampleTime  = db.StringProperty()
+  watchdogTime = db.StringProperty()
+  noLines = db.StringProperty()
+  startOfDay = db.StringProperty()
+  endOfDay = db.StringProperty()
  
   # create parent key to ensure that all objects are of the same kind
 def object_key( object_name = default_entity_name):

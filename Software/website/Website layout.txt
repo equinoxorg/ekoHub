@@ -1,0 +1,20 @@
+Website layout
+
+Menu:
+
+- Home
+- Kiosks
+- Downloads 
+- About EkoHub
+- Settings
+
+
+
+
+
+1. Main Page 
+"ekoHub V1.3"
+
+
+
+Notes on website frameworks
