@@ -1,31 +1,25 @@
 <!DOCTYPE html>
 {% autoescape true %}
-<html>
+<html lang="en">
   <head>
     <title>e.quinox | ekohub</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Bootstrap -->
+   
     <link href="stylesheets/bootstrap.css" rel="stylesheet" media="screen">
+    <link href="stylesheets/styles.css" rel="stylesheet" media="screen">
 	  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
 	  <script type="text/javascript" src="//www.google.com/jsapi"></script>
     {% block javascript %}
         <script type="text/javascript" >
-          {% include "plotgraphs.js" %}
+          {% include "/js/plotgraphs.js" %}
         </script>
     {% endblock %}
 
-    <!--<script type="text/javascript"> count_rabbits() </script> -->
   	<script type="text/javascript">
     	google.load('visualization', '1', {'packages':['annotatedtimeline', 'corechart']});
       google.setOnLoadCallback(drawVisualization);
     	drawVisualization();
   	</script> 
-
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="../../assets/js/html5shiv.js"></script>
-      <script src="../../assets/js/respond.min.js"></script>
-    <![endif]-->
 
   </head>
   <body>
@@ -44,54 +38,97 @@
               </ul>
 			     </div>									
         </div>
-  </div>
-
-												
+  </div>							
     <nav class="navbar navbar-inverse" role="navigation">
 		<div class="navbar-width">
 
-	  <!-- Brand and toggle get grouped for better mobile display -->
-	   <div class="navbar-header">
-		    <a class="navbar-brand" href="http://e.quinox.org"><img src="images/logo.png"></a>
-		    <a class="navbar-brand"><img class="logohub" src="images/logo_hub.png"></a>
-	   </div>
+  	  <!-- Brand and toggle get grouped for better mobile display -->
+  	   <div class="navbar-header">
+  		    <a class="navbar-brand" href="http://e.quinox.org"><img src="images/logo.png"></a>
+  		    <a class="navbar-brand"><img class="logohub" src="images/logo_hub.png"></a>
+  	   </div>
 
-	   <!-- Collect the nav links, forms, and other content for toggling -->
-	  <div class="collapse navbar-collapse navbar-ex1-collapse">
-		<ul class="nav navbar-nav navbar-right">
-		  <li><a href="#">Home</a></li>
-		  <li><a href="#">Downloads</a></li>
-		  <li><a href="#">Technical Resources</a></li>
-		  <li><a href="#">Contact</a></li>
-		</ul>
-		</div>
-	  </div><!-- /.navbar-collapse -->
+  	   <!-- Collect the nav links, forms, and other content for toggling -->
+  	  <div id="menu" class="collapse navbar-collapse navbarHeaderCollapse">
+
+    		<ul class="nav navbar-nav navbar-right">
+    		  <li class="active"><a href="/">Home</a></li>
+          <li class = "dropdown">
+            <a href="/Kiosks" class = "dropdown-toggle" data-toggle = "dropdown">Kiosks</a>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+              <li><a href="#">Batima</a></li>
+              <li><a href="#">Minazi</a></li>
+              <li><a href="#">Kigali</a></li>
+            </ul>
+          </li>
+    		  <li><a href="/Downloads">Downloads</a></li>
+          <li><a href="/Settings">Settings</a></li>
+          <li><a href="/About">About</a></li>
+    		  <li><div>
+                {% if active_user == True %}
+                <a href="#" id="sign-in-element" > Welcome, {{user_name}}</a>
+                {% else %}
+               <a href="#" id="sign-in-element" class="btn btn-success btn-xs" role="button">Sign in</a>
+              {% endif %}
+              </div>
+  		    </li>
+        </ul>
+      </div>
+	   </div><!-- /.navbar-collapse -->
+    </div>
 	</nav>
 	
 
 	<div class="container" >
-		<h1>ekoHUB: Energy Kiosk Observer</h1> </br>
-		<!--<div id="maingraph">
-		div id: maingraph </br>
-		This is a container which will house the graph chosen by the user
-		</div> -->
-
-    <div id="graphcont">
-
-    
-        <h1><u>Left Solar Panel</u></h1></br>
-    		  <!--<div id="timeline" title="graph" style="max-width: 600px; height: 300px;"></div>-->
-        <div id="timeline" title="graph"></div>
-    		
-        <!--<div id="rightSolarPanelGraph">
-          <h1><u>Right Solar Panel</u></h1></br>
-          <div id="timeline2" title="graph" style="width: 665px; height: 300px;"></div>
-        </div> -->
-
-      <div id="description" ></div>
-
+    <div class="well well-sm">
+      <h1 id="page-title">Energy Kiosk System Observer</h1> </br>
+      <p> Datalogging System providing real time graphs and analysis of energy kiosk data. 
+        <a href="#">Learn More</a>
+      </p>
     </div>
 
+    <!--<div id="graphcont">
+        <h1><small>Left Solar Panel</small></h1></br>
+
+        <div id="timeline" title="graph"></div>
+        <div id="description" ></div>
+    </div> -->
+    <div id="graph-panel-cont">
+
+      <div class="panel panel-primary">
+        <div id="graph-main-panel" class="panel-heading">Minazi | Left Solar Panel</div>
+
+        <div class="panel-body">
+                <div id="timeline" title="graph"></div>
+
+                <div id="graph-table">
+                  <table class="table table-striped table-bordered">
+                    <tr>
+                      <td colspan="2"><strong>System Information</strong></td>
+                    </tr>
+
+                    <tr>
+                      <td>Average Daily Power (Watts)</td>
+                      <td>240.0</td>    
+                    </tr>
+
+                    <tr>
+                      <td>No. of days in activity</td>
+                      <td>10</td>
+                    </tr>
+
+                    <tr>
+                      <td>Total data collected (Mb)</td>
+                      <td>2000</td>
+                    </tr>
+                  </table>
+                  <a href="#"><u>Read More</u></a>
+                </div>
+        </div>
+      </div>
+    </div>
+
+    <!--
     <div id="bottom_list">
          <div class="moduletable"> 
         <ul class="nav navbar-nav">
@@ -104,17 +141,48 @@
             <li><a href="#" >Right Inverter</a></li>
         </ul> 
         </div>
-    </div> 
+    </div> -->
+    <br><br>
 
-      
-  </div>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Choose graph to display...</div>
+        <div class="panel-body">
+            <div class="form-actions">
+              <form action="demo_form.asp" class="navbar-form" autocomplete="on">
     
+                Select Kiosk
+                <select id="mySelect">
+                  <option>Minazi</option>
+                  <option>Batima</option>
+                  <option >Kigali</option>
+                  <option>Rugahagara</option>
+                </select><br><br>
 
-		<div id="footer">
-			EkoHUB: Energy kiosk Observer. All rights reserved. 
-		</div>
-	
-	
+                Select System
+                <select>
+                  <option>Left Solar Panel</option>
+                  <option>Right Solar Panel</option>
+                  <option >Left Battery</option>
+                  <option>Right Battery</option>
+                  <option>Left Inverter</option>
+                  <option>Right Inverter</option>
+                </select><br><br>
+
+                <button type="submit" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn">Cancel</button>
+
+              </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div id="footer">
+      <h1 id="footer-text">Energy kiosk Observer 2014. All rights reserved.</h1>
+  </div>
+
 	
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="//code.jquery.com/jquery.js"></script>

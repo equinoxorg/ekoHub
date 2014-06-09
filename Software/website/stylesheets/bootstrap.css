@@ -750,7 +750,7 @@ pre code {
   margin-right: auto;
   margin-left: auto;
   width:1024px;
-  height: 668px;
+  height: 900px; 
   padding-left: 20px;
 }
 
@@ -1992,7 +1992,7 @@ textarea.input-lg {
 .btn {
   display: inline-block;
   padding: 6px 12px;
-  margin-bottom: 0;
+  margin-bottom: 0px;
   font-size: 14px;
   font-weight: normal;
   line-height: 1.428571429;
@@ -2337,10 +2337,11 @@ fieldset[disabled] .btn-link:focus {
   font-size: 12px;
   line-height: 1.5;
   border-radius: 3px;
+
 }
 
 .btn-xs {
-  padding: 1px 5px;
+  padding: 0px 0px;
 }
 
 .btn-block {
@@ -6822,144 +6823,73 @@ td.visible-print {
   }
 }
 
-/*Content Divs*/
-
-#intro {
-	width: 320px;
-	background-color: #aaa;
-	height: 300px;
-	float:left;
-}
 
 
-
-#boxes{
-	margin-top: 320px;
-	height: 300px;
-	display:block;
-}
-
-#b1 {
-	width: 320px;
-	background-color: #aaa;
-	float: left;
-	height: 300px;
-}
-
-#b2 {
-	width: 320px;
-	background-color: #aaa;
-	float:left;
-	margin-left: 20px;
-	height: 300px;
-}
-#b3 {
-	width: 320px;
-	background-color: #aaa;
-	float: right;
-	height: 300px;
-}
-
-#footer{
-	width:100%;
-	margin-top: 20px;
-	text-align: center;
-}
-
-            /*topnav*/
+/*topnav*/
             
-                       .moduletable {
-                         overflow: hidden;
-                         margin-bottom: 0px;
-                       }
-                       #topnav_wrap {
-                         background-color: #282828;
-                         border-bottom: 1px solid #333333;
-                         width: 100%;
-                         line-height: 1.1em;
-                         height: 30px;
-                       }
+ .moduletable {
+   overflow: hidden;
+   margin-bottom: 0px;
+ }
+ #topnav_wrap {
+   background-color: #282828;
+   border-bottom: 1px solid #333333;
+   width: 100%;
+   line-height: 1.1em;
+   height: 30px;
+ }
 
 
-                       #topnav {
-                         width: 1024px;
-                         margin: auto;
-                         padding-top: 6px;
-                         font-size: 14px;
-                       }
+ #topnav {
+   width: 1024px;
+   margin: auto;
+   padding-top: 6px;
+   font-size: 14px;
+ }
 
-                       #topnav a {
-                         text-decoration: none;
-                         float:middle;
-                         color: #bbbbbb;
-                       }
+ #topnav a {
+   text-decoration: none;
+   float:middle;
+   color: #bbbbbb;
+ }
 
-                       #topnav a:hover {
-                         color: #ffcc00;
-                       }
+ #topnav a:hover {
+   color: #ffcc00;
+ }
 
-                       #topnav h3 {
-                         display: none;
-                       }
+ #topnav h3 {
+   display: none;
+ }
 
-                       #topnav ul.menu {
-                         float: right;
-                         padding-top: 0px;
-                         padding-bottom: 0px;
-                         margin-right: -11px;
-                       }
+ #topnav ul.menu {
+   float: right;
+   padding-top: 0px;
+   padding-bottom: 0px;
+   margin-right: -11px;
+ }
 
-                       #topnav ul.menu li {
-                         display: inline;
-                         padding-left: 12px;
-                         padding-right: 12px;
-                         border-left: 1px solid #666666;
-                       }
+ #topnav ul.menu li {
+   display: inline;
+   padding-left: 12px;
+   padding-right: 12px;
+   border-left: 1px solid #666666;
+ }
 
-                       #topnav ul.menu li:first-child {
-                         border: 0;
-                         color:#FFCC00;
-                       }
+ #topnav ul.menu li:first-child {
+   border: 0;
+   color:#FFCC00;
+ }
 
-                       #topnav ul.menu li:first-child  a{
-                         color:#FFCC00;
-                       }
+ #topnav ul.menu li:first-child  a{
+   color:#FFCC00;
+ }
 
-                       #topnav img {
-                                   height:14px;
-                         vertical-align:middle;
-                       }
+ #topnav img {
+             height:14px;
+   vertical-align:middle;
+ }
 
-#graphcont {
-  width: 100%;
-  margin: 0 auto;
-  display: block;
-
-}
-
-#timeline {
-  float: left;
-  width: 600px;
-  height: 300px; 
-  background-color:red;
-}
-
-#description {
-  height: 300px;
-  width: 300px;
-  float: right;
-  display:inline;
-  background-color: green;
-}
-
-#bottom_list{
-  height: 100px;
-  /*display: block; 
-  background-color: red; */
-  margin-top: 350px;
-  width: 100%;
-  
-}
+a:
 
 
 

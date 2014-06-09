@@ -15,10 +15,19 @@ handlers:
 - url: /stylesheets
   static_dir: stylesheets
 
-- url: /.*
+#- url: /.*
+#  script: main.app
+
+- url: /(sensors|log|time|Settings|Users)?
   script: main.app
 
+- url: /Kiosks
+  static_files: pages/kiosks.html
+  upload: pages/kiosks.html
 
+- url: /Downloads
+  static_files: pages/downloads.html
+  upload: pages/downloads.html
 
 
 builtins:

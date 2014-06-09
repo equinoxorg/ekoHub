@@ -4,7 +4,8 @@
     <title>e.quinox | ekohub - Downloads</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
-    <link href="../css/bootstrap.css" rel="stylesheet" media="screen">
+    <link href="stylesheets/bootstrap.css" rel="stylesheet" media="screen">
+    <link href="stylesheets/styles.css" rel="stylesheet" media="screen">
 	<link rel="shortcut icon" href="../favicon.ico">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -39,27 +40,36 @@
 		<a class="navbar-brand"><img class="logohub" src="../images/logo_hub.png"></a>
 	  </div>
 
-	  <!-- Collect the nav links, forms, and other content for toggling -->
-	  <div class="collapse navbar-collapse navbar-ex1-collapse">
-		<ul class="nav navbar-nav navbar-right">
-		  <li><a href="../index.htm">Home</a></li>
-		  <li><a href="../pages/downloads.htm">Downloads</a></li>
-		  <li><a href="../pages/resources.htm">Technical Resources</a></li>
-		  <li><a href="../pages/contact.htm">Contact</a></li>
-		</ul>
+ <!-- Collect the nav links, forms, and other content for toggling -->
+	  <div class="collapse navbar-collapse navbarHeaderCollapse">
+  		<ul class="nav navbar-nav navbar-right">
+	  		<li><a href="/">Home</a></li>
+	        <li class = "dropdown">
+	          <a href="/Kiosks" class = "dropdown-toggle" data-toggle = "dropdown">Kiosks</a>
+	          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+	            <li><a href="#">Batima</a></li>
+	            <li><a href="#">Minazi</a></li>
+	            <li><a href="#">Kigali</a></li>
+	          </ul>
+	        </li>
+	  		  <li class="active"><a href="/Downloads">Downloads</a></li>
+	  		  <li><a href="/Contact">Contact</a></li>
+	        <li><a href="/Settings">Settings</a></li>
+  		</ul>
 		</div>
 	  </div><!-- /.navbar-collapse -->
 	</nav>
 	
 	<div class="container">
 	
-		<h1>Downloads</h1> </br>
+		<h1 id="page-title">Downloads</h1> </br>
 		
 		There will be a form whereby you can filter the data according to what data you want and then press a download button which should be able to produce an excel file with the relevant data. There will also be a download all data button.
 	
-		<div id="footer">
-			EkoHUB: Energy kiosk Observer. All rights reserved. 
-		</div>
+	</div>
+
+	<div id="footer">
+		<h1 id="footer-text">Energy kiosk Observer. All rights reserved.</h1>
 	</div>
 	
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

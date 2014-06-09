@@ -133,7 +133,7 @@ class logHandler(webapp2.RequestHandler):
 
 class remoteSettingsHandler(webapp2.RequestHandler):
     def get(self):
-        template = JINJA_ENVIRONMENT.get_template('remoteParameters.html')
+        template = JINJA_ENVIRONMENT.get_template('/pages/remoteParameters.html')
         self.response.write(template.render())
     
 
@@ -159,7 +159,7 @@ class remoteSettingsHandler(webapp2.RequestHandler):
         m.endOfDay = endOfDay
         m.put()
 
-        template = JINJA_ENVIRONMENT.get_template('savedParameters.html')
+        template = JINJA_ENVIRONMENT.get_template('/pages/savedParameters.html')
 
         template_values = {
         	'sampleTime': sampleTime,

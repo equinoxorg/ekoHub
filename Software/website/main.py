@@ -2,8 +2,10 @@ import cgi
 import wsgiref.handlers
 from dataFile import sensorReadings , ObjectCounter
 from timeUtilities import GMT1, GMT2, TimeHandler
-from modemHandlers import sensorsHandler, logHandler, remoteSettingsHandler
+from modemHandlers import sensorsHandler, logHandler
+from settingsHandlers import remoteSettingsHandler
 from google.appengine.ext import db
+from google.appengine.api import users
 from google.appengine.ext.webapp.util import run_wsgi_app
 from datetime import date, datetime
 import webapp2
@@ -18,6 +20,19 @@ JINJA_ENVIRONMENT = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
     extensions=['jinja2.ext.autoescape'],
     autoescape=True)
+
+active_user = False
+
+# checks for active user session and returns name of user
+def active_user():
+    user = users.get_current_user()
+
+    if user:
+        return user.nickname()
+
+    else:
+        return ''
+        
  
 # converts datastore instances to a list of dictionnaries
 # this list will then be accessed sequentially by the JS code
@@ -100,26 +115,42 @@ class MainPage(webapp2.RequestHandler):
 
         i = i + 1
 
+    user_name = active_user()
+
     template_values = {
-    	'json_data':  serialize(sensorReadings)
+    	'json_data':  serialize(sensorReadings),
+        'user_name': user_name,
+        'active_user': True
 
     }
 
     template = JINJA_ENVIRONMENT.get_template('index.html')
     self.response.write(template.render(template_values))
 
+class UsersHandler(webapp2.RequestHandler):
 
+    def get(self):
+        
+        user_name = active_user()
+
+        template_values = {
+            'user_name': json.dumps(user_name)
+        }
+
+        template = JINJA_ENVIRONMENT.get_template('htmlTest.html')
+        self.response.write(template.render(template_values))
+
+    
+    
  
 app = webapp2.WSGIApplication([( '/' , MainPage ), 
                               ( '/sensors' , sensorsHandler),
-                              ( '/Parameters', remoteSettingsHandler),
                               ( '/log' , logHandler),
+                              ( '/Settings', remoteSettingsHandler),
+                              ( '/Users', UsersHandler),
                               ( '/time' , TimeHandler)],
                                 debug = True)
  
-
-
-
 
 
 def main():

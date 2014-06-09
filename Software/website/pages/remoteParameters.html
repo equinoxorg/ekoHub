@@ -1,3 +1,22 @@
+<!--<html>
+  <body style=background-color:#6495ed;>
+    <h1> Datalogger 2013 </h1>
+ 
+  <form name="input" action="/Parameters" method="post">
+    <fieldset>
+      <legend>Remote Variables:</legend>
+      Sample Time: <input type="text" name="SampleTime" size="30"><br>
+      Watchdog Time: <input type="text" name="WatchdogTime" size="30"><br>
+      Number of lines: <input type="text" name="nolines" size="30"><br>
+      Start of day (hours): <input type="text"  name="startDay" size="30"><br>
+      End of day: <input type="text" name="endDay" size="10">
+    </fieldset>
+    <input type="submit" value="Submit">
+  </form>
+ 
+  <body>
+</html> -->
+
 
 <!DOCTYPE html>
 {% autoescape true %}
@@ -7,6 +26,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
     <link href="stylesheets/bootstrap.css" rel="stylesheet" media="screen">
+    <link href="stylesheets/styles.css" rel="stylesheet" media="screen">
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
   
 
@@ -39,13 +59,21 @@
         <a class="navbar-brand"><img class="logohub" src="images/logo_hub.png"></a>
      </div>
 
-     <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse navbar-ex1-collapse">
+ <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse navbarHeaderCollapse">
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="#">Home</a></li>
-      <li><a href="#">Downloads</a></li>
-      <li><a href="#">Technical Resources</a></li>
-      <li><a href="#">Contact</a></li>
+      <li><a href="/">Home</a></li>
+      <li class = "dropdown">
+        <a href="/Kiosks" class = "dropdown-toggle" data-toggle = "dropdown">Kiosks</a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Batima</a></li>
+          <li><a href="#">Minazi</a></li>
+          <li><a href="#">Kigali</a></li>
+        </ul>
+      </li>
+      <li><a href="/Downloads">Downloads</a></li>
+      <li><a href="/Contact">Contact</a></li>
+      <li class="active"><a href="/Settings">Settings</a></li>
     </ul>
     </div>
     </div><!-- /.navbar-collapse -->
@@ -53,17 +81,22 @@
   
 
   <div class="container" >
-    <h1>ekoHUB: Energy Kiosk Observer</h1> </br>  
-     Your settings have been saved!
-     <ul>
-      <li><b> sample time  : </b> {{ sampleTime }} </li>
-      <li><b> watchdog time  : </b> {{ watchdogTime }} </li>
-      <li><b> number of lines  : </b> {{ noLines }} </li>
-      <li><b> start of day  : </b> {{ endOfDay }} </li>
-       <li><b> end of day  : </b> {{ startOfDay }} </li>
+    <h1 id="page-title">Settings</h1> </br>  
+    <form name="input" action="/Settings" method="post">
+      <fieldset>
+        <legend>Remote Variables:</legend>
+          Sample Time (sec): <input type="text" name="SampleTime" size="30"><br>
+          Watchdog Time (sec): <input type="text" name="WatchdogTime" size="30"><br>
+          Number of lines: <input type="text" name="nolines" size="30"><br>
+          Start of day (hours): <input type="text"  name="startDay" size="30"><br>
+          End of day (hours): <input type="text" name="endDay" size="10">
+      </fieldset>
+      <input type="submit" value="Submit">
+    </form> 
 
-     </ul>
-
+    <br><br>
+    <legend>Database settings</legend><br>
+    <p> Here, users with administrative rights can view and modify the database </p>
   </div>
   
 
