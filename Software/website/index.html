@@ -25,7 +25,13 @@
   <body>
 	<div id="topnav_wrap">
         <div id="topnav">
-            <div class="moduletable">                                                      
+            <div class="moduletable">  
+              {% if active_user == True %}
+              <div id="welcome-message">
+                Welcome, {{user_name}}!    
+              </div>    
+              {% endif %}      
+                                                  
               <ul class="menu">
                 <li><a href="http://e.quinox.org/join" >Get Involved</a></li>
                 <li><a href="http://www.e.quinox.org/" >Main Site</a></li>
@@ -66,9 +72,9 @@
           <li><a href="/About">About</a></li>
     		  <li><div>
                 {% if active_user == True %}
-                <a href="#" id="sign-in-element" > Welcome, {{user_name}}</a>
+                 <a href="/logout" id="sign-in-element" class="btn btn-danger btn-xs" role="button">Sign Out</a>
                 {% else %}
-               <a href="#" id="sign-in-element" class="btn btn-success btn-xs" role="button">Sign in</a>
+                <a href="{{login_url}}" id="sign-in-element" class="btn btn-success btn-xs" role="button">Sign in</a>
               {% endif %}
               </div>
   		    </li>
@@ -87,12 +93,6 @@
       </p>
     </div>
 
-    <!--<div id="graphcont">
-        <h1><small>Left Solar Panel</small></h1></br>
-
-        <div id="timeline" title="graph"></div>
-        <div id="description" ></div>
-    </div> -->
     <div id="graph-panel-cont">
 
       <div class="panel panel-primary">
@@ -127,30 +127,15 @@
         </div>
       </div>
     </div>
-
-    <!--
-    <div id="bottom_list">
-         <div class="moduletable"> 
-        <ul class="nav navbar-nav">
-            <li><a href="#" >System Information</a></li>
-            <li><a href="#" >Left Solar Panel</a></li>
-            <li><a href="#" >Right Solar Panel</a></li>
-            <li><a href="#" >Left Battery</a></li>
-            <li><a href="#" >Right Battery</a></li>
-            <li><a href="#" >Left Inverter</a></li>
-            <li><a href="#" >Right Inverter</a></li>
-        </ul> 
-        </div>
-    </div> -->
     <br><br>
 
     <div class="panel panel-primary">
       <div class="panel-heading">Choose graph to display...</div>
         <div class="panel-body">
             <div class="form-actions">
-              <form action="demo_form.asp" class="navbar-form" autocomplete="on">
+              <form action="/" class="navbar-form" autocomplete="on">
     
-                Select Kiosk
+                Select Kiosk:
                 <select id="mySelect">
                   <option>Minazi</option>
                   <option>Batima</option>
@@ -158,7 +143,7 @@
                   <option>Rugahagara</option>
                 </select><br><br>
 
-                Select System
+                Select System:
                 <select>
                   <option>Left Solar Panel</option>
                   <option>Right Solar Panel</option>

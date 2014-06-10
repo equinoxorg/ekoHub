@@ -89,6 +89,14 @@
 	right: -5px;
 } 
 
+#welcome-message{
+	color: white; 
+	display:inline-block;
+
+	/*margin: auto auto;
+	border:1px solid white;
+	position: absolute;*/
+}
 
 #menu{
 	max-height: : 30px;
