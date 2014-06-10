@@ -1,3 +1,23 @@
+function display_graph_id(){
+
+  var kiosk_name = location.search.split('myParam=')[1];
+
+
+
+}
+
+// Used to have a pre-selected  default value
+// returns "selected" if the strings match
+function isSelected(s1, s2){
+  if(s1 == s2)
+    return 'selected';
+  
+
+  else
+    return 'false';
+
+}
+
 function drawVisualization() {
 
           // collect sensor data formatted into JSON

@@ -17,6 +17,7 @@ from math import pow
 import jinja2
 import os
 import random
+import urllib
  
 
 JINJA_ENVIRONMENT = jinja2.Environment(
@@ -24,6 +25,14 @@ JINJA_ENVIRONMENT = jinja2.Environment(
     extensions=['jinja2.ext.autoescape'],
     autoescape=True)
 
+default_kiosk = 'Minazi'
+default_system = 'Left Solar Panel'
+
+kiosks = ['Minazi', 'Batima', 'Kigali', 'Rugahagara']
+systems = ['Left Solar Panel', 'Right Solar Panel', 'Left Battery', 'Right Battery'
+, 'Left Inverter', 'Right Inverter']
+
+# displays the Main page
 class MainPage(webapp2.RequestHandler):
 
   def get(self):
@@ -58,17 +67,30 @@ class MainPage(webapp2.RequestHandler):
     user_name = active_user()
     active = False if (user_name == '') else True
     login = users.create_login_url(self.request.uri)
+    kiosk = self.request.get('kiosk', default_value='Minazi')
+    system = self.request.get('sys', default_value='Left Solar Panel')
 
+    #Note: When user submits kiosk and system selection,
+    #the parameters will be returned inside this method
+    #We'll need to perform datastore query according to the 
+    # parameters
     template_values = {
     	'json_data':  serialize(sensorReadings),
         'user_name': user_name,
         'active_user': active,
-        'login_url': login
+        'login_url': login,
+        'kiosk': kiosk,
+        'kiosks': kiosks,
+        'systems': systems,
+        'sys': system
 
     }
 
     template = JINJA_ENVIRONMENT.get_template('index.html')
     self.response.write(template.render(template_values))
+
+    #self.response.write("<html>kiosk = " + str(kiosk) + '<br>')
+    #self.response.write("<html>tmp = " + str(system) + '<br>')
 
     """
     login = users.create_login_url(self.request.uri)
@@ -80,7 +102,26 @@ class MainPage(webapp2.RequestHandler):
 
     self.response.write('active: ' + str(active) + '<br>') 
     self.response.write('uri: ' + str(login)) """
-    
+
+  # Collects the submitted kiosk form and updates 
+  # the URL parameters for graph selected before 
+  # returning to the homepage
+  def post(self):  
+    k = self.request.get('kiosk')
+    s = self.request.get('system')
+    params = urllib.urlencode({'kiosk': k, 'sys': s})
+
+    """
+    self.response.write('<html><body>You wrote:<pre>')
+    self.response.write( k + '<br>')
+    self.response.write( s + '<br>')
+    self.response.write( 'params: ' + params)
+    self.response.write('</pre></body></html>')"""
+    #url = '/?kiosk=' + k + '&' + 'sys=' + s
+    self.redirect('/?' + params)
+
+
+
  
 app = webapp2.WSGIApplication([( '/' , MainPage ), 
                               ( '/sensors' , sensorsHandler),

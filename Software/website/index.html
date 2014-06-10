@@ -19,7 +19,10 @@
     	google.load('visualization', '1', {'packages':['annotatedtimeline', 'corechart']});
       google.setOnLoadCallback(drawVisualization);
     	drawVisualization();
+
   	</script> 
+
+
 
   </head>
   <body>
@@ -96,7 +99,7 @@
     <div id="graph-panel-cont">
 
       <div class="panel panel-primary">
-        <div id="graph-main-panel" class="panel-heading">Minazi | Left Solar Panel</div>
+        <div id="graph-main-panel" class="panel-heading">{{kiosk}} | {{sys}}</div>
 
         <div class="panel-body">
                 <div id="timeline" title="graph"></div>
@@ -133,29 +136,34 @@
       <div class="panel-heading">Choose graph to display...</div>
         <div class="panel-body">
             <div class="form-actions">
-              <form action="/" class="navbar-form" autocomplete="on">
+              <form action="/" class="navbar-form" method="post" autocomplete="on">
     
                 Select Kiosk:
-                <select id="mySelect">
-                  <option>Minazi</option>
-                  <option>Batima</option>
-                  <option >Kigali</option>
-                  <option>Rugahagara</option>
+                <select name="kiosk">
+                  {% for k in kiosks %}
+                    {% if k == kiosk %}
+                    <option selected >{{k}}</option>
+
+                    {% else %}
+                    <option >{{k}}</option>
+                    {% endif %}
+                  {% endfor %}
                 </select><br><br>
 
                 Select System:
-                <select>
-                  <option>Left Solar Panel</option>
-                  <option>Right Solar Panel</option>
-                  <option >Left Battery</option>
-                  <option>Right Battery</option>
-                  <option>Left Inverter</option>
-                  <option>Right Inverter</option>
+                <select name="system">
+                  {% for s in systems %}
+                    {% if s == sys %}
+                    <option selected >{{s}}</option>
+
+                    {% else %}
+                    <option  >{{s}}</option>
+                    {% endif %}
+                  {% endfor %}
                 </select><br><br>
 
                 <button type="submit" class="btn btn-primary">Save changes</button>
                 <button type="button" class="btn">Cancel</button>
-
               </form>
           </div>
         </div>

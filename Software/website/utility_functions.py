@@ -29,9 +29,6 @@ def serialize(model):
         #d['tdate'] = p.tdate.strftime('%Y-%m-%dT%H:%M:%S')
         convertToAnalogue(d)
         d['tdate'] = p.tdate.isoformat()
-        #convertToAnalogue(d)
-
-
         itemsList.append(d)
 
 
