@@ -14,7 +14,7 @@ class log(db.Model):
  
 class sensorReadings(db.Model):
 
-  kiosk = db.StringProperty()
+  kiosk = db.StringProperty(default="Minazi")
   sampleTime = db.IntegerProperty(default=0)
   # from the AC board
   ac_current1 = db.IntegerProperty(default=0)
@@ -34,6 +34,19 @@ class sensorReadings(db.Model):
   dc_voltage4 = db.IntegerProperty(default=0)
   no = db.IntegerProperty()
 
+  tdate = db.DateTimeProperty(auto_now_add=True)
+
+#Note if you want to change the types of any properties
+#(i.e from int to float), you need to clear the database
+# before as you may set the old values of the datastore
+# to a different type
+
+class systemData(db.Model):
+  current = db.FloatProperty(default=0.000)
+  voltage = db.FloatProperty(default=0.000)
+  kiosk = db.StringProperty(default="Minazi")
+  system = db.StringProperty(default="Left Solar Panel")
+  sampleTime = db.IntegerProperty(default=0)
   tdate = db.DateTimeProperty(auto_now_add=True)
   
 # Only one instance of the settings will be saved in the database and will

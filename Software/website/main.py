@@ -1,6 +1,6 @@
 import cgi
 import wsgiref.handlers
-from dataFile import sensorReadings , ObjectCounter
+from dataFile import sensorReadings, systemData
 from timeUtilities import GMT1, GMT2, TimeHandler
 from modemHandlers import sensorsHandler, logHandler
 from settingsHandlers import remoteSettingsHandler
@@ -32,6 +32,7 @@ kiosks = ['Minazi', 'Batima', 'Kigali', 'Rugahagara']
 systems = ['Left Solar Panel', 'Right Solar Panel', 'Left Battery', 'Right Battery'
 , 'Left Inverter', 'Right Inverter']
 
+
 # displays the Main page
 class MainPage(webapp2.RequestHandler):
 
@@ -39,8 +40,8 @@ class MainPage(webapp2.RequestHandler):
 
     i = 0
     #!!!!!MAKE SURE YOU COMMENT THE LINE BELOW BEFORE DEPLOYMENT!!!
-    db.delete(sensorReadings.all())
-    while i < 10:
+    #db.delete(sensorReadings.all())
+    """while i < 10:
         newObject = sensorReadings()
 
         newObject.sampleTime  = random.randint(1, 50)
@@ -62,28 +63,34 @@ class MainPage(webapp2.RequestHandler):
         newObject.dc_voltage4 = random.randint(1, 50)
         newObject.put()
 
-        i = i + 1
+        i = i + 1"""
+    generate_random_data(kiosks, systems)
 
+    #check if a user is already logged in
     user_name = active_user()
     active = False if (user_name == '') else True
     login = users.create_login_url(self.request.uri)
     kiosk = self.request.get('kiosk', default_value='Minazi')
     system = self.request.get('sys', default_value='Left Solar Panel')
 
+    filtered_data = systemData.all()
+    filtered_data = filtered_data.filter("kiosk =", kiosk).filter("system =", system)
+    #data.filter("kiosk = ", kiosk)
+
     #Note: When user submits kiosk and system selection,
     #the parameters will be returned inside this method
     #We'll need to perform datastore query according to the 
     # parameters
     template_values = {
-    	'json_data':  serialize(sensorReadings),
+    	'json_data':  serialize(filtered_data),
         'user_name': user_name,
         'active_user': active,
         'login_url': login,
         'kiosk': kiosk,
         'kiosks': kiosks,
         'systems': systems,
-        'sys': system
-
+        'sys': system,
+        'data': filtered_data
     }
 
     template = JINJA_ENVIRONMENT.get_template('index.html')
@@ -92,16 +99,6 @@ class MainPage(webapp2.RequestHandler):
     #self.response.write("<html>kiosk = " + str(kiosk) + '<br>')
     #self.response.write("<html>tmp = " + str(system) + '<br>')
 
-    """
-    login = users.create_login_url(self.request.uri)
-    if not active:
-        self.redirect(login)
-        if active_user():
-            self.redirect('/')
-
-
-    self.response.write('active: ' + str(active) + '<br>') 
-    self.response.write('uri: ' + str(login)) """
 
   # Collects the submitted kiosk form and updates 
   # the URL parameters for graph selected before 
@@ -110,19 +107,8 @@ class MainPage(webapp2.RequestHandler):
     k = self.request.get('kiosk')
     s = self.request.get('system')
     params = urllib.urlencode({'kiosk': k, 'sys': s})
-
-    """
-    self.response.write('<html><body>You wrote:<pre>')
-    self.response.write( k + '<br>')
-    self.response.write( s + '<br>')
-    self.response.write( 'params: ' + params)
-    self.response.write('</pre></body></html>')"""
-    #url = '/?kiosk=' + k + '&' + 'sys=' + s
     self.redirect('/?' + params)
 
-
-
- 
 app = webapp2.WSGIApplication([( '/' , MainPage ), 
                               ( '/sensors' , sensorsHandler),
                               ( '/log' , logHandler),
