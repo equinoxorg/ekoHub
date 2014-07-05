@@ -2,6 +2,8 @@ from google.appengine.ext import db
 from datetime import date, datetime
 from dataFile import remoteSettings
 from timeUtilities import GMT1, GMT2, UTC
+from utility_functions import active_user
+from google.appengine.api import users
 import os, time
 import cgi
 import webapp2
@@ -15,8 +17,17 @@ JINJA_ENVIRONMENT = jinja2.Environment(
 
 class remoteSettingsHandler(webapp2.RequestHandler):
     def get(self):
-        template = JINJA_ENVIRONMENT.get_template('/pages/remoteParameters.html')
-        self.response.write(template.render())
+        user_name = active_user()
+        active = False if (user_name == '') else True
+        login = users.create_login_url(self.request.uri)
+
+        template_values = {
+            'user_name': user_name,
+            'active_user': active,
+            'login_url': login,
+        }
+        template = JINJA_ENVIRONMENT.get_template('/pages/settings.html')
+        self.response.write(template.render(template_values))
     
 
     def post(self):
@@ -51,6 +62,22 @@ class remoteSettingsHandler(webapp2.RequestHandler):
         	'endOfDay': endOfDay
 
         }
+        self.response.write(template.render(template_values))
+
+class downloadsHandler(webapp2.RequestHandler):
+    def get(self):
+
+        user_name = active_user()
+        active = False if (user_name == '') else True
+        login = users.create_login_url(self.request.uri)
+
+        template_values = {
+            'user_name': user_name,
+            'active_user': active,
+            'login_url': login,
+        }
+
+        template = JINJA_ENVIRONMENT.get_template('/pages/downloads.html')
         self.response.write(template.render(template_values))
 
 

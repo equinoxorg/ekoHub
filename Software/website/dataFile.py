@@ -1,6 +1,7 @@
 from google.appengine.ext import db
 
 default_entity_name = 'Sensor Values'
+default_kiosk_name = "Minazi"
 
 #This file contains the different objects
 # that can be stored in the database
@@ -14,7 +15,7 @@ class log(db.Model):
  
 class sensorReadings(db.Model):
 
-  kiosk = db.StringProperty(default="Minazi")
+  kiosk = db.StringProperty(default=default_kiosk_name)
   sampleTime = db.IntegerProperty(default=0)
   # from the AC board
   ac_current1 = db.IntegerProperty(default=0)

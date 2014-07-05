@@ -3,13 +3,14 @@ import wsgiref.handlers
 from dataFile import sensorReadings, systemData
 from timeUtilities import GMT1, GMT2, TimeHandler
 from modemHandlers import sensorsHandler, logHandler
-from settingsHandlers import remoteSettingsHandler
+from pageHandlers import remoteSettingsHandler, downloadsHandler
 from google.appengine.ext import db
 from google.appengine.api import users
 from google.appengine.ext.webapp.util import run_wsgi_app
 from datetime import date, datetime
 from utility_functions import *
 from userHandlers import *
+from kioskHandler import *
 
 import webapp2
 import time
@@ -39,31 +40,6 @@ class MainPage(webapp2.RequestHandler):
   def get(self):
 
     i = 0
-    #!!!!!MAKE SURE YOU COMMENT THE LINE BELOW BEFORE DEPLOYMENT!!!
-    #db.delete(sensorReadings.all())
-    """while i < 10:
-        newObject = sensorReadings()
-
-        newObject.sampleTime  = random.randint(1, 50)
-        newObject.ac_current1 = random.randint(1, 50)
-        newObject.ac_current2 = random.randint(1, 50)
-        newObject.ac_voltage1 = random.randint(1, 50)
-        newObject.ac_voltage2 = random.randint(1, 50)
-
-        newObject.dc_current1 = random.randint(1, 50)
-        newObject.dc_current2 = random.randint(1, 50)
-        newObject.dc_current3 = random.randint(1, 50)
-        newObject.dc_current4 = random.randint(1, 50)
-
-
-
-        newObject.dc_voltage1 = random.randint(1, 50)
-        newObject.dc_voltage2 = random.randint(1, 50)
-        newObject.dc_voltage3 = random.randint(1, 50)
-        newObject.dc_voltage4 = random.randint(1, 50)
-        newObject.put()
-
-        i = i + 1"""
     generate_random_data(kiosks, systems)
 
     #check if a user is already logged in
@@ -115,6 +91,8 @@ app = webapp2.WSGIApplication([( '/' , MainPage ),
                               ( '/Settings', remoteSettingsHandler),
                               ( '/login', userLoginHandler),
                               ( '/logout', LogoutPage),
+                              ( '/Downloads', downloadsHandler),
+                              ( '/Kiosks', kioskHandler),
                               ( '/time' , TimeHandler)],
                                 debug = True)
  

@@ -19,7 +19,6 @@
     	google.load('visualization', '1', {'packages':['annotatedtimeline', 'corechart']});
       google.setOnLoadCallback(drawVisualization);
     	drawVisualization();
-
   	</script> 
 
 
@@ -59,16 +58,20 @@
 
   	   <!-- Collect the nav links, forms, and other content for toggling -->
   	  <div id="menu" class="collapse navbar-collapse navbarHeaderCollapse">
-
-    		<ul class="nav navbar-nav navbar-right">
+    		<ul class="nav navbar-nav navbar-right ">
+        <!-- tab color: ffcc00 -->
     		  <li class="active"><a href="/">Home</a></li>
           <li class = "dropdown">
-            <a href="/Kiosks" class = "dropdown-toggle" data-toggle = "dropdown">Kiosks</a>
-            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-              <li><a href="#">Batima</a></li>
-              <li><a href="#">Minazi</a></li>
-              <li><a href="#">Kigali</a></li>
-            </ul>
+
+            <div class="dropdown">
+              <a href="/Kiosks" data-toggle="dropdown" >Kiosks</a>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                <li><a href="#">Batima</a></li>
+                <li><a href="#">Minazi</a></li>
+                <li><a href="#">Kigali</a></li>
+              </ul>
+            </div>
+
           </li>
     		  <li><a href="/Downloads">Downloads</a></li>
           <li><a href="/Settings">Settings</a></li>
@@ -99,7 +102,7 @@
     <div id="graph-panel-cont">
 
       <div class="panel panel-primary">
-        <div id="graph-main-panel" class="panel-heading">{{kiosk}} | {{sys}}</div>
+        <div id="graph-main-panel" class="panel-heading">{{kiosk}}|{{sys}}</div>
 
         <div class="panel-body">
                 <div id="timeline" title="graph"></div>
@@ -138,7 +141,7 @@
                       <td>Successful</td>
                     </tr>
                   </table>
-                  <a href="#"><u>Find out more about this kiosk</u></a>
+                  <a href="/Kiosks"><u>Find out more about this kiosk</u></a>
                 </div>
         </div>
       </div>

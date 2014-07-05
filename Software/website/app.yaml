@@ -18,16 +18,16 @@ handlers:
 #- url: /.*
 #  script: main.app
 
-- url: /(sensors|log|time|Settings|Users|logout)?
+- url: /(sensors|log|time|Settings|Users|logout|Downloads|Kiosks)?
   script: main.app
 
-- url: /Kiosks
-  static_files: pages/kiosks.html
-  upload: pages/kiosks.html
+#- url: /Kiosks
+#  static_files: pages/kiosks.html
+#  upload: pages/kiosks.html
 
-- url: /Downloads
-  static_files: pages/downloads.html
-  upload: pages/downloads.html
+#- url: /Downloads
+#  static_files: pages/downloads.html
+#  upload: pages/downloads.html
 
 
 builtins:

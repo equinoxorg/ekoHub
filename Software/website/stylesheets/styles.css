@@ -101,4 +101,8 @@
 #menu{
 	max-height: : 30px;
 
+}
+.sitemenu .active a,
+.sitemenu .active a:hover {
+    background-color: red;
 } 

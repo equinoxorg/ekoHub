@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% autoescape true %}
 <html>
   <head>
     <title>e.quinox | ekohub - Downloads</title>
@@ -18,7 +19,12 @@
   
   <div id="topnav_wrap">
         <div id="topnav">
-            <div class="moduletable">                                                      
+            <div class="moduletable">
+              {% if active_user == True %}
+	              <div id="welcome-message">
+	                Welcome, {{user_name}}!    
+	              </div>    
+              {% endif %}                                                        
                 <ul class="menu">
                 <li><a href="http://e.quinox.org/join" >Get Involved</a></li>
                 <li><a href="http://www.e.quinox.org/" >Main Site</a></li>
@@ -53,8 +59,16 @@
 	          </ul>
 	        </li>
 	  		  <li class="active"><a href="/Downloads">Downloads</a></li>
-	  		  <li><a href="/Contact">Contact</a></li>
 	        <li><a href="/Settings">Settings</a></li>
+	        <li><a href="/About">About</a></li>
+	       	<li><div>
+                {% if active_user == True %}
+                 <a href="/logout" id="sign-in-element" class="btn btn-danger btn-xs" role="button">Sign Out</a>
+                {% else %}
+                <a href="{{login_url}}" id="sign-in-element" class="btn btn-success btn-xs" role="button">Sign in</a>
+              {% endif %}
+              </div>
+  		    </li>
   		</ul>
 		</div>
 	  </div><!-- /.navbar-collapse -->
@@ -78,3 +92,4 @@
     <script src="js/bootstrap.min.js"></script>
   </body>
 </html>
+{% endautoescape %}
