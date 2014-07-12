@@ -12,8 +12,8 @@ handlers:
   mime_type: image/png  
 
 
-- url: /stylesheets
-  static_dir: stylesheets
+- url: /css
+  static_dir: css
 
 #- url: /.*
 #  script: main.app

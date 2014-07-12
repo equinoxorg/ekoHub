@@ -69,7 +69,7 @@ class MainPage(webapp2.RequestHandler):
         'data': filtered_data
     }
 
-    template = JINJA_ENVIRONMENT.get_template('index.html')
+    template = JINJA_ENVIRONMENT.get_template('index2.html')
     self.response.write(template.render(template_values))
 
     #self.response.write("<html>kiosk = " + str(kiosk) + '<br>')

@@ -51,7 +51,7 @@ def generate_random_data(kiosks, systems):
         dat.sampleTime = random.randint(1, 10000) # in seconds
         dat.kiosk = kiosks[random.randint(0, len(kiosks) - 1)]
         dat.system = systems[random.randint(0, len(systems) - 1)]
-        dat.put()
+        #dat.put()
 
         i = i + 1
 
