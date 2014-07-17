@@ -13,7 +13,7 @@
     <link href="css/styles.css" rel="stylesheet" media="screen">
 	  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
 	  <script type="text/javascript" src="//www.google.com/jsapi"></script>
-	  <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+	  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	  <script type="text/javascript" src="/js/jqTest.js"></script>
 
     {% block javascript %}
@@ -113,6 +113,8 @@
 						      <p><label class="field" >Start date </label>
 									<select >
 										<option>Select Date --</option>
+										{% for s in dates %}
+											<option selected >{{s}}</option>
 									</select>
 						    
 						   	</div>
@@ -121,6 +123,8 @@
 						      <p><label class="field">End date </label>
 									<select >
 										<option>Select Date --</option>
+										{% for s in dates %}
+											<option selected >{{s}}</option>
 									</select>
 						    
 						   	</div>

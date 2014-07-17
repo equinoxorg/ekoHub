@@ -19,6 +19,7 @@ import jinja2
 import os
 import random
 import urllib
+import logging
  
 
 JINJA_ENVIRONMENT = jinja2.Environment(
@@ -42,6 +43,8 @@ class MainPage(webapp2.RequestHandler):
     i = 0
     generate_random_data(kiosks, systems)
 
+    showDates()
+
     #check if a user is already logged in
     user_name = active_user()
     active = False if (user_name == '') else True
@@ -51,6 +54,7 @@ class MainPage(webapp2.RequestHandler):
 
     filtered_data = systemData.all()
     filtered_data = filtered_data.filter("kiosk =", kiosk).filter("system =", system)
+    logging.debug("something I want to log")
     #data.filter("kiosk = ", kiosk)
 
     #Note: When user submits kiosk and system selection,

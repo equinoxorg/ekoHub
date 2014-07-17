@@ -1,3 +1,5 @@
+import logging
+
 from google.appengine.ext import db
 
 default_entity_name = 'Sensor Values'

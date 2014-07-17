@@ -3,6 +3,8 @@ import random
 from google.appengine.api import users
 from google.appengine.ext import db
 from dataFile import sensorReadings , systemData
+import logging
+from datetime import datetime   
 
 # checks for active user session and returns name of user
 def active_user():
@@ -78,4 +80,30 @@ def convertToAnalogue(data_instance):
         data_instance['dc_voltage3'] = data_instance['dc_voltage3'] * (Vref / ADCmaxValue)
         data_instance['dc_voltage4'] = data_instance['dc_voltage4'] * (Vref / ADCmaxValue)
 
+#show current dates in database
+def showDates():
+    # query which selects a range of dates and returns
+    # a gqlQuery Object containing the filter dates
+    # Note: q is a datetime.datetime object
+    dates =  db.GqlQuery("SELECT DISTINCT tdate FROM systemData ORDER BY tdate ASC")
+    start =  dates.get()
+
+    dates =  db.GqlQuery("SELECT DISTINCT tdate FROM systemData ORDER BY tdate DESC")
+    end = dates.get()
+
+    logging.info( "\n")
+
+    logging.info( "start : %s", start.tdate.strftime('%x'))
+    logging.info( "end : %s", end.tdate.strftime('%x'))
+
+    for p in dates:
+        d = p.tdate
+        logging.info( "%s", d)
+
+    # find oldest and most recent dates
+
+    logging.info( "\n")
+
+
+    
 
