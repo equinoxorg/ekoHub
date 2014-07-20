@@ -4,6 +4,7 @@ from dataFile import remoteSettings
 from timeUtilities import GMT1, GMT2, UTC
 from utility_functions import active_user
 from google.appengine.api import users
+from dataFile import systemData
 import os, time
 import cgi
 import webapp2
@@ -67,17 +68,48 @@ class remoteSettingsHandler(webapp2.RequestHandler):
 class downloadsHandler(webapp2.RequestHandler):
     def get(self):
 
+
         user_name = active_user()
         active = False if (user_name == '') else True
         login = users.create_login_url(self.request.uri)
 
+        # perform a datastore query to find the oldest
+        # and most recent dates
+
+             #       'startDate': start,
+            #'endDate': end
+
         template_values = {
             'user_name': user_name,
             'active_user': active,
-            'login_url': login,
+            'login_url': login
         }
 
         template = JINJA_ENVIRONMENT.get_template('/pages/downloads.html')
         self.response.write(template.render(template_values))
+
+
+class downloadingHandler(webapp2.RequestHandler):
+    def get(self):
+        start = self.request.get('startDate')
+        end = self.request.get('endDate')
+        self.response.write('<html><body>You chose:<pre>')
+        self.response.write(start + ' and ' + end + '<br>')
+
+
+        # get the first elements of each query
+        s =  db.GqlQuery("SELECT DISTINCT tdate\
+                          FROM systemData \
+                          ORDER BY tdate ASC").get()
+
+        e =  db.GqlQuery("SELECT DISTINCT tdate\
+                          FROM systemData \
+                          ORDER BY tdate DESC").get()
+        a = "caca"
+        #self.request.write("start = %s" % a)
+        self.response.write("start = %s <br>" % s.tdate.strftime('%x'))
+        self.response.write("end = %s<br>" % e.tdate.strftime('%x'))
+
+        self.response.write('</pre></body></html>')
 
 

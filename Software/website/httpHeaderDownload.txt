@@ -1,0 +1,13 @@
+// http header settings for file download
+self.response.headers["Content-Type"] = "text/csv"
+self.response.headers["Cache-Control"] = "no-cache, must-revalidate"
+self.response.headers["Content-Disposition"] = "attachment; filename=kioskData.csv"
+self.response.headers["Content-Transfer-Encoding: binary"]
+
+
+// since the download is in a form, have to redirect user
+// to the same page and send the paramter values along 
+// the URL
+//Note : Download is a GET request 
+// When the server receives such a request, it must respond
+// by sending the required data through the RESPONSE
