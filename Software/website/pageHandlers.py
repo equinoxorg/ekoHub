@@ -1,11 +1,11 @@
 from google.appengine.ext import db
-from datetime import date, datetime
+from datetime import date, datetime, time
 from dataFile import remoteSettings
 from timeUtilities import GMT1, GMT2, UTC
 from utility_functions import active_user
 from google.appengine.api import users
 from dataFile import systemData
-import os, time
+import os
 import cgi
 import webapp2
 import jinja2
@@ -68,47 +68,97 @@ class remoteSettingsHandler(webapp2.RequestHandler):
 class downloadsHandler(webapp2.RequestHandler):
     def get(self):
 
+        t = cgi.escape(self.request.get('downloading'))
+        if t == '1':
+            self.response.write( "1")
 
-        user_name = active_user()
-        active = False if (user_name == '') else True
-        login = users.create_login_url(self.request.uri)
+        else:
+                # get list of datetimes in DECENDING ORDER
+            q =  db.GqlQuery("SELECT DISTINCT tdate\
+                              FROM systemData \
+                              ORDER BY tdate DESC")
 
-        # perform a datastore query to find the oldest
-        # and most recent dates
+            # will contain list of unique dates in descending order
+            dates = []
 
-             #       'startDate': start,
-            #'endDate': end
+            # store most recent date first
+            old =  datetime.date(q.get().tdate)
+            dates.append(old)
 
-        template_values = {
-            'user_name': user_name,
-            'active_user': active,
-            'login_url': login
-        }
+            # check if any of the following dates already exist
+            # in our list. the list of datetimes will have multiple
+            # entries # of the same date but we want to have a list of
+            # unique dates
+            for p in q:
+                # create date object
+                newDate = datetime.date(p.tdate)
 
-        template = JINJA_ENVIRONMENT.get_template('/pages/downloads.html')
-        self.response.write(template.render(template_values))
+                if not (newDate == old):
+                    dates.append(newDate)
+                    old = newDate
+
+            user_name = active_user()
+            active = False if (user_name == '') else True
+            login = users.create_login_url(self.request.uri)
+
+
+            template_values = {
+                'user_name': user_name,
+                'active_user': active,
+                'login_url': login,
+                'dates': dates
+            }
+
+            template = JINJA_ENVIRONMENT.get_template('/pages/downloads.html')
+            self.response.write(template.render(template_values))
 
 
 class downloadingHandler(webapp2.RequestHandler):
     def get(self):
-        start = self.request.get('startDate')
-        end = self.request.get('endDate')
+        start = cgi.escape(self.request.get('startDate'))
+        end = cgi.escape(self.request.get('endDate'))
         self.response.write('<html><body>You chose:<pre>')
         self.response.write(start + ' and ' + end + '<br>')
 
 
-        # get the first elements of each query
-        s =  db.GqlQuery("SELECT DISTINCT tdate\
-                          FROM systemData \
-                          ORDER BY tdate ASC").get()
-
-        e =  db.GqlQuery("SELECT DISTINCT tdate\
-                          FROM systemData \
-                          ORDER BY tdate DESC").get()
-        a = "caca"
+        c = self.request.get('checkbox')
+ 
         #self.request.write("start = %s" % a)
-        self.response.write("start = %s <br>" % s.tdate.strftime('%x'))
-        self.response.write("end = %s<br>" % e.tdate.strftime('%x'))
+
+        self.response.write("start = %s <br>" % start)
+        self.response.write("end = %s<br>" % end)
+        self.response.write( "checkbox: %s<br>" %  cgi.escape(c))
+
+        # check first if checkbox was checked or not
+        if cgi.escape(c) == '1':
+            #perform a query for all kioks
+            self.response.write( "checkbox: checked")
+
+            # parse dates and convert them to 
+            # datetime objects
+            s = datetime.strptime(start,'%a %d %b %Y')
+            e = datetime.strptime(end,'%a %d %b %Y')
+
+            #tmax = 23, 59, 59 tmin = 00, 00, 00
+            tmax = time.max
+            tmin = time.min
+
+            # set bounds on start and end datetimes
+            #datetime.combine(s, tmin)
+            e = datetime.combine(datetime.date(e), tmax)
+
+            # perform query to retrieve data in selected
+            # range
+            q = db.Query(systemData)
+            q.filter('tdate >=', s).filter('tdate <=', e)
+            q.order('-tdate')
+
+            for tmp in q:
+                self.response.write(str(tmp.tdate) + '<br>')
+
+        else:
+            self.response.write( "checkbox: unchecked")
+        
 
         self.response.write('</pre></body></html>')
 
