@@ -96,7 +96,6 @@ app = webapp2.WSGIApplication([( '/' , MainPage ),
                               ( '/login', userLoginHandler),
                               ( '/logout', LogoutPage),
                               ( '/Downloads', downloadsHandler),
-                              ( '/Downloads/downloading', downloadingHandler),
                               ( '/Kiosks', kioskHandler),
                               ( '/time' , TimeHandler)],
                                 debug = True)
@@ -104,6 +103,7 @@ app = webapp2.WSGIApplication([( '/' , MainPage ),
 
 
 def main():
+    logging.getLogger().setLevel(logging.DEBUG)
     run_wsgi_app(app)
  
 if __name__ == '__main__':

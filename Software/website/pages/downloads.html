@@ -114,7 +114,7 @@
 			
 			<p>Use the filters below to select which kiosks you want to download data from then press the download button when finished. This will generate a csv file containing the relevant data.</p> <br>
 
-			<form action="/Downloads/downloading" class="well"role="form" method="get">
+			<form action="/Downloads?downloading=1" class="well"role="form" method="get">
 			
 				<fieldset "form_border">
 					<legend class="form_border"> Kiosk Data download</legend>
@@ -154,7 +154,6 @@
 					                <option value = "3">Kigali</option>  
 					                <option value = "4">Rugarahara</option>  
 					              </select>  
-					              
 				         	</div>
 				        </div>
 
@@ -162,6 +161,8 @@
 				             All kiosks
 					         <input name = "checkbox"type="checkbox" onclick="selectAllKiosks(this);" id="optionsCheckbox" value="1">       
 				        </div>
+
+				        <input type="hidden" name="downloading" value="1" /> 
 		          	
 			        </div>
 				</fieldset>
