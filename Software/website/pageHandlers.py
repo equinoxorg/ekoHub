@@ -233,7 +233,7 @@ class downloadingHandler(webapp2.RequestHandler):
             # range
             q = db.Query(systemData)
             q.filter('tdate >=', s).filter('tdate <=', e)
-            q.order('-tdate')
+            q.order('tdate')
 
             for tmp in q:
                 self.response.write(str(tmp.tdate) + '<br>')

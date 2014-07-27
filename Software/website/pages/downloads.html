@@ -26,6 +26,8 @@
       google.load('visualization', '1', {'packages':['annotatedtimeline', 'corechart']});
       google.setOnLoadCallback(drawVisualization);
       drawVisualization();
+
+
       function selectAllKiosks(checkbox){
       	if(checkbox.checked){
       		//alert ("The check box is checked.");
@@ -37,6 +39,116 @@
       			selectList.options[i].selected = true;
       		}
       	}
+      }
+
+      function updateOptions(dateList){
+
+      	 //var opt = date.options
+
+      	 // get the name of the date selector frst
+      	 var name = dateList.name;
+
+      	 // get the selected option
+      	 //var opt = dateList.options;
+
+      	 // get the selected option
+      	 var selected = dateList.options[dateList.selectedIndex].value;
+
+      	 // save the date
+      	 var d = new Date(selected);
+
+      	 
+      	 if (name == "startDate"){
+      	 	// compare with end dates
+      	 	var endDates = document.getElementById("endDate");
+
+      	 	// The first element is just an instruction
+      	 	for(var i= 1 ; i < endDates.options.length; i++){
+
+
+      	 		var tmp = new Date(endDates.options[i].value);
+      	 		if (tmp < d){
+
+      	 			endDates.remove(i);
+
+      	 		}
+
+      	 	}
+
+      	 }
+
+      	 
+      	 else if (name == "endDate"){
+      	 	      	 	// compare with end dates
+      	 	var startDates = document.getElementById("starDate");
+
+      	 	// The first element is just an instruction
+      	 	for(var i= 1 ; i < startDates.options.length; i++){
+
+
+      	 		var tmp = new Date(starDates.options[i].value);
+      	 		if (tmp < d){
+      	 			
+      	 			endDates.remove(i);
+
+      	 		}
+
+      	 	}
+
+      	 }
+
+      }
+
+      // Check if download form is valid when user submits it
+      // before sending the content to server
+      function validateForm(){
+
+      	var checkbox = document.getElementsByName('checkbox');
+
+      	/*
+      	// If the "all kiosks" option isn't checked...
+      	if (!checkbox.checked){
+
+      		var s = document.getElementById("multiSelect");
+      		var found = false;
+      		var tmp;
+
+	      	// check if at least one option is selected
+	      	while (i < s.options.length && !found) {
+	      		if (s.options[i].selected == true) {
+		            //var tmp = s.options[i].text;
+		            //
+		            found = true;
+	        	}
+
+	        	i++;
+	      	}
+
+	      	if(!found){
+	      		alert("You haven't selected any kiosks");
+	      		return false;
+	      	}
+        }*/
+      	var sl = document.getElementById("startDate");
+      	var el = document.getElementById("endDate");
+
+  
+      	// if both of the dates haven't been selected
+      	if (sl.options[sl.selectedIndex].value == "none" ||
+      		el.options[el.selectedIndex].value == "none"){
+
+      		alert("Both dates must be selected");
+      		return false;
+
+      	}
+
+      	return false;
+      }
+
+      function dateIsSelected(){
+
+
+
       }
     </script> 
   </head>
@@ -123,8 +235,8 @@
 						<div id = "date" style="float:left; margin-right: 40px;">
 						   	<div class="form-group" >
 						      <p><label class="field" >Start date </label>
-									<select name="startDate">
-										<option>Select Date --</option>	
+									<select name="startDate" id="startDate" onchange="updateOptions(this)">
+										<option value = "none">Select Date --</option>	
 										{% for p in dates %}
 											<option> {{p.strftime('%a %d %b %Y') }} </option>	
 										{% endfor %}
@@ -135,8 +247,8 @@
 
 						   	<div class="form-group">
 						      <p><label class="field">End date </label>
-									<select name="endDate">
-										<option>Select Date --</option>
+									<select name="endDate" id="endDate" onchange="updateOptions(this)">
+										<option value = "none">Select Date --</option>
 										{% for p in dates %}
 											<option> {{p.strftime('%a %d %b %Y')}} </option>	
 										{% endfor %}
@@ -168,7 +280,7 @@
 				</fieldset>
 					<br>
 					<div style="position:relative;left:30px;">
-						<button id = "download" type="submit" class="btn btn-primary">Download</button>  
+						<button id = "download" type="submit" class="btn btn-primary" onclick="validateForm()">Download</button>  
 				    	<button type="button" class="btn">Cancel</button>  
 				    </div>
 
