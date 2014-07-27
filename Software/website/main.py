@@ -3,7 +3,7 @@ import wsgiref.handlers
 from dataFile import sensorReadings, systemData
 from timeUtilities import GMT1, GMT2, TimeHandler
 from modemHandlers import sensorsHandler, logHandler
-from pageHandlers import remoteSettingsHandler, downloadsHandler, downloadingHandler
+from pageHandlers import remoteSettingsHandler, downloadsHandler
 from google.appengine.ext import db
 from google.appengine.api import users
 from google.appengine.ext.webapp.util import run_wsgi_app

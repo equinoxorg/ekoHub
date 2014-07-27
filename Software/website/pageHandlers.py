@@ -28,16 +28,25 @@ class remoteSettingsHandler(webapp2.RequestHandler):
             'user_name': user_name,
             'active_user': active,
             'login_url': login,
+            'saved': False
         }
         template = JINJA_ENVIRONMENT.get_template('/pages/settings.html')
         self.response.write(template.render(template_values))
     
 
     def post(self):
+
+        user_name = active_user()
+        active = False if (user_name == '') else True
+        login = users.create_login_url(self.request.uri)
+
+
         # delete previous settings and update
-        # with new settings
+        # with new settings. Note: Form validation is already done
+        # in Javascript
         db.delete(remoteSettings.all())
 
+        # Create a new settings object
         m = remoteSettings()
 
         # fetch content written from user
@@ -55,17 +64,21 @@ class remoteSettingsHandler(webapp2.RequestHandler):
         m.endOfDay = endOfDay
         m.put()
 
-        template = JINJA_ENVIRONMENT.get_template('/pages/savedParameters.html')
+        template = JINJA_ENVIRONMENT.get_template('/pages/settings.html')
 
         template_values = {
-        	'sampleTime': sampleTime,
-        	'watchdogTime': watchdogTime,
-        	'noLines': noLines,
-        	'startOfDay': startOfDay,
-        	'endOfDay': endOfDay
-
+            'user_name': user_name,
+            'active_user': active,
+            'login_url': login,
+            'saved': True
         }
         self.response.write(template.render(template_values))
+
+        logging.info("sampleTime = %s \n" % sampleTime)
+        logging.info("watchdogTime = %s \n>" % watchdogTime)
+        logging.info("noLines = %s \n" % noLines)
+        logging.info("startOfDay = %s \n" % startOfDay)
+        logging.info("endOfDay = %s \n" % endOfDay)
 
 class downloadsHandler(webapp2.RequestHandler):
     def get(self):
@@ -188,60 +201,3 @@ class downloadsHandler(webapp2.RequestHandler):
 
             logging.info('return buffer')
             return buf 
-
-
-
-
-
-
-
-class downloadingHandler(webapp2.RequestHandler):
-    def get(self):
-        start = cgi.escape(self.request.get('startDate'))
-        end = cgi.escape(self.request.get('endDate'))
-        self.response.write('<html><body>You chose:<pre>')
-        self.response.write(start + ' and ' + end + '<br>')
-
-
-        c = self.request.get('checkbox')
- 
-        #self.request.write("start = %s" % a)
-
-        self.response.write("start = %s <br>" % start)
-        self.response.write("end = %s<br>" % end)
-        self.response.write( "checkbox: %s<br>" %  cgi.escape(c))
-
-        # check first if checkbox was checked or not
-        if cgi.escape(c) == '1':
-            #perform a query for all kioks
-            self.response.write( "checkbox: checked")
-
-            # parse dates and convert them to 
-            # datetime objects
-            s = datetime.strptime(start,'%a %d %b %Y')
-            e = datetime.strptime(end,'%a %d %b %Y')
-
-            #tmax = 23, 59, 59 tmin = 00, 00, 00
-            tmax = time.max
-            tmin = time.min
-
-            # set bounds on start and end datetimes
-            #datetime.combine(s, tmin)
-            e = datetime.combine(datetime.date(e), tmax)
-
-            # perform query to retrieve data in selected
-            # range
-            q = db.Query(systemData)
-            q.filter('tdate >=', s).filter('tdate <=', e)
-            q.order('tdate')
-
-            for tmp in q:
-                self.response.write(str(tmp.tdate) + '<br>')
-
-        else:
-            self.response.write( "checkbox: unchecked")
-        
-
-        self.response.write('</pre></body></html>')
-
-

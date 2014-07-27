@@ -97,17 +97,71 @@
 
   <div class="container" >
     <h1 id="page-title">Settings</h1> </br>  
-    <form name="input" action="/Settings" method="post">
+    <p>Here , you can change the settings for any of the four datalogging systems being monitored. Current settings can be viewed in the administration console</p> <br>
+    <form name="input" action="/Settings" class="well form-horizontal"role="form" method="post">
       <fieldset>
-        <legend>Change remote parameters:</legend>
-          Sample Time (sec): <input type="text" name="SampleTime" size="30"><br>
-          Watchdog Time (sec): <input type="text" name="WatchdogTime" size="30"><br>
-          Number of lines: <input type="text" name="nolines" size="30"><br>
-          Start of day (hours): <input type="text"  name="startDay" size="30"><br>
-          End of day (hours): <input type="text" name="endDay" size="10">
+        <legend class="form_border">Change remote parameters:</legend>
+
+          <div class="form-group">
+            <label for="sampleTime" class="col-sm-2 control-label">Kiosk</label>
+            <div class="col-sm-10"> 
+              <select class="form-control">
+                <option>Minazi</option>
+                <option>Batima</option>
+                <option>Rugahagara</option>
+                <option>Kigali</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="sampleTime" class="col-sm-2 control-label">Sample Time (sec)</label>
+            <div class="col-sm-10">  
+              <input type="text" class="form-control" name="SampleTime" placeholder="Sample Time" size="30">
+            </div>
+         </div>
+         <div class="form-group">
+            <label for="WatchdogTime" class="col-sm-2 control-label">Watchdog delay (sec)</label>
+            <div class="col-sm-10">  
+              <input type="text" class="form-control" name="WatchdogTime" placeholder="Watchdog delay" size="30">
+            </div>
+         </div>
+                   
+
+          <div class="form-group">
+            <label for="nolines" class="col-sm-2 control-label">File maximum lines (sec)</label>
+            <div class="col-sm-10">  
+              <input type="text" class="form-control" name="nolines" placeholder="number of lines" size="30">
+            </div>
+         </div>
+
+          <div class="form-group">
+            <label for="startDay" class="col-sm-2 control-label">Start of the day</label>
+            <div class="col-sm-10">  
+              <input type="text" class="form-control" name="startDay" placeholder="hrs:min" size="30">
+            </div>
+         </div>
+
+          <div class="form-group">
+            <label for="endDay" class="col-sm-2 control-label">End of the day</label>
+            <div class="col-sm-10">  
+              <input type="text" class="form-control" name="endDay" placeholder="hrs:min" size="30">
+            </div>
+         </div>
       </fieldset>
-      <input type="submit" value="Submit">
+
+        <div style="position:relative;left:25px;">
+            <button type="submit" class="btn btn-primary">Save changes</button>
+            <button type="button" class="btn">Cancel</button>
+        </div>
+      
     </form> 
+
+    {%  if saved == True %}
+      <div class="alert alert-success" role="alert">
+        <h3>Your settings have been saved!</h3>
+      </div>
+    {%  endif %}
 
     <br><br>
     <legend>Database settings</legend><br>
