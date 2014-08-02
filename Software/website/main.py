@@ -13,6 +13,7 @@ from userHandlers import *
 from kioskHandler import *
 
 import webapp2
+from google.appengine.api import app_identity
 import time
 from math import pow
 import jinja2
@@ -43,7 +44,7 @@ class MainPage(webapp2.RequestHandler):
     i = 0
     generate_random_data(kiosks, systems)
 
-    showDates()
+    #showDates()
 
     #check if a user is already logged in
     user_name = active_user()
@@ -54,7 +55,7 @@ class MainPage(webapp2.RequestHandler):
 
     filtered_data = systemData.all()
     filtered_data = filtered_data.filter("kiosk =", kiosk).filter("system =", system)
-    logging.debug("something I want to log")
+    logging.info("app id: " + app_identity.get_default_version_hostname() + "\n")
     #data.filter("kiosk = ", kiosk)
 
     #Note: When user submits kiosk and system selection,
@@ -73,7 +74,7 @@ class MainPage(webapp2.RequestHandler):
         'data': filtered_data
     }
 
-    template = JINJA_ENVIRONMENT.get_template('index2.html')
+    template = JINJA_ENVIRONMENT.get_template('index.html')
     self.response.write(template.render(template_values))
 
     #self.response.write("<html>kiosk = " + str(kiosk) + '<br>')
@@ -106,5 +107,9 @@ def main():
     logging.getLogger().setLevel(logging.DEBUG)
     run_wsgi_app(app)
  
+# The condition below will be true if this file isn't imported
+# anywhere
+# we only want this application to run we want to
+# execute this code as the main program
 if __name__ == '__main__':
   main()

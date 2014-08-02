@@ -29,6 +29,8 @@ handlers:
 #  static_files: pages/downloads.html
 #  upload: pages/downloads.html
 
+- url: /(upload|uploadBlob)?
+  script: blobApp.app
 
 builtins:
 - remote_api: on

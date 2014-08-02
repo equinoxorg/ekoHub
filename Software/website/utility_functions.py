@@ -46,7 +46,7 @@ def generate_random_data(kiosks, systems):
 
     #db.delete(systemData.all())
     i = 0
-    while i < 1000:
+    while i < 500:
         dat = systemData()
         dat.current = float(random.uniform(0.0, 50.0)) # in mA
         dat.voltage = float(random.uniform(0.0, 240.0)) # in Volts

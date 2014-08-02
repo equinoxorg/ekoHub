@@ -11,6 +11,7 @@ import webapp2
 import jinja2
 import sys
 import logging
+import json
 
 
 JINJA_ENVIRONMENT = jinja2.Environment(
@@ -20,18 +21,50 @@ JINJA_ENVIRONMENT = jinja2.Environment(
 
 class remoteSettingsHandler(webapp2.RequestHandler):
     def get(self):
-        user_name = active_user()
-        active = False if (user_name == '') else True
-        login = users.create_login_url(self.request.uri)
 
-        template_values = {
-            'user_name': user_name,
-            'active_user': active,
-            'login_url': login,
-            'saved': False
-        }
-        template = JINJA_ENVIRONMENT.get_template('/pages/settings.html')
-        self.response.write(template.render(template_values))
+        dev = cgi.escape(self.request.get('dev'))
+
+
+        #check if mBed is requesting data from this page
+        if dev == 'mBed':
+
+            try:
+                # get remote settings
+                q = db.Query(remoteSettings).get()
+
+                # Convert them to a json object
+                json_data = {}
+                json_data['sampleTime'] = q.sampleTime
+                json_data['watchdogTimer'] = q.watchdogTimer
+                json_data['noLines'] = q.noLines
+                json_data['dayStart'] = q.startOfDay
+                json_data['dayEnd'] =  q.endOfDay
+                
+                self.response.write(json.dumps(json_data))
+
+            # Set HTTP status code
+            except:
+                self.error(404)
+                self.response.write('couldn\'t find data')
+
+
+
+        # display the web page
+        else:
+            user_name = active_user()
+            active = False if (user_name == '') else True
+            login = users.create_login_url(self.request.uri)
+
+            template_values = {
+                'user_name': user_name,
+                'active_user': active,
+                'login_url': login,
+                'saved': False
+            }
+            template = JINJA_ENVIRONMENT.get_template('/pages/settings.html')
+            self.response.write(template.render(template_values))
+
+        
     
 
     def post(self):
@@ -51,14 +84,14 @@ class remoteSettingsHandler(webapp2.RequestHandler):
 
         # fetch content written from user
         sampleTime = cgi.escape(self.request.get('SampleTime', '0'))
-        watchdogTime = cgi.escape(self.request.get('WatchdogTime', '0'))
+        watchdogTimer = cgi.escape(self.request.get('watchdogTimer', '0'))
         noLines = cgi.escape(self.request.get('nolines', '0'))
         startOfDay = cgi.escape(self.request.get('startDay', '0'))
         endOfDay = cgi.escape(self.request.get('endDay', '0'))
 
         # save settings to datastore
         m.sampleTime = sampleTime
-        m.watchdogTime = watchdogTime
+        m.watchdogTimer = watchdogTimer
         m.noLines = noLines
         m.startOfDay = startOfDay
         m.endOfDay = endOfDay
@@ -75,7 +108,7 @@ class remoteSettingsHandler(webapp2.RequestHandler):
         self.response.write(template.render(template_values))
 
         logging.info("sampleTime = %s \n" % sampleTime)
-        logging.info("watchdogTime = %s \n>" % watchdogTime)
+        logging.info("watchdogTimer = %s \n>" % watchdogTimer)
         logging.info("noLines = %s \n" % noLines)
         logging.info("startOfDay = %s \n" % startOfDay)
         logging.info("endOfDay = %s \n" % endOfDay)
@@ -83,30 +116,41 @@ class remoteSettingsHandler(webapp2.RequestHandler):
 class downloadsHandler(webapp2.RequestHandler):
     def get(self):
 
+        noDates = False
+        errmsg = ''
 
-        # get list of datetimes in DECENDING ORDER
-        q =  db.GqlQuery("SELECT DISTINCT tdate\
-                          FROM systemData \
-                          ORDER BY tdate DESC")
+        try:
+            # get list of datetimes in DECENDING ORDER
+            q =  db.GqlQuery("SELECT DISTINCT tdate\
+                            FROM systemData \
+                            ORDER BY tdate DESC")
 
-        # will contain list of unique dates in descending order
-        dates = []
+            # Container of unique dates 
+            dates = []
 
-        # store most recent date first
-        latest =  datetime.date(q.get().tdate)
-        dates.append(latest)
+        
+            # add most recent date first to the list
+            latest =  datetime.date(q.get().tdate)
+            dates.append(latest)
 
-        # check if any of the following dates already exist
-        # in our list. the list of datetimes will have multiple
-        # entries # of the same date but we want to have a list of
-        # unique dates
-        for p in q:
-            # create date object
-            newDate = datetime.date(p.tdate)
 
-            if not (newDate == latest):
-                dates.append(newDate)
-                latest = newDate
+            # check if any of the following dates already exist
+            # in our list. the list of datetimes will have multiple
+            # entries # of the same date but we want to have a list of
+            # unique dates
+            for p in q:
+                # create date object
+                newDate = datetime.date(p.tdate)
+
+                if not (newDate == latest):
+                    dates.append(newDate)
+                    latest = newDate
+
+        except :
+            noDates = True
+            errmsg = 'There\'s no data to download. Come back ' \
+            'another time'
+
 
         user_name = active_user()
         active = False if (user_name == '') else True
@@ -117,7 +161,9 @@ class downloadsHandler(webapp2.RequestHandler):
             'user_name': user_name,
             'active_user': active,
             'login_url': login,
-            'dates': dates
+            'dates': dates,
+            'noDates': noDates,
+            'errmsg': errmsg
         }
 
         template = JINJA_ENVIRONMENT.get_template('/pages/downloads.html')

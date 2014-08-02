@@ -96,6 +96,11 @@
       </div>
 
   <div class="container" >
+    {%  if saved == True %}
+      <div class="alert alert-success" role="alert">
+        <h3>Your settings have been saved!</h3>
+      </div>
+    {%  endif %}
     <h1 id="page-title">Settings</h1> </br>  
     <p>Here , you can change the settings for any of the four datalogging systems being monitored. Current settings can be viewed in the administration console</p> <br>
     <form name="input" action="/Settings" class="well form-horizontal"role="form" method="post">
@@ -157,11 +162,6 @@
       
     </form> 
 
-    {%  if saved == True %}
-      <div class="alert alert-success" role="alert">
-        <h3>Your settings have been saved!</h3>
-      </div>
-    {%  endif %}
 
     <br><br>
     <legend>Database settings</legend><br>

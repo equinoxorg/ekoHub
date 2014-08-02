@@ -200,67 +200,72 @@
 		<div id="content" class="container">		
 			<h1 id="page-title">Downloads</h1> </br>
 			
-			<p>Use the filters below to select which kiosks you want to download data from then press the download button when finished. This will generate a csv file containing the relevant data.</p> <br>
-
-			<form action="/Downloads?downloading=1" class="well"role="form" method="get">
+			{% if noDates == False %}
 			
-				<fieldset "form_border">
-					<legend class="form_border"> Kiosk Data download</legend>
-					<div id="form-content">
+				<p>Use the filters below to select which kiosks you want to download data from then press the download button when finished. This will generate a csv file containing the relevant data.</p> <br>
 
-						<div id = "date" style="float:left; margin-right: 40px;">
-						   	<div class="form-group" >
-						      <p><label class="field" >Start date </label>
-									<select name="startDate" id="startDate" onchange="updateOptions(this)">
-										<option value = "none">Select Date --</option>	
-										{% for p in dates %}
-											<option> {{p.strftime('%a %d %b %Y') }} </option>	
-										{% endfor %}
-									</select>
+			
+				<form action="/Downloads?downloading=1" class="well"role="form" method="get">
+				
+					<fieldset "form_border">
+						<legend class="form_border"> Kiosk Data download</legend>
+						<div id="form-content">
+
+							<div id = "date" style="float:left; margin-right: 40px;">
+							   	<div class="form-group" >
+							      <p><label class="field" >Start date </label>
+										<select name="startDate" id="startDate" onchange="updateOptions(this)">
+											<option value = "none">Select Date --</option>	
+											{% for p in dates %}
+												<option> {{p.strftime('%a %d %b %Y') }} </option>	
+											{% endfor %}
+										</select>
 
 
+							   	</div>
+
+							   	<div class="form-group">
+							      <p><label class="field">End date </label>
+										<select name="endDate" id="endDate" onchange="updateOptions(this)">
+											<option value = "none">Select Date --</option>
+											{% for p in dates %}
+												<option> {{p.strftime('%a %d %b %Y')}} </option>	
+											{% endfor %}
+										</select>
+							   	</div>
 						   	</div>
 
-						   	<div class="form-group">
-						      <p><label class="field">End date </label>
-									<select name="endDate" id="endDate" onchange="updateOptions(this)">
-										<option value = "none">Select Date --</option>
-										{% for p in dates %}
-											<option> {{p.strftime('%a %d %b %Y')}} </option>	
-										{% endfor %}
-									</select>
-						   	</div>
-					   	</div>
 
+						   	<div id ="multiselect" style="float:left">
+							   	<div style="float:left; margin-right: 10px;">Choose Kiosk(s)</div>
+							   	<div class="control-group" style="float:left;">  
+						              <select multiple="multiple" id="multiSelect">  
+						                <option value = "1" selected>Minazi</option>  
+						                <option value = "2">Batima</option>  
+						                <option value = "3">Kigali</option>  
+						                <option value = "4">Rugarahara</option>  
+						              </select>  
+					         	</div>
+					        </div>
 
-					   	<div id ="multiselect" style="float:left">
-						   	<div style="float:left; margin-right: 10px;">Choose Kiosk(s)</div>
-						   	<div class="control-group" style="float:left;">  
-					              <select multiple="multiple" id="multiSelect">  
-					                <option value = "1" selected>Minazi</option>  
-					                <option value = "2">Batima</option>  
-					                <option value = "3">Kigali</option>  
-					                <option value = "4">Rugarahara</option>  
-					              </select>  
-				         	</div>
+					        <div id= "check" style="float:left; margin-left: 20px;">
+					             All kiosks
+						         <input name = "checkbox"type="checkbox" onclick="selectAllKiosks(this);" id="optionsCheckbox" value="1">       
+					        </div>
+
+					        <input type="hidden" name="downloading" value="1" /> 
+			          	
 				        </div>
-
-				        <div id= "check" style="float:left; margin-left: 20px;">
-				             All kiosks
-					         <input name = "checkbox"type="checkbox" onclick="selectAllKiosks(this);" id="optionsCheckbox" value="1">       
-				        </div>
-
-				        <input type="hidden" name="downloading" value="1" /> 
-		          	
-			        </div>
-				</fieldset>
-					<br>
-					<div style="position:relative;left:30px;">
-						<button id = "download" type="submit" class="btn btn-primary" onclick="validateForm()">Download</button>  
-				    	<button type="button" class="btn">Cancel</button>  
-				    </div>
-
-			</form>
+					</fieldset>
+						<br>
+						<div style="position:relative;left:30px;">
+							<button id = "download" type="submit" class="btn btn-primary" onclick="validateForm()">Download</button>  
+					    	<button type="button" class="btn">Cancel</button>  
+					    </div>
+				</form>
+			{% else %}
+				<p>  {{errmsg}} </p>
+			{% endif %}
 		</div>
 
 	      <div class="footer">
