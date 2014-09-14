@@ -1,6 +1,6 @@
 import cgi
 import wsgiref.handlers
-from dataFile import sensorReadings, systemData
+from data import systemData
 from pageHandlers import remoteSettingsHandler, downloadsHandler
 from google.appengine.ext import db
 from google.appengine.api import users

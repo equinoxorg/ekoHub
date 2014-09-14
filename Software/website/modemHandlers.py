@@ -1,6 +1,6 @@
 from google.appengine.ext import db
 from datetime import date, datetime
-from dataFile import log, sensorReadings, remoteSettings
+from data import remoteSettings
 from timeUtilities import GMT1, GMT2, UTC
 import os, time
 import cgi

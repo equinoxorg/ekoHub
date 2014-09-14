@@ -1,6 +1,6 @@
 from google.appengine.ext import db
 from datetime import date, datetime
-from dataFile import remoteSettings
+from data import remoteSettings
 from timeUtilities import GMT1, GMT2, UTC
 from utility_functions import active_user
 from google.appengine.api import users

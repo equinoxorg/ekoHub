@@ -1,10 +1,9 @@
 from google.appengine.ext import db
 from datetime import date, datetime, time
-from dataFile import remoteSettings
+from data import remoteSettings, systemData
 from timeUtilities import GMT1, GMT2, UTC
 from utility_functions import active_user
 from google.appengine.api import users
-from dataFile import systemData
 import os
 import cgi
 import webapp2
@@ -39,6 +38,8 @@ class remoteSettingsHandler(webapp2.RequestHandler):
                 json_data['noLines'] = q.noLines
                 json_data['dayStart'] = q.startOfDay
                 json_data['dayEnd'] =  q.endOfDay
+                #json_data['uploadRate']
+                #json_data['downloadRate']
                 
                 self.response.write(json.dumps(json_data))
 
