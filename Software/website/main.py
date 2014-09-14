@@ -1,21 +1,18 @@
 import cgi
 import wsgiref.handlers
 from dataFile import sensorReadings, systemData
-from timeUtilities import GMT1, GMT2, TimeHandler
-from modemHandlers import sensorsHandler, logHandler
 from pageHandlers import remoteSettingsHandler, downloadsHandler
 from google.appengine.ext import db
 from google.appengine.api import users
 from google.appengine.ext.webapp.util import run_wsgi_app
-from datetime import date, datetime
 from utility_functions import *
 from userHandlers import *
 from kioskHandler import *
 
 import webapp2
+from mBed.receiveSensorValues import *
 from google.appengine.api import app_identity
 import time
-from math import pow
 import jinja2
 import os
 import random
@@ -90,15 +87,13 @@ class MainPage(webapp2.RequestHandler):
     params = urllib.urlencode({'kiosk': k, 'sys': s})
     self.redirect('/?' + params)
 
-app = webapp2.WSGIApplication([( '/' , MainPage ), 
-                              ( '/sensors' , sensorsHandler),
-                              ( '/log' , logHandler),
+app = webapp2.WSGIApplication([( '/' , MainPage ),  
+                              ( '/receiveSensorValues', receiveSensorValues),
                               ( '/Settings', remoteSettingsHandler),
                               ( '/login', userLoginHandler),
                               ( '/logout', LogoutPage),
                               ( '/Downloads', downloadsHandler),
-                              ( '/Kiosks', kioskHandler),
-                              ( '/time' , TimeHandler)],
+                              ( '/Kiosks', kioskHandler)],
                                 debug = True)
  
 

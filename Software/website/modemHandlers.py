@@ -108,7 +108,7 @@ class GetSettings(webapp2.RequestHandler):
 
 
 
-# this handler saves all the log dat sent from the mBed.
+# this handler saves all the log data sent from the mBed.
 # The name of the kiosk will be specified in the log
 class logHandler(webapp2.RequestHandler):
     def get(self):

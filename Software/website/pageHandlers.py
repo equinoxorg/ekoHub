@@ -204,8 +204,8 @@ class downloadsHandler(webapp2.RequestHandler):
 
         
 
-    # fetch data to download based on the given parameters
-    # return the data in an excel format
+    # fetch data from datastore based on the given parameters
+    # return the data in a csv format
     def fetch_data(self, c, start , end):
         logging.debug('fetch download data')
 

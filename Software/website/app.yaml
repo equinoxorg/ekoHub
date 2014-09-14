@@ -21,6 +21,10 @@ handlers:
 - url: /(sensors|log|time|Settings|Users|logout|Downloads(\/)?(\?)?.*|Kiosks)?
   script: main.app
 
+- url: /receiveSensorValues
+  script: main.app
+
+
 #- url: /Kiosks
 #  static_files: pages/kiosks.html
 #  upload: pages/kiosks.html
