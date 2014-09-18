@@ -16,18 +16,20 @@ class systemData(db.Model):
   voltage = db.FloatProperty(default=0.000)
   kiosk = db.StringProperty(default="Minazi")
   system = db.StringProperty(default="Left Solar Panel")
-  timestamp = db.IntegerProperty(default=0)
-  tdate = db.DateTimeProperty(auto_now_add=True)
+  timestamp = db.IntegerProperty(default=0) # exact datetime at which samples were taken
+  tdate = db.DateTimeProperty(auto_now_add=True) # date at which data has been received
   
 # Only one instance of the settings will be saved in the database and will
 # be regularly updated as users will change the settings. So this object
 # shouldn't affect storage limit.
 class remoteSettings(db.Model):
-  sampleTime  = db.StringProperty('5')
-  watchdogTimer = db.StringProperty('5')
-  noLines = db.StringProperty('10')
-  startOfDay = db.StringProperty('8:30')
-  endOfDay = db.StringProperty('17:50')
+  sampleTime  = db.StringProperty(default='600') 
+  watchdogTimer = db.StringProperty(default='40')
+  #noLines = db.StringProperty('10')
+  startOfDay = db.StringProperty(default='6:00')
+  endOfDay = db.StringProperty(default='18:00')
+  samplingFreq = db.IntegerProperty(default=30000)
+  #uploadRate = 
  
   # create parent key to ensure that all objects are of the same kind
 def object_key( object_name = default_entity_name):

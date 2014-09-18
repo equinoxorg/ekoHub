@@ -16,7 +16,7 @@ systems = { 'ls': "Left Solar Panel",
 # example json string
 js = "{\"ls\": {\"c\": 4.00, \"v\": 10.00},\"rs\": {\"c\": 2.00, \"v\": 3.00},\"lb\": {\"c\": 5.00, \"v\": 10.00},\"rb\": {\"c\": 2.00, \"v\": -1.00},\"li\": {\"c\": -1.00, \"v\": -1.00},\"ri\": {\"c\": 7.50, \"v\": -3.30},\"time\": 437}"
 class receiveSensorValues(webapp2.RequestHandler):
-	def get(self):
+	def post(self):
 
 		# look for the following parameters to 
 		# identify where the data is coming from
@@ -25,9 +25,11 @@ class receiveSensorValues(webapp2.RequestHandler):
 		self.response.clear()
 
 		if not dev == 'mBed':
+			self.response.set_status(400)
 			self.response.out.write("Device unknown<br/>")
 
 		if not kiosk:
+			self.response.set_status(400)
 			self.response.out.write("No kiosk info given<br/>")
 
 		else:
@@ -41,7 +43,7 @@ class receiveSensorValues(webapp2.RequestHandler):
 					#now save the values corresponding to each system
 					# to the datastore
 					for key in systems:
-						self.response.write(key + ": " + systems[key] + "<br/>")
+						#self.response.write(key + ": " + systems[key] + "<br/>")
 						#save data
 						systemData(current=data[key]["c"], 
 								voltage=data[key]["v"], 
@@ -52,6 +54,7 @@ class receiveSensorValues(webapp2.RequestHandler):
 					self.response.out.write("saved sensor data")
 
 				except ValueError, e:
+					self.response.set_status(400)
 					self.response.out.write("Data sent isn't a valid json string")
 
 

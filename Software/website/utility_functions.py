@@ -5,6 +5,7 @@ from google.appengine.ext import db
 from data import systemData
 import logging
 from datetime import datetime   
+import calendar
 
 # checks for active user session and returns name of user
 def active_user():
@@ -44,16 +45,28 @@ def serialize(data):
 
 def generate_random_data(kiosks, systems):
 
+    # DANGEROUS COMMAND
     #db.delete(systemData.all())
     i = 0
-    while i < 500:
+
+    d = datetime.utcnow()
+    tmp = calendar.timegm(d.utctimetuple())
+    while i < 100:
         dat = systemData()
         dat.current = float(random.uniform(0.0, 50.0)) # in mA
         dat.voltage = float(random.uniform(0.0, 240.0)) # in Volts
-        dat.sampleTime = random.randint(1, 10000) # in seconds
-        dat.kiosk = kiosks[random.randint(0, len(kiosks) - 1)]
-        dat.system = systems[random.randint(0, len(systems) - 1)]
-        #dat.put()
+        #dat.sampleTime = random.randint(1, 10000) # in seconds
+        #dat.kiosk = kiosks[random.randint(0, len(kiosks) - 1)]
+        #dat.system = systems[random.randint(0, len(systems) - 1)]
+        dat.kiosk = kiosks[0]
+        dat.system = systems[0]
+
+
+        d = datetime.utcnow()
+        dat.timestamp = tmp # write different timestamps
+        tmp = tmp + 60
+        #dat.timestamp = time.time()
+        dat.put()
 
         i = i + 1
 
