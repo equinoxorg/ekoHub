@@ -1,0 +1,4 @@
+checking if rtc is set:
+-- get current time from rtc.
+-- check if the date isn't the 1st of january 1970. Just check the year
+-- that should be enough

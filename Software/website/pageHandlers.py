@@ -56,18 +56,30 @@ class remoteSettingsHandler(webapp2.RequestHandler):
             active = False if (user_name == '') else True
             login = users.create_login_url(self.request.uri)
 
+            # get list of hours from 00 to 24
+            hours = []
+            for i in range(0, 25):
+                hours.append("%02d" % i)
+
+            #get list of minutes from 00 to 59
+            mins = []
+            for i in range(0, 60):
+                mins.append("%02d" % i)
+
             template_values = {
                 'user_name': user_name,
                 'active_user': active,
                 'login_url': login,
-                'saved': False
+                'saved': False,
+                'hours': hours,
+                'mins': mins
             }
             template = JINJA_ENVIRONMENT.get_template('/pages/settings.html')
             self.response.write(template.render(template_values))
 
         
     
-
+    #submission of control settings form
     def post(self):
 
         user_name = active_user()
@@ -83,19 +95,32 @@ class remoteSettingsHandler(webapp2.RequestHandler):
         # Create a new settings object
         m = remoteSettings()
 
-        # fetch content written from user
-        sampleTime = cgi.escape(self.request.get('SampleTime', '0'))
-        watchdogTimer = cgi.escape(self.request.get('watchdogTimer', '0'))
-        noLines = cgi.escape(self.request.get('nolines', '0'))
-        startOfDay = cgi.escape(self.request.get('startDay', '0'))
-        endOfDay = cgi.escape(self.request.get('endDay', '0'))
+        # fetch user selecting and save it to database
+        sampleRate = cgi.escape(self.request.get('sampleRate', '10'))
+        #startOfDay = cgi.escape(self.request.get('startDay', '06:30'))
+        startHour =  cgi.escape(self.request.get('startHour', 06))
+        startMins =  cgi.escape(self.request.get('startMins', 30))
+
+        endHour =  cgi.escape(self.request.get('endHour', 17))
+        endMins =  cgi.escape(self.request.get('endMins', 00))
+
+
+        #endOfDay = cgi.escape(self.request.get('endDay', '18:00'))
+        samplingFreq = cgi.escape(self.request.get('samplingFreq', 10000))
+        uploadRate = cgi.escape(self.request.get('uploadRate', 60))
+
+
 
         # save settings to datastore
-        m.sampleTime = sampleTime
-        m.watchdogTimer = watchdogTimer
-        m.noLines = noLines
-        m.startOfDay = startOfDay
-        m.endOfDay = endOfDay
+        m.sampleRate = int(sampleRate)
+        
+
+        m.startOfDay = startHour + ':' + startMins
+
+        m.endOfDay = endHour + ':' + endMins
+        m.samplingFreq = int(samplingFreq)
+        m.uploadRate = int(uploadRate)
+
         m.put()
 
         template = JINJA_ENVIRONMENT.get_template('/pages/settings.html')
@@ -108,11 +133,11 @@ class remoteSettingsHandler(webapp2.RequestHandler):
         }
         self.response.write(template.render(template_values))
 
-        logging.info("sampleTime = %s \n" % sampleTime)
-        logging.info("watchdogTimer = %s \n>" % watchdogTimer)
-        logging.info("noLines = %s \n" % noLines)
-        logging.info("startOfDay = %s \n" % startOfDay)
-        logging.info("endOfDay = %s \n" % endOfDay)
+        logging.info("sampleRate = %s \n" % sampleRate)
+        logging.info("startOfDay = %s \n" % (startHour + ':' + startMins))
+        logging.info("endOfDay = %s \n" % (endHour + ':' + endMins)) 
+        logging.info("samplingFreq = %s \n" % samplingFreq)
+        logging.info("uploadRate = %s \n" % uploadRate)
 
 class downloadsHandler(webapp2.RequestHandler):
     def get(self):

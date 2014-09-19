@@ -46,7 +46,7 @@ def serialize(data):
 def generate_random_data(kiosks, systems):
 
     # DANGEROUS COMMAND
-    #db.delete(systemData.all())
+    db.delete(systemData.all())
     i = 0
 
     d = datetime.utcnow()
@@ -66,7 +66,7 @@ def generate_random_data(kiosks, systems):
         dat.timestamp = tmp # write different timestamps
         tmp = tmp + 60
         #dat.timestamp = time.time()
-        dat.put()
+        #dat.put()
 
         i = i + 1
 

@@ -39,7 +39,7 @@ class MainPage(webapp2.RequestHandler):
   def get(self):
 
     i = 0
-    #generate_random_data(kiosks, systems)
+    generate_random_data(kiosks, systems)
 
     #showDates()
 

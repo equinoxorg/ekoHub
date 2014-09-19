@@ -23,13 +23,12 @@ class systemData(db.Model):
 # be regularly updated as users will change the settings. So this object
 # shouldn't affect storage limit.
 class remoteSettings(db.Model):
-  sampleTime  = db.StringProperty(default='600') 
-  watchdogTimer = db.StringProperty(default='40')
+  sampleRate  = db.IntegerProperty(default=10) #in mins
   #noLines = db.StringProperty('10')
   startOfDay = db.StringProperty(default='6:00')
   endOfDay = db.StringProperty(default='18:00')
-  samplingFreq = db.IntegerProperty(default=30000)
-  #uploadRate = 
+  samplingFreq = db.IntegerProperty(default=30000) #sampling frequency of AC signal
+  uploadRate = db.IntegerProperty(default=60)# in mins
  
   # create parent key to ensure that all objects are of the same kind
 def object_key( object_name = default_entity_name):

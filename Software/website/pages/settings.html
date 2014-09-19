@@ -120,39 +120,70 @@
           </div>
 
           <div class="form-group">
-            <label for="sampleTime" class="col-sm-2 control-label">Sample Time (sec)</label>
+            <label for="sampleRate" class="col-sm-2 control-label">Sample Rate (sec)</label>
             <div class="col-sm-10">  
-              <input type="text" class="form-control" name="SampleTime" placeholder="Sample Time" size="30">
+              <input type="text" class="form-control" name="sampleRate" placeholder="sample rate" size="30">
             </div>
          </div>
-         <div class="form-group">
-            <label for="WatchdogTime" class="col-sm-2 control-label">Watchdog delay (sec)</label>
+   
+            <div class="form-group">
+            <label for="sampleRate" class="col-sm-2 control-label">Sampling Freq (Hz)</label>
             <div class="col-sm-10">  
-              <input type="text" class="form-control" name="WatchdogTime" placeholder="Watchdog delay" size="30">
-            </div>
-         </div>
-                   
-
-          <div class="form-group">
-            <label for="nolines" class="col-sm-2 control-label">File maximum lines (sec)</label>
-            <div class="col-sm-10">  
-              <input type="text" class="form-control" name="nolines" placeholder="number of lines" size="30">
+              <input type="text" class="form-control" name="samplingFreq" placeholder="sampling frequency" size="30">
             </div>
          </div>
 
           <div class="form-group">
+
+
             <label for="startDay" class="col-sm-2 control-label">Start of the day</label>
             <div class="col-sm-10">  
-              <input type="text" class="form-control" name="startDay" placeholder="hrs:min" size="30">
+            <select name="startHour" id="hours">
+                  <option value = "none">hh</option>  
+                  {% for i in hours %}
+                   <option> {{i}} </option> 
+                  {% endfor %}
+            </select>
+            :
+            <select name="startMins" id="mins">
+                  <option value = "none">mm</option> 
+                  {% for i in mins%} 
+                   <option> {{i}} </option> 
+                   {% endfor %}
+            </select>
+
+            <!--  <input type="text" class="form-control" name="startDay" placeholder="hrs:min" size="30"> -->
             </div>
          </div>
 
           <div class="form-group">
             <label for="endDay" class="col-sm-2 control-label">End of the day</label>
             <div class="col-sm-10">  
-              <input type="text" class="form-control" name="endDay" placeholder="hrs:min" size="30">
+            <!--  <input type="text" class="form-control" name="endDay" placeholder="hrs:min" size="30"> -->
+              <select name="endHour" id="hours">
+                    <option value = "none">hh</option>  
+                    {% for i in hours %}
+                     <option> {{i}} </option> 
+                    {% endfor %}
+              </select>
+              :
+              <select name="endMins" id="mins">
+                    <option value = "none">mm</option> 
+                    {% for i in mins%} 
+                     <option> {{i}} </option> 
+                     {% endfor %}
+              </select>
             </div>
          </div>
+
+          <div class="form-group">
+            <label for="endDay" class="col-sm-2 control-label">Upload rate (mins)</label>
+            <div class="col-sm-10">  
+              <input type="text" class="form-control" name="uploadRate" placeholder="upload rate" size="30">
+            </div>
+         </div>
+
+
       </fieldset>
 
         <div style="position:relative;left:25px;">

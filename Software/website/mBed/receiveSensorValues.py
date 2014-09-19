@@ -14,7 +14,7 @@ systems = { 'ls': "Left Solar Panel",
 }
 
 # example json string
-js = "{\"ls\": {\"c\": 4.00, \"v\": 10.00},\"rs\": {\"c\": 2.00, \"v\": 3.00},\"lb\": {\"c\": 5.00, \"v\": 10.00},\"rb\": {\"c\": 2.00, \"v\": -1.00},\"li\": {\"c\": -1.00, \"v\": -1.00},\"ri\": {\"c\": 7.50, \"v\": -3.30},\"time\": 437}"
+#js = "{\"ls\": {\"c\": 4.00, \"v\": 10.00},\"rs\": {\"c\": 2.00, \"v\": 3.00},\"lb\": {\"c\": 5.00, \"v\": 10.00},\"rb\": {\"c\": 2.00, \"v\": -1.00},\"li\": {\"c\": -1.00, \"v\": -1.00},\"ri\": {\"c\": 7.50, \"v\": -3.30},\"time\": 437}"
 class receiveSensorValues(webapp2.RequestHandler):
 	def post(self):
 
@@ -49,7 +49,9 @@ class receiveSensorValues(webapp2.RequestHandler):
 								voltage=data[key]["v"], 
 								kiosk=kiosk,
 								system=systems[key],
-								timestamp= int(data["time"])).put()				
+								timestamp= int(data["time"])).put()	
+
+						#timestamp =			
 
 					self.response.out.write("saved sensor data")
 
