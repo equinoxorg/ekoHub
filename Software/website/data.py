@@ -23,6 +23,8 @@ class systemData(db.Model):
 # be regularly updated as users will change the settings. So this object
 # shouldn't affect storage limit.
 class remoteSettings(db.Model):
+
+  kiosk = db.StringProperty(default="Minazi")
   sampleRate  = db.IntegerProperty(default=10) #in mins
   #noLines = db.StringProperty('10')
   startOfDay = db.StringProperty(default='6:00')

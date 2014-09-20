@@ -87,41 +87,46 @@ class remoteSettingsHandler(webapp2.RequestHandler):
         login = users.create_login_url(self.request.uri)
 
 
-        # delete previous settings and update
-        # with new settings. Note: Form validation is already done
+
+        # Get the current settings for the chosen kiosk if there are any
+        m = remoteSettings().all()
+        kiosk = cgi.escape(self.request.get('kiosk', 'Minazi'))
+        m.filter('kiosk = ', kiosk)
+        m = m.run()
+
+
+        # delete current settings of the selected kiosk and 
+        # write the new settings. Note: Form validation is already done
         # in Javascript
-        db.delete(remoteSettings.all())
+        db.delete(m)
 
-        # Create a new settings object
-        m = remoteSettings()
-
-        # fetch user selecting and save it to database
+        # Now fetch user selection and save it to database
         sampleRate = cgi.escape(self.request.get('sampleRate', '10'))
-        #startOfDay = cgi.escape(self.request.get('startDay', '06:30'))
+    
         startHour =  cgi.escape(self.request.get('startHour', 06))
         startMins =  cgi.escape(self.request.get('startMins', 30))
 
         endHour =  cgi.escape(self.request.get('endHour', 17))
         endMins =  cgi.escape(self.request.get('endMins', 00))
 
-
-        #endOfDay = cgi.escape(self.request.get('endDay', '18:00'))
         samplingFreq = cgi.escape(self.request.get('samplingFreq', 10000))
         uploadRate = cgi.escape(self.request.get('uploadRate', 60))
 
+        # create a new remote settings object
+        p = remoteSettings()
 
+        p.kiosk = kiosk
 
         # save settings to datastore
-        m.sampleRate = int(sampleRate)
-        
+        p.sampleRate = int(sampleRate)
 
-        m.startOfDay = startHour + ':' + startMins
+        p.startOfDay = startHour + ':' + startMins
 
-        m.endOfDay = endHour + ':' + endMins
-        m.samplingFreq = int(samplingFreq)
-        m.uploadRate = int(uploadRate)
+        p.endOfDay = endHour + ':' + endMins
+        p.samplingFreq = int(samplingFreq)
+        p.uploadRate = int(uploadRate)
 
-        m.put()
+        p.put()
 
         template = JINJA_ENVIRONMENT.get_template('/pages/settings.html')
 
@@ -132,12 +137,12 @@ class remoteSettingsHandler(webapp2.RequestHandler):
             'saved': True
         }
         self.response.write(template.render(template_values))
-
+"""
         logging.info("sampleRate = %s \n" % sampleRate)
         logging.info("startOfDay = %s \n" % (startHour + ':' + startMins))
         logging.info("endOfDay = %s \n" % (endHour + ':' + endMins)) 
         logging.info("samplingFreq = %s \n" % samplingFreq)
-        logging.info("uploadRate = %s \n" % uploadRate)
+        logging.info("uploadRate = %s \n" % uploadRate) """
 
 class downloadsHandler(webapp2.RequestHandler):
     def get(self):
