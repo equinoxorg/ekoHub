@@ -1,0 +1,38 @@
+
+initializing time boundaries from the default times
+#define DAY_START_DEFAULT "06:30"
+#define DAY_END_DEFAULT "17:40"
+
+updating time boundaries upon reception of settings from the server
+- 1. server sends dayStart and dayEnd timestamps to client
+- client converts these timestamps to time objects, retrieves
+- the hour and minutes fields of these times and saves them to the
+- dayStart and day end buffers
+
+
+
+// day start
+time_t t1 = time(dayStartTimestamp);
+struct tm * tstart = localtime(&t1);
+
+// get the hour and minutes from the timestamp
+// and assign them to the actual start time
+tstart-> tm_hour = start->tm_hour
+tstart->tm_min = start->tm_min
+
+
+// day end
+time_t t2 = time(dayEndTimestamp);
+struct tm * tend = localtime(&t2);
+dayStart-> tm_hour = tend->tm_hour
+dayEnd->tm_min = tend->tm_min
+
+
+// comparing rtc time with boundaries
+
+time_t curr_time = time(NULL);
+note: dayEnd > dayStart
+00 01 02 ... 06 ... 09..11.. 14...17..20..23..00
+
+if
+

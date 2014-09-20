@@ -11,6 +11,7 @@ import jinja2
 import sys
 import logging
 import json
+import urllib
 
 
 JINJA_ENVIRONMENT = jinja2.Environment(
@@ -21,26 +22,32 @@ JINJA_ENVIRONMENT = jinja2.Environment(
 class remoteSettingsHandler(webapp2.RequestHandler):
     def get(self):
 
+        # search of url parameters
         dev = cgi.escape(self.request.get('dev'))
+        kiosk = cgi.escape(self.request.get('kiosk'))
+        saved = cgi.escape(self.request.get('saved'))
 
 
-        #check if mBed is requesting data from this page
-        if dev == 'mBed':
+
+        #check if the mBed is requesting data from this page
+        if dev == 'mBed' and kiosk:
 
             try:
-                # get remote settings
-                q = db.Query(remoteSettings).get()
+
+                self.response.write('filtering')
+                # get remote settings from the specified kiosk
+                q = db.Query(remoteSettings)
+
+                m = q.filter('kiosk = ', kiosk).get()
 
                 # Convert them to a json object
                 json_data = {}
-                json_data['sampleTime'] = q.sampleTime
-                json_data['watchdogTimer'] = q.watchdogTimer
-                json_data['noLines'] = q.noLines
-                json_data['dayStart'] = q.startOfDay
-                json_data['dayEnd'] =  q.endOfDay
-                #json_data['uploadRate']
-                #json_data['downloadRate']
-                
+                json_data['sampleRate'] = m.sampleRate
+                json_data['dayStart'] = m.startOfDay
+                json_data['dayEnd'] =  m.endOfDay
+                json_data['samplingFreq'] = m.samplingFreq
+                json_data['uploadRate'] = m.uploadRate
+
                 self.response.write(json.dumps(json_data))
 
             # Set HTTP status code
@@ -55,10 +62,11 @@ class remoteSettingsHandler(webapp2.RequestHandler):
             user_name = active_user()
             active = False if (user_name == '') else True
             login = users.create_login_url(self.request.uri)
+            saved = 0 if (saved == '') else int(saved)
 
             # get list of hours from 00 to 24
             hours = []
-            for i in range(0, 25):
+            for i in range(0, 24):
                 hours.append("%02d" % i)
 
             #get list of minutes from 00 to 59
@@ -70,7 +78,6 @@ class remoteSettingsHandler(webapp2.RequestHandler):
                 'user_name': user_name,
                 'active_user': active,
                 'login_url': login,
-                'saved': False,
                 'hours': hours,
                 'mins': mins
             }
@@ -128,21 +135,9 @@ class remoteSettingsHandler(webapp2.RequestHandler):
 
         p.put()
 
-        template = JINJA_ENVIRONMENT.get_template('/pages/settings.html')
-
-        template_values = {
-            'user_name': user_name,
-            'active_user': active,
-            'login_url': login,
-            'saved': True
-        }
-        self.response.write(template.render(template_values))
-"""
-        logging.info("sampleRate = %s \n" % sampleRate)
-        logging.info("startOfDay = %s \n" % (startHour + ':' + startMins))
-        logging.info("endOfDay = %s \n" % (endHour + ':' + endMins)) 
-        logging.info("samplingFreq = %s \n" % samplingFreq)
-        logging.info("uploadRate = %s \n" % uploadRate) """
+        # add query string indicating that the new settings have been saved
+        params = urllib.urlencode({'saved': 1})
+        self.redirect('/Settings?' + params)
 
 class downloadsHandler(webapp2.RequestHandler):
     def get(self):
