@@ -27,14 +27,12 @@ class remoteSettingsHandler(webapp2.RequestHandler):
         kiosk = cgi.escape(self.request.get('kiosk'))
         saved = cgi.escape(self.request.get('saved'))
 
-
-
         #check if the mBed is requesting data from this page
         if dev == 'mBed' and kiosk:
 
             try:
 
-                self.response.write('filtering')
+                #self.response.write('filtering')
                 # get remote settings from the specified kiosk
                 q = db.Query(remoteSettings)
 
@@ -79,7 +77,8 @@ class remoteSettingsHandler(webapp2.RequestHandler):
                 'active_user': active,
                 'login_url': login,
                 'hours': hours,
-                'mins': mins
+                'mins': mins,
+                'saved': saved
             }
             template = JINJA_ENVIRONMENT.get_template('/pages/settings.html')
             self.response.write(template.render(template_values))
@@ -220,7 +219,6 @@ class downloadsHandler(webapp2.RequestHandler):
             self.response.headers["Content-Type"] = "text/csv"
             self.response.headers["Cache-Control"] = "no-cache"
             self.response.headers["Content-Disposition"] = "attachment; filename=kioskData.csv"
-            #self.response.headers["Content-Length"] = size
             self.response.headers["Content-Transfer-Encoding"] = "binary"
             self.response.headers["Pragma"] = "no-cache"
             self.response.write(buf)
