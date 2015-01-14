@@ -1,0 +1,35 @@
+[Eagle]
+Version="06 04 00"
+Platform="Windows"
+Serial="62191E841E-LSR-WLM-1EL"
+Globals="Globals"
+Desktop="Desktop"
+
+[Globals]
+AutoSaveProject=1
+UsedLibrary="C:/Program Files (x86)/EAGLE-6.4.0/lbr/jumper.lbr"
+UsedLibrary="C:/Users/Saurab/Documents/eagle/eko-hardware-designs-master/libraries/atmospheric.lbr"
+UsedLibrary="C:/Users/Saurab/Documents/eagle/eko-hardware-designs-master/libraries/connectors-pheonix.lbr"
+UsedLibrary="C:/Users/Saurab/Documents/eagle/eko-hardware-designs-master/libraries/connectors-terminal.lbr"
+UsedLibrary="C:/Users/Saurab/Documents/eagle/eko-hardware-designs-master/libraries/connectors-usb-ca508fyp.lbr"
+UsedLibrary="C:/Users/Saurab/Documents/eagle/eko-hardware-designs-master/libraries/diodes.lbr"
+UsedLibrary="C:/Users/Saurab/Documents/eagle/eko-hardware-designs-master/libraries/eko-parts.lbr"
+UsedLibrary="C:/Users/Saurab/Documents/eagle/eko-hardware-designs-master/libraries/ic-optoisolator.lbr"
+UsedLibrary="C:/Users/Saurab/Documents/eagle/eko-hardware-designs-master/libraries/modules.lbr"
+UsedLibrary="C:/Users/Saurab/Documents/eagle/eko-hardware-designs-master/libraries/passive-trimmer.lbr"
+UsedLibrary="C:/Users/Saurab/Documents/eagle/eko-hardware-designs-master/libraries/Pauls_parts.lbr"
+UsedLibrary="C:/Users/Saurab/Documents/eagle/eko-hardware-designs-master/libraries/Sensor.lbr"
+UsedLibrary="C:/Users/Saurab/Documents/eagle/EEE Design Rules & Parts Library/EEE_Lab.lbr"
+UsedLibrary="C:/Users/Saurab/Documents/eagle/eko-hardware-designs-master/libraries/mcp.lbr"
+UsedLibrary="C:/Users/Saurab/Documents/eagle/lbr/resistor.lbr"
+UsedLibrary="C:/Users/Saurab/Documents/eagle/lbr/supply1.lbr"
+
+[Win_1]
+Type="Control Panel"
+Loc="-1374 -8 -739 721"
+State=1
+Number=0
+
+[Desktop]
+Screen="2732 768"
+Window="Win_1"

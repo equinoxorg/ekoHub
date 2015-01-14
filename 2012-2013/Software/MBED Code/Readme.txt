@@ -1,0 +1,3 @@
+ - The apn needs to be changed according to the mobile service provider you are using
+ - depending on the server you are using, you will need to change the HTTP post method
+ - To increase the amount of data you can send in one post, you need to increase the chunk size in HTTPClient
