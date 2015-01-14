@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+{% autoescape true %}
+<html>
+	<head>
+		 <link href="stylesheets/bootstrap.css" rel="stylesheet" media="screen">
+
+		<script>
+			function message() {
+			    try {
+			        adddlert("Welcome guest!");
+			    }
+			    catch(err) {
+			        var text = "There was an error on this page.\n\n";
+			        text += "Error description: " + err.message + "\n\n";
+			        text += "Click OK to continue.\n\n";
+			        alert(text);
+			    }
+			}
+		</script>
+	</head>
+
+<body class="container">
+	<!--<h1>user name is {{user_name}} </h1> -->
+	<p id="demo"></p>
+	<input type="button" value="View message" onclick="message()">
+	
+	<div class="navbar">
+	  <div class="navbar-inner">
+	    <a class="brand" href="#">Title</a>
+	    <ul class="nav">
+	      <li class="active"><a href="#">Home</a></li>
+	      <li><a href="#">Link</a></li>
+	      <li><a href="#">Link</a></li>
+	    </ul>
+	  </div>
+	</div>
+	<span class="label">Default</span>
+
+	<div class="panel panel-default">
+	  
+
+	<script type="text/javascript">
+		function login_button(str){
+			var tmp = "";
+
+			if (str == "")
+				return "login";
+
+			else
+				return "Welcome " + str;
+		}
+
+		try {
+			// check if user has logged in
+			var result = login_button({{user_name|safe}});
+			document.getElementById("demo").innerHTML = result;
+		}
+
+		catch(err){
+			var text = "There was an error on this page.\n\n";
+	        text += "Error description: " + err.message + "\n\n";
+	        text += "Click OK to continue.\n\n";
+	        alert(text);
+		}
+
+		
+	</script>
+	
+</body>
+
+</html>
+{% endautoescape %}

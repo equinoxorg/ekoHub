@@ -1,0 +1,46 @@
+application: s~eqdatalogger2
+version: 1
+runtime : python27
+api_version: 1
+threadsafe: true
+
+
+
+handlers:
+- url: /images
+  static_dir: images
+  mime_type: image/png  
+
+
+- url: /css
+  static_dir: css
+
+#- url: /.*
+#  script: main.app
+
+- url: /(sensors|log|time|Settings|Users|logout|Downloads(\/)?(\?)?.*|Kiosks)?
+  script: main.app
+
+- url: /receiveSensorValues
+  script: main.app
+
+
+#- url: /Kiosks
+#  static_files: pages/kiosks.html
+#  upload: pages/kiosks.html
+
+#- url: /Downloads
+#  static_files: pages/downloads.html
+#  upload: pages/downloads.html
+
+- url: /(upload|uploadBlob)?
+  script: blobApp.app
+
+builtins:
+- remote_api: on
+
+libraries:
+- name: webapp2
+  version: latest
+- name: jinja2
+  version: latest

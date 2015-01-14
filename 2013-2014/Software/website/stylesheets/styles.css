@@ -1,0 +1,108 @@
+/*Content Divs*/
+
+#intro {
+	width: 320px;
+	background-color: #aaa;
+	height: 300px;
+	float:left;
+}
+
+
+
+#boxes{
+	margin-top: 320px;
+	height: 300px;
+	display:block;
+}
+
+
+#footer{
+  height: 100px;
+  width:100%;
+  margin-top: 40px; 
+  background-color: black;
+  margin-bottom: 0px;
+
+  bottom:0;
+  text-align: center;
+}
+
+#graph-panel-cont {
+  height: 350px;
+  width: 100%;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  display: block;
+
+}
+
+#timeline {
+  float: left;
+  width: 600px;
+  height: 320px; 
+}
+
+#graph-side-panel {
+  height: 300px;
+  width: 250px;
+  float: right;
+  display:inline;
+  background-color: green;
+}
+
+#bottom_list{
+  height: 100px;
+  /*display: block; 
+  background-color: red; */
+  margin-top: 300px;
+  width: 100%;
+  
+}
+#footer-text {
+  font-size: 15px;
+  color: white;
+
+}
+#page-title:after {
+    content:' ';
+    display:block;
+    border:1px solid black;
+}
+
+#graph-table {
+	float: right;
+	
+	/*background-color: yellow; */
+	width: 350px ;
+	height: 320px;
+}
+
+
+#sign-in-element{
+
+	float:right;
+	/*padding-bottom: 4px;
+	padding-top: 4px; */
+	padding: 4px 4px 4px 4px;
+	position: relative;
+	bottom: -10px;
+	right: -5px;
+} 
+
+#welcome-message{
+	color: white; 
+	display:inline-block;
+
+	/*margin: auto auto;
+	border:1px solid white;
+	position: absolute;*/
+}
+
+#menu{
+	max-height: : 30px;
+
+}
+.sitemenu .active a,
+.sitemenu .active a:hover {
+    background-color: red;
+} 

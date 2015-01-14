@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+{% autoescape true %}
+
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>e.quinox Datalogger 2014 | About</title>
+   
+    <link href="css/bootstrap.css" rel="stylesheet" media="screen">
+    <link href="css/styles.css" rel="stylesheet" media="screen">
+	  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+	  <script type="text/javascript" src="//www.google.com/jsapi"></script>
+    {% block javascript %}
+        <script type="text/javascript" >
+          {% include "/js/plotgraphs.js" %}
+        </script>
+    {% endblock %}
+
+    <script type="text/javascript">
+      google.load('visualization', '1', {'packages':['annotatedtimeline', 'corechart']});
+      google.setOnLoadCallback(drawVisualization);
+      drawVisualization();
+    </script> 
+  </head>
+
+  <body>
+
+    <div id="wrapper">
+
+	    <div id="header">
+	      <div id="topnav">
+	        <div class="moduletable">
+	            {% if active_user == True %}
+	            <div id="welcome-message">
+	              Welcome, {{user_name}}!    
+	            </div>    
+	            {% endif %}     
+
+
+	              <ul class="menu">
+	                <li><a href="http://e.quinox.org/join" >Get Involved</a></li>
+	                <li><a href="http://www.e.quinox.org/" >Main Site</a></li>
+	                <li><a href="http://www.e.quinox.org/wiki" >Wiki</a></li>
+	                <li><a href="https://github.com/equinoxorg/Datalogging_2012-2013" ><img src="images/socialicon/github.png" alt="Twitter" /></a></li>
+	                <li><a href="http://twitter.com/equinoximperial" ><img src="images/socialicon/twitter.png" alt="Twitter" /></a></li>
+	                <li><a href="http://facebook.com/equinoximperial" ><img src="images/socialicon/facebook.png" alt="Facebook" /></a></li>
+	                <li><a href="http://www.flickr.com/equinoximperial" ><img src="images/socialicon/flickr.png" alt="Flickr" /></a></li>
+	                <li><a href="http://www.youtube.com/equinoxvloggers" ><img src="images/socialicon/youtube.png" alt="Youtube" /></a></li>
+	              </ul>
+	        </div>
+	      </div>  
+
+	      <nav class="navbar navbar-inverse" role="navigation">
+	        <div class="navbar-width">
+
+	          <div class="navbar-header">
+	            <a class="navbar-brand" href="http://e.quinox.org"><img src="images/logo.png"></a>
+	            <a class="navbar-brand" ><img class="logohub" src="images/logo_hub.png"></a>
+	          </div>
+
+	          <div class="navbar-collapse  navbarHeaderCollapse">
+
+
+	            <ul class="nav navbar-nav" style="padding-left:15%; ">      
+	              <li><a href="/">Home</a></li>
+
+	              <li class = "dropdown">
+	                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" >    Kiosks<b class="caret"></b>
+	                  </a>
+	                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+	                    <li><a href="#">Batima</a></li>
+	                    <li><a href="#">Minazi</a></li>
+	                    <li><a href="#">Kigali</a></li>
+	                  </ul>
+	              </li>
+	              <li><a href="/Downloads">Downloads</a></li>
+	              <li><a href="/Settings">Settings</a></li>
+	              <li class="active"><a href="/About">About</a></li>
+	            </ul>
+	            <!--
+	            <div style="background-color: #428BCA; width:2px; border:1px; height: 100%; float:left;">
+	            </div> -->
+	            <div class="sign-in">
+	              {% if active_user == True %}
+	                <a href="/logout"  class="btn btn-danger btn-s" role="button">Sign Out</a>
+	              {% else %}
+	                <a href="{{login_url}}"  class="btn btn-success btn-s" role="button">Sign in</a>
+	              {% endif %}
+	            </div>
+	          </div>
+	       </div> 
+	      </nav>
+	    </div>
+
+	     <div id="content" class="container">
+	      	<h1>Contact Us</h1> </br>
+			
+			There will be some contact information here. facebook, twitter, linkedin...etc
+	     </div>
+
+	      <div class="footer">
+	        <div class="container">
+	          <h1 id="footer-text">Energy kiosk Observer 2014. All rights reserved.</h1>
+	    	</div>
+	       </div>
+    </div>
+
+  </body>
+</html>
+{% endautoescape %}
+
+
+

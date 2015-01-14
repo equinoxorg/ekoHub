@@ -1,0 +1,15 @@
+remote configuration variables:
+- upload rate: rate at which the mbed uploads sensor values to the 
+- download rate: rate at which the mbed checks for remote settings
+
+               if(lines = 0){
+                    if(!strcmp(boards[i].boardType, "DCVoltage")){
+                        fprintf(fp,"left sp, right batt, right sp, left batt\n");
+                        
+                    } else if(!strcmp(boards[i].boardType, "DCCurrent"){
+                        fprintf(fp,"right batt, right sp, left sp, left batt\n");
+                    }  else{
+                        fprintf(fp,"right inv I, left inv I, left inv V, right inv V\n", r);
+                    }
+                    
+                }

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+{% autoescape true %}
+
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>e.quinox Datalogger 2014</title>
+   
+    <link href="css/bootstrap.css" rel="stylesheet" media="screen">
+    <link href="css/styles.css" rel="stylesheet" media="screen">
+	  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+	  <script type="text/javascript" src="//www.google.com/jsapi"></script>
+	  <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+	  <script type="text/javascript" src="/js/jqTest.js"></script>
+
+    {% block javascript %}
+        <script type="text/javascript" >
+          {% include "/js/plotgraphs.js" %}
+        </script>
+    {% endblock %}
+
+    <script type="text/javascript">
+      google.load('visualization', '1', {'packages':['annotatedtimeline', 'corechart']});
+      google.setOnLoadCallback(drawVisualization);
+      drawVisualization();
+
+
+      function selectAllKiosks(checkbox){
+      	if(checkbox.checked){
+      		//alert ("The check box is checked.");
+      		var selectList = document.getElementById("multiSelect");
+
+      		// iterate over the list of options
+      		for (var i = 0; i < selectList.length; i++){
+
+      			selectList.options[i].selected = true;
+      		}
+      	}
+      }
+
+      function updateOptions(dateList){
+
+      	 //var opt = date.options
+
+      	 // get the name of the date selector frst
+      	 var name = dateList.name;
+
+      	 // get the selected option
+      	 //var opt = dateList.options;
+
+      	 // get the selected option
+      	 var selected = dateList.options[dateList.selectedIndex].value;
+
+      	 // save the date
+      	 var d = new Date(selected);
+
+      	 
+      	 if (name == "startDate"){
+      	 	// compare with end dates
+      	 	var endDates = document.getElementById("endDate");
+
+      	 	// The first element is just an instruction
+      	 	for(var i= 1 ; i < endDates.options.length; i++){
+
+
+      	 		var tmp = new Date(endDates.options[i].value);
+      	 		if (tmp < d){
+
+      	 			endDates.remove(i);
+
+      	 		}
+
+      	 	}
+
+      	 }
+
+      	 
+      	 else if (name == "endDate"){
+      	 	      	 	// compare with end dates
+      	 	var startDates = document.getElementById("starDate");
+
+      	 	// The first element is just an instruction
+      	 	for(var i= 1 ; i < startDates.options.length; i++){
+
+
+      	 		var tmp = new Date(starDates.options[i].value);
+      	 		if (tmp < d){
+      	 			
+      	 			endDates.remove(i);
+
+      	 		}
+
+      	 	}
+
+      	 }
+
+      }
+
+      // Check if download form is valid when user submits it
+      // before sending the content to server
+      function validateForm(){
+
+      	var checkbox = document.getElementsByName('checkbox');
+      	
+      	var sl = document.getElementById("startDate");
+      	var el = document.getElementById("endDate");
+
+  
+      	// if both of the dates haven't been selected
+      	if (sl.options[sl.selectedIndex].value == "none" ||
+      		el.options[el.selectedIndex].value == "none"){
+
+      		alert("Both dates must be selected");
+      		return false;
+
+      	}
+
+      	return false;
+      }
+
+      function dateIsSelected(){
+
+
+
+      }
+    </script> 
+  </head>
+
+  <body>
+
+    <div id="wrapper">
+    	<div id="header">
+	      <div id="topnav">
+	        <div class="moduletable">
+	            {% if active_user == True %}
+	            <div id="welcome-message">
+	              Welcome, {{user_name}}!    
+	            </div>    
+	            {% endif %}     
+
+
+	              <ul class="menu">
+	                <li><a href="http://e.quinox.org/join" >Get Involved</a></li>
+	                <li><a href="http://www.e.quinox.org/" >Main Site</a></li>
+	                <li><a href="http://www.e.quinox.org/wiki" >Wiki</a></li>
+	                <li><a href="https://github.com/equinoxorg/Datalogging_2012-2013" ><img src="images/socialicon/github.png" alt="Twitter" /></a></li>
+	                <li><a href="http://twitter.com/equinoximperial" ><img src="images/socialicon/twitter.png" alt="Twitter" /></a></li>
+	                <li><a href="http://facebook.com/equinoximperial" ><img src="images/socialicon/facebook.png" alt="Facebook" /></a></li>
+	                <li><a href="http://www.flickr.com/equinoximperial" ><img src="images/socialicon/flickr.png" alt="Flickr" /></a></li>
+	                <li><a href="http://www.youtube.com/equinoxvloggers" ><img src="images/socialicon/youtube.png" alt="Youtube" /></a></li>
+	              </ul>
+	        </div>
+	      </div>  
+
+	      <nav class="navbar navbar-inverse" role="navigation">
+	        <div class="navbar-width">
+
+	          <div class="navbar-header">
+	            <a class="navbar-brand" href="http://e.quinox.org"><img src="images/logo.png"></a>
+	            <a class="navbar-brand" ><img class="logohub" src="images/logo_hub.png"></a>
+	          </div>
+
+	          <div class="navbar-collapse  navbarHeaderCollapse">
+
+
+	            <ul class="nav navbar-nav" style="padding-left:15%; ">      
+	              <li ><a href="/">Home</a></li>
+
+	              <li class = "dropdown">
+	                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" > Kiosks<b class="caret"></b>
+	                  </a>
+	                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+	                    <li><a href="#">Batima</a></li>
+	                    <li><a href="#">Minazi</a></li>
+	                    <li><a href="#">Kigali</a></li>
+	                  </ul>
+	              </li>
+	              <li class="active"><a href="/Downloads">Downloads</a></li>
+	              <li><a href="/Settings">Settings</a></li>
+	              <li><a href="/About">About</a></li>
+	            </ul>
+	            <!--
+	            <div style="background-color: #428BCA; width:2px; border:1px; height: 100%; float:left;">
+	            </div> -->
+	            <div class="sign-in">
+	              {% if active_user == True %}
+	                <a href="/logout"  class="btn btn-danger btn-s" role="button">Sign Out</a>
+	              {% else %}
+	                <a href="{{login_url}}"  class="btn btn-success btn-s" role="button">Sign in</a>
+	              {% endif %}
+	            </div>
+	          </div>
+	       </div> 
+	      </nav>
+	    </div>
+
+		<div id="content" class="container">		
+			<h1 id="page-title">Downloads</h1> </br>
+			
+			{% if noDates == False %}
+			
+				<p>Use the filters below to select which kiosks you want to download data from then press the download button when finished. This will generate a csv file containing the relevant data.</p> <br>
+
+			
+				<form action="/Downloads?downloading=1" class="well"role="form" method="get">
+				
+					<fieldset "form_border">
+						<legend class="form_border"> Kiosk Data download</legend>
+						<div id="form-content">
+
+							<div id = "date" style="float:left; margin-right: 40px;">
+							   	<div class="form-group" >
+							      <p><label class="field" >Start date </label>
+										<select name="startDate" id="startDate" onchange="updateOptions(this)">
+											<option value = "none">Select Date --</option>	
+											{% for p in dates %}
+												<option> {{p.strftime('%a %d %b %Y') }} </option>	
+											{% endfor %}
+										</select>
+
+
+							   	</div>
+
+							   	<div class="form-group">
+							      <p><label class="field">End date </label>
+										<select name="endDate" id="endDate" onchange="updateOptions(this)">
+											<option value = "none">Select Date --</option>
+											{% for p in dates %}
+												<option> {{p.strftime('%a %d %b %Y')}} </option>	
+											{% endfor %}
+										</select>
+							   	</div>
+						   	</div>
+
+
+						   	<div id ="multiselect" style="float:left">
+							   	<div style="float:left; margin-right: 10px;">Choose Kiosk(s)</div>
+							   	<div class="control-group" style="float:left;">  
+						              <select multiple="multiple" id="multiSelect">  
+						                <option value = "1" selected>Minazi</option>  
+						                <option value = "2">Batima</option>  
+						                <option value = "3">Kigali</option>  
+						                <option value = "4">Rugarahara</option>  
+						              </select>  
+					         	</div>
+					        </div>
+
+					        <div id= "check" style="float:left; margin-left: 20px;">
+					             All kiosks
+						         <input name = "checkbox"type="checkbox" onclick="selectAllKiosks(this);" id="optionsCheckbox" value="1">       
+					        </div>
+
+					        <input type="hidden" name="downloading" value="1" /> 
+			          	
+				        </div>
+					</fieldset>
+						<br>
+						<div style="position:relative;left:30px;">
+							<button id = "download" type="submit" class="btn btn-primary" onclick="validateForm()">Download</button>  
+					    	<button type="button" class="btn">Cancel</button>  
+					    </div>
+				</form>
+			{% else %}
+				<p>  {{errmsg}} </p>
+			{% endif %}
+		</div>
+
+	      <div class="footer">
+	        <div class="container">
+	          <h1 id="footer-text">Energy kiosk Observer 2014. All rights reserved.</h1>
+	        </div>
+	      </div>
+    </div>
+
+  </body>
+</html>
+{% endautoescape %}
+
