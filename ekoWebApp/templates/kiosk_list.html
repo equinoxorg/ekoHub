@@ -1,0 +1,157 @@
+{% extends 'main.html' %}
+
+{% block header %}
+<div class="grid_12">
+	<div class="pad5">
+		<h2>Registered Kiosks</h2>
+		<p>This page lists the energy kiosks registered for {{ user_name }}. You may <a href="/kiosks/register" title="Register new kiosk">Register</a> a new kiosk or contact <a href='/help'>support</a> to transfer ownership of existing data.</p>
+	</div>
+</div>
+{% endblock%}
+
+{% block content %}
+    <div class="row_box">
+	<div class="grid_4">
+	    
+		<div class="pad5">
+		<h3>Kiosk List</h3>
+            <div style=" overflow: auto; max-height: 250px;">
+            <ul>
+    		{% for org in kiosks|groupby('organisation') %}
+    		<li><h4>{{ org.grouper }}</h4><ul>
+    		{% for kiosk in org.list %}
+    			<li>{{kiosk.name}} - {{kiosk.location}} <br/><a href="/kiosks/edit/{{kiosk.dieid}}" title="Edit kiosk registration">Edit</a> | <a href="/kiosks/send_message" title="Send Message">Send Message</a> | <a href="/kiosks/syncs/{{kiosk.dieid}}">View Uploads</a> | <a href="#" title="Delete kiosk from system">Delete</a></li>
+    		{% endfor %}</ul></li>
+    		{% else %}
+    		<li>No kiosks for user.</li>
+    		{% endfor %}
+    		</ul>
+    		</div>
+    	</div>
+    </div>
+    
+    <div class="grid_8">
+	    
+		<div class="pad5">
+		
+		<h3>Recent Heartbeats</h3>
+		{% if heartbeats == [] %}
+		<p>No heartbeats recorded on any kiosks registered to this account.</p>
+	    {% else %}
+            <table cellpadding="0" cellspacing="0" border="0" class="display" id="heartbeats">
+            <thead>
+                <tr>
+                    <td>IP</td>
+                    <td>Local IP</td>
+                    <td>Kiosk</td>
+                    <td>Time</td>
+                    <td>Skew</td>
+                    <td>Uptime</td>
+                </tr>
+            </thead>
+            <tbody>
+            
+                {% for heartbeat in heartbeats %}
+                <tr>
+                    <td class="{% if heartbeat.bad_skew() %}highlighted{% endif %}">{{heartbeat.client_ip}}</td>
+                    <td class="{% if heartbeat.bad_skew() %}highlighted{% endif %}">{{heartbeat.client_intip}}</td>
+                    <td class="{% if heartbeat.bad_skew() %}highlighted{% endif %}">{{heartbeat.kiosk.name}}</td>
+                    <td class="{% if heartbeat.bad_skew() %}highlighted{% endif %}">{{heartbeat.server_time.strftime("%d/%m/%y %H:%M")}}</td>
+                    <td class="{% if heartbeat.bad_skew() %}highlighted{% endif %}">{{heartbeat.skew_str()}}</td>
+                    <td class="{% if heartbeat.bad_skew() %}highlighted{% endif %}">{{heartbeat.client_uptime}}</td>
+                </tr>
+                {% endfor %}
+            
+    		</tbody>
+    		</table>
+    		{% endif %}
+    	</div>
+    	
+    </div>
+    </div>
+    
+    {% if recent_cmsgs %}
+    <div class="spacer"></div>
+    <div class="row_box pad5">
+   
+    <div class="grid_12">
+    <h3>Recent Client Messages</h3>
+    <table class="display" id="recent_msgs">
+    <thead><tr>
+    <td>Kiosk</td>
+    <td>Date</td>
+    <td>Origin</td>
+    <td>Message</td>
+    <td>Retrieved</td>
+    </tr></thead>
+    
+    <tbody>
+    {% for msg in recent_cmsgs %}
+    <tr>
+    <td>{{msg.kiosk.name}}</td>
+    <td>{{msg.date.strftime("%d-%m-%Y %H:%M")}}</td>
+    <td>{{msg.origin}}</td>
+    <td>{%- if msg.session_ref -%}<a href="/syncsessions/{{msg.session_ref.client_ref}}">{%- endif -%}{{msg.message.replace("\n","<br/>")}}{%- if msg.session_ref -%}</a>{%- endif -%}</td>
+    <td>{{msg.origin_date.strftime("%d/%m/%y %H:%M")}}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+    
+    </table>
+    </div>
+    </div>
+    {% endif %}
+    
+    {% if unsynced_smsgs %}
+    <div class="spacer"></div>
+    <div class="row_box pad5">
+    <div class="grid_12">
+    <h3>Uncollected Server Messages</h3>
+    <table class="display" id="unsynced_msgs">
+    <thead><tr>
+    <td>Kiosk</td>
+    <td>Date</td>
+    <td>Type</td>
+    <td>Message</td>
+    </tr></thead>
+    
+    <tbody>
+    {% for msg in unsynced_smsgs %}
+    <tr>
+    <td>{{msg.kiosk.name}}</td>
+    <td>{{msg.date.strftime("%d/%m/%y %H:%M")}}</td>
+    <td>{{msg.msg_type}}</td>
+    <td>{{msg.message}}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+    
+    </table>
+    </div>
+    </div>
+    {% endif %}
+{% endblock %}
+
+{% block js_region %}
+<script type="text/javascript" charset="utf-8">
+			$(document).ready(function() {
+				$('#heartbeats').dataTable( {
+					"sScrollY": 100,
+					"bJQueryUI": true,
+					"sPaginationType": "full_numbers"
+				} );
+				$('#unsynced_msgs').dataTable(
+				{
+				    "sScrollY": 100,
+					"bJQueryUI": true,
+					"sPaginationType": "full_numbers"
+				});
+				$('#recent_msgs').dataTable(
+				{
+				  "sScrollY": 100,
+					"bJQueryUI": true,
+					"sPaginationType": "full_numbers"
+				});
+			} );
+		</script>
+{% endblock %}
