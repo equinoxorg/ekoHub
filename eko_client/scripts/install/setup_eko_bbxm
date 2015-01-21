@@ -1,0 +1,18 @@
+#!/bin/sh
+# /etc/init.d/setup_eko_bbxm
+# add e5:5:wait:/etc/init.d/setup_eko_bbxm to inittab
+
+# Some things that run always
+
+# disable DVI
+/bin/echo 0 > /sys/devices/platform/omapdss/display0/enabled 
+/bin/echo 0 > /sys/devices/platform/omapdss/display1/enabled 
+
+# create ppp device node
+/bin/mknod /dev/ppp c 108 0
+
+# mount debugfs
+/bin/mkdir -p /debug
+/bin/mount -t debugfs debugfs /debug
+
+exit 0
