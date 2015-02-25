@@ -183,8 +183,8 @@
 }
 
 
-#timeline {
-  width: 60%;
+#timeline { 
+  width: 100%; 
 
   display: inline-block;
   /*width: 65%;
