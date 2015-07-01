@@ -39,9 +39,11 @@ class MainPage(webapp2.RequestHandler):
   def get(self):
 
     i = 0
-    generate_random_data(kiosks, systems)
+    generate_random_data(kiosks, systems, self.request.get('store', default_value='0'))
 
     #showDates()
+
+    
 
     #check if a user is already logged in
     user_name = active_user()

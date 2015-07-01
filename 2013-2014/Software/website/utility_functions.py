@@ -43,30 +43,43 @@ def serialize(data):
     return  json.dumps(itemsList)
 
 
-def generate_random_data(kiosks, systems):
+def generate_random_data(kiosks, systems, store):
 
     # DANGEROUS COMMAND
-    db.delete(systemData.all())
+    #db.delete(systemData.all())
+
+    #if(store == '0'):
+     #   db.delete(systemData.all())
+
+
     i = 0
 
     d = datetime.utcnow()
     tmp = calendar.timegm(d.utctimetuple())
+
+    logging.info("TIME\n")
+    logging.info(tmp)
+    logging.info("\n")
+
+
     while i < 100:
         dat = systemData()
+        logging.info(i%4)
         dat.current = float(random.uniform(0.0, 50.0)) # in mA
         dat.voltage = float(random.uniform(0.0, 240.0)) # in Volts
         #dat.sampleTime = random.randint(1, 10000) # in seconds
         #dat.kiosk = kiosks[random.randint(0, len(kiosks) - 1)]
         #dat.system = systems[random.randint(0, len(systems) - 1)]
-        dat.kiosk = kiosks[0]
-        dat.system = systems[0]
-
+        dat.kiosk = kiosks[i%4]
+        dat.system = systems[i%6]
 
         d = datetime.utcnow()
         dat.timestamp = tmp # write different timestamps
         tmp = tmp + 60
         #dat.timestamp = time.time()
-        #dat.put()
+
+        if(store == '1'):
+            dat.put()
 
         i = i + 1
 
